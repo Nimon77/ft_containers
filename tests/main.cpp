@@ -6,24 +6,11 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 18:21:18 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/03 01:43:18 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <algorithm>
-#include <vector>
-
-#define FT true
-#include "color.hpp"
-
-#if FT
-# include "containers/type_traits.hpp"
-# include "containers/algorithm.hpp"
-#else
-# include <type_traits>
-	namespace ft = std;
-#endif
+#include "tests.hpp"
 
 void	test_is_integral()
 {
@@ -83,13 +70,22 @@ int		main(void)
 {
 	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_OFF << std::endl;
 	test_is_integral();
-
 	std::cout << std::endl;
+
 	std::cout << C_WHITE_BACK << C_B_RED << "equal:" << C_OFF << std::endl;
 	test_equal();
-
 	std::cout << std::endl;
+
 	std::cout << C_WHITE_BACK << C_B_RED << "lexicographical_compare:" << C_OFF << std::endl;
 	test_lexicographical_compare();
+	std::cout << std::endl;
+	
+	//test_reverse_iterator();
+	test_iterator();
+
+	std::cout << C_WHITE_BACK << C_B_RED << "iterator_traits:" << C_OFF << std::endl;
+//	typedef std::iterator_traits<int*> traits;
+//	if (typeid(traits::iterator_category)==typeid(ft::random_access_iterator_tag))
+//		std::cout << "int* is a random-access iterator" << std::endl;
 	return (0);
 }

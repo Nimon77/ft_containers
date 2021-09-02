@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:24:49 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 17:15:14 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/02 20:49:29 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 # define TYPE_TRAITS_HPP
 
 namespace ft {
-
 	/*
 	** enable_if
 	*/
-	template < bool Cond, class T = void > struct enable_if {};
-	template < class T > struct enable_if<true, T> { typedef T type; };
+	template <bool Cond, class T = void> struct enable_if {};
+	template <class T> struct enable_if<true, T> { typedef T type; };
 
 	/*
 	** integral_constant
 	*/
-	template < class T, T v >
+	template <class T, T v>
 	struct integral_constant {
 		static const T value = v;
 		typedef T value_type;
@@ -69,9 +68,7 @@ namespace ft {
 	template <> struct is_integral_type<const unsigned long int> :		true_type {};
 	template <> struct is_integral_type<const unsigned long long int> :	true_type {};
 
-	template < class T > struct is_integral : is_integral_type<T> {};
-
-
+	template <class T> struct is_integral : is_integral_type<T> {};
 }
 
 #endif

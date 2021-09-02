@@ -6,28 +6,25 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 15:06:00 by nsimon            #+#    #+#              #
-#    Updated: 2021/09/02 15:10:58 by nsimon           ###   ########.fr        #
+#    Updated: 2021/09/03 01:16:07 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= ft_containers
-CC			= clang
+CC			= clang++
 
 # Compiler & Preprocessor flags
 CFLAGS		+= -Wall -Werror -Wextra
-CPPFLAGS	+= -I include/ -I libft/include/
+CPPFLAGS	+= -I containers/
 MAKEFLAGS	+= --no-print-directory
 
 # Recompile on headers/Makefile changes
-HEADERS		= include/$(NAME).h libft/include/libft.h
-DEPS		= $(HEADERS) Makefile libft/Makefile
+HEADERS		= containers/$(NAME).hpp
+#DEPS		= $(HEADERS) Makefile libft/Makefile
 
 # Source files
-SRC_PATH	= src/
-SRC_NAME	= main env prompt path signals exec expansions print builtins \
-			  builtins/echo builtins/cd builtins/env builtins/setenv \
-			  builtins/unsetenv builtins/exit builtins/where \
-			  builtins/pwd builtins/history builtins/fg
+SRC_PATH	= tests/
+SRC_NAME	= main test_iterator vector
 
 # Object files
 OBJ_PATH	= obj/
@@ -66,7 +63,7 @@ NORMINETTE	= norminette
 
 all: $(NAME)
 
-$(NAME): $(LIB_FILE) $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
 	@$(ERASE)
 	@$(ERASE)
@@ -74,11 +71,7 @@ $(NAME): $(LIB_FILE) $(OBJ)
 	@$(ECHO) "$(NAME)\t[$(C_SUCCESS)✅ $(C_RESET)]"
 	@$(ECHO) "$(C_SUCCESS)All done, compilation successful! 👌 $(C_RESET)"
 
-$(LIB_FILE):
-	@echo ""
-	@$(MAKE) -C $(LIB_PATH)
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(DEPS)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp $(DEPS)
 	@mkdir -p $(OBJ_PATH)/builtins $(HIDE_ERR)
 	@$(ERASE)
 	@$(ECHO) "$(NAME)\t[$(C_PENDING)⏳ $(C_RESET)]"
@@ -88,15 +81,13 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(DEPS)
 clean:
 	@$(RM) -r $(OBJ_PATH) $(HIDE_ERR)
 	@$(RM) -r $(NAME).dSYM $(HIDE_ERR)
-	@$(MAKE) -C $(LIB_PATH) clean
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) -C $(LIB_PATH) fclean
 
 re: fclean all
 
 norm:
-	@$(NORMINETTE) include/ src/ libft/include/ libft/src/ | $(GREP) -v 'Not a valid file' | $(GREP) -EB1 'Error|Warning' || true
+	@$(NORMINETTE) include/ src/ | $(GREP) -v 'Not a valid file' | $(GREP) -EB1 'Error|Warning' || true
 
 .PHONY: clean fclean all re norm

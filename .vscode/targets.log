@@ -1,0 +1,429 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Fri Sep  3 01:16:15 2021
+
+# Variables
+
+ 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 32)
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 18)
+CPPFLAGS = -I containers/
+# environment
+ARCHFLAGS = -arch x86_64
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/nsimon/Documents/42-projects/ft_containers
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 17)
+CFLAGS = -Wall -Werror -Wextra
+# makefile (from `Makefile', line 46)
+ES_ERASE = "\033[A\033[K\033[A"
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-0bd8c47e-2518-4db4-a18e-87d940c38dbb.sock
+# environment
+VSCODE_CWD = /
+# makefile (from `Makefile', line 41)
+C_RESET = \033[0m
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/nsimon/.fig/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# makefile (from `Makefile', line 26)
+SRC_PATH = tests/
+# environment
+SPACESHIP_VERSION = 3.14.0
+# makefile (from `Makefile', line 61)
+NORMINETTE = norminette
+# environment
+LaunchInstanceID = 87174ADD-736E-49BA-93E4-9F674EE70B2D
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# makefile (from `Makefile', line 54)
+ECHO = echo
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SqwTXNSUwv/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = /private/tmp/com.apple.launchd.YqcE7yFEkT/org.xquartz:0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/nsimon/Documents/42-projects/ft_containers
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/nsimon
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/nsimon/Library/Application Support/Code/CachedData/3866c3553be8b268c8a7f8c0482c0c0177aa8bfa
+# environment
+LOGNAME = nsimon
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from `Makefile', line 22)
+HEADERS = containers/$(NAME).hpp
+# environment
+ZSH = /Users/nsimon/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 14)
+CC = clang++
+# makefile (from `Makefile', line 27)
+SRC_NAME = main test_iterator vector
+# makefile (from `Makefile', line 47)
+ERASE = $(ECHO) $(ES_ERASE)
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = nsimon
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 13)
+NAME = ft_containers
+# makefile (from `Makefile', line 42)
+C_PENDING = \033[0;36m
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# makefile (from `Makefile', line 50)
+HIDE_STD = > /dev/null
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/nsimon/Library/Application Support/Code/1.59.1-main.sock
+# makefile
+MAKEFLAGS =  --no-print-directory -Rrqp
+# environment
+MFLAGS = - --no-print-directory -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MAIL = nsimon@student.42.fr
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.44144208.44144214
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+ 
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# environment
+VSCODE_BROWSER_CODE_LOADING = bypassHeatCheck
+# automatic
+<F = $(notdir $<)
+# environment
+EDITOR = code
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# makefile (from `Makefile', line 30)
+OBJ_PATH = obj/
+# environment
+SECURITYSESSIONID = 186a9
+# makefile (from `Makefile', line 43)
+C_SUCCESS = \033[0;32m
+# environment
+SPACESHIP_ROOT = /Users/nsimon/.oh-my-zsh/custom/themes/spaceship-prompt
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from `Makefile', line 51)
+HIDE_ERR = 2> /dev/null || true
+# default
+.INCLUDE_DIRS = /usr/local/include
+# makefile (from `Makefile', line 31)
+OBJ_NAME = $(addsuffix .o, $(SRC_NAME))
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 1265
+# makefile (from `Makefile', line 59)
+GREP = grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}
+# variable set hash-table stats:
+# Load=95/1024=9%, Rehash=0, Collisions=8/151=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777223, inode 42157942): 10 files, no impossibilities.
+# tests (device 16777223, inode 45243034): 9 files, no impossibilities so far.
+
+# 19 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+obj/%.o: tests/%.cpp
+#  commands to execute (from `Makefile', line 75):
+	@mkdir -p $(OBJ_PATH)/builtins $(HIDE_ERR)
+	@$(ERASE)
+	@$(ECHO) "$(NAME)\t[$(C_PENDING)⏳ $(C_RESET)]"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(ERASE)
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+tests/test_iterator.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-03 00:05:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: ft_containers
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/17=0%
+
+.PHONY: clean fclean all re norm
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+tests/vector.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-03 01:15:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/main.o: tests/main.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  Last modified 2021-09-03 00:34:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 75):
+	@mkdir -p $(OBJ_PATH)/builtins $(HIDE_ERR)
+	@$(ERASE)
+	@$(ECHO) "$(NAME)\t[$(C_PENDING)⏳ $(C_RESET)]"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(ERASE)
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-03 01:16:07
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 86):
+	@$(RM) $(NAME)
+	
+
+# Not a target:
+tests/main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-03 00:04:49
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+norm:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 91):
+	@$(NORMINETTE) include/ src/ | $(GREP) -v 'Not a valid file' | $(GREP) -EB1 'Error|Warning' || true
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ft_containers: obj/main.o obj/test_iterator.o obj/vector.o
+#  Implicit rule search has not been done.
+#  Last modified 2021-09-03 00:34:29
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/17=0%
+#  commands to execute (from `Makefile', line 67):
+	$(CC) $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
+	@$(ERASE)
+	@$(ERASE)
+	@$(ERASE)
+	@$(ECHO) "$(NAME)\t[$(C_SUCCESS)✅ $(C_RESET)]"
+	@$(ECHO) "$(C_SUCCESS)All done, compilation successful! 👌 $(C_RESET)"
+	
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+ 
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 82):
+	@$(RM) -r $(OBJ_PATH) $(HIDE_ERR)
+	@$(RM) -r $(NAME).dSYM $(HIDE_ERR)
+	
+
+obj/test_iterator.o: tests/test_iterator.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `test_iterator'
+#  Last modified 2021-09-03 00:34:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 75):
+	@mkdir -p $(OBJ_PATH)/builtins $(HIDE_ERR)
+	@$(ERASE)
+	@$(ECHO) "$(NAME)\t[$(C_PENDING)⏳ $(C_RESET)]"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(ERASE)
+	
+
+obj/vector.o: tests/vector.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `vector'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/vector.o
+# automatic
+# % := 
+# automatic
+# * := vector
+# automatic
+# + := tests/vector.cpp
+# automatic
+# | := 
+# automatic
+# < := tests/vector.cpp
+# automatic
+# ^ := tests/vector.cpp
+# automatic
+# ? := tests/vector.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=6/27=22%
+#  commands to execute (from `Makefile', line 75):
+	@mkdir -p $(OBJ_PATH)/builtins $(HIDE_ERR)
+	@$(ERASE)
+	@$(ECHO) "$(NAME)\t[$(C_PENDING)⏳ $(C_RESET)]"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(ERASE)
+	
+
+# files hash-table stats:
+# Load=16/1024=2%, Rehash=0, Collisions=0/50=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Fri Sep  3 01:16:15 2021
+
+ 
