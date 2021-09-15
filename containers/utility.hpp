@@ -6,13 +6,12 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:28:34 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 19:06:24 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/14 18:50:02 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILITY_HPP
 # define UTILITY_HPP
-
 namespace ft
 {
 	template <class T1, class T2>
@@ -31,7 +30,7 @@ namespace ft
 
 			pair& operator= (const pair& pr)
 			{
-				if (*this != pr)
+				if (*this == pr)
 					return (*this);
 				first = pr.first;
 				second = pr.second;

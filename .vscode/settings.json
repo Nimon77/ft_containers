@@ -80,5 +80,6 @@
 		"filesystem": "cpp",
 		"span": "cpp",
 		"*.ipp": "cpp"
-	}
+	},
+	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

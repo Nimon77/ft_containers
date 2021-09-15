@@ -4,10 +4,14 @@ mkdir -p obj//builtins 2> /dev/null || true
 echo "\033[A\033[K\033[A"
  
 echo "ft_containers\t[\033[0;36m⏳ \033[0m]"
-clang++ -Wall -Werror -Wextra -I containers/ -o obj/vector.o -c tests/vector.cpp
+clang++ -Wall -Werror -Wextra -std=c++98 -I containers/ -o obj/test_vector.o -c tests/test_vector.cpp
 echo "\033[A\033[K\033[A"
-clang++ -Wall -Werror -Wextra obj/main.o obj/test_iterator.o obj/vector.o  -o ft_containers
+mkdir -p obj//builtins 2> /dev/null || true
 echo "\033[A\033[K\033[A"
+echo "ft_containers\t[\033[0;36m⏳ \033[0m]"
+clang++ -Wall -Werror -Wextra -std=c++98 -I containers/ -o obj/test_reverse_iterator.o -c tests/test_reverse_iterator.cpp
+echo "\033[A\033[K\033[A"
+clang++ -Wall -Werror -Wextra -std=c++98 obj/main.o obj/test_iterator.o obj/test_vector.o obj/test_reverse_iterator.o  -o ft_containers
 echo "\033[A\033[K\033[A"
 echo "\033[A\033[K\033[A"
 echo "ft_containers\t[\033[0;32m✅ \033[0m]"

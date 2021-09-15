@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/03 01:33:54 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/15 02:06:18 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,93 @@
 # define VECTOR_HPP
 namespace ft {
 	template < class T, class Alloc = std::allocator<T> >
-	class Vector {
+	class vector {
 		public:
-			typedef T												value_type;
-			typedef Alloc											allocator_type;
-			typedef typename allocator_type::reference				reference;
-			typedef typename allocator_type::const_reference		const_reference;
-			typedef typename allocator_type::pointer				pointer;
-			typedef typename allocator_type::const_pointer			const_pointer;
-			typedef ft::random_access_iterator<value_type>			iterator;
-			typedef ft::random_access_iterator<const value_type>	const_iterator;
-			typedef ft::reverse_iterator<iterator>					reverse_iterator;
-			typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
-			typedef ft::iterator_traits<iterator>::difference_type	difference_type;
-			typedef allocator_type::size_type						size_type;
+			typedef T														value_type;
+			typedef Alloc													allocator_type;
+			typedef typename allocator_type::reference						reference;
+			typedef typename allocator_type::const_reference				const_reference;
+			typedef typename allocator_type::pointer						pointer;
+			typedef typename allocator_type::const_pointer					const_pointer;
+			typedef ft::random_access_iterator<value_type>					iterator;
+			typedef ft::random_access_iterator<const value_type>			const_iterator;
+			typedef ft::reverse_iterator<iterator>							reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
+			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
+			typedef typename allocator_type::size_type						size_type;
 
 			explicit vector (const allocator_type& alloc = allocator_type())
-				: _alloc(alloc), _vector(nullptr), _begin(nullptr), _end(nullptr), _cap(nullptr) {}
+				: _alloc(alloc), _vector(nullptr), _size(0), _capacity(0) {}
+
 			explicit vector (size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type())
-				: _alloc(alloc), _size(n), _capacity(n);
+				: _alloc(alloc), _size(n), _capacity(n)
 			{
 				_vector = alloc.allocate(sizeof(value_type) * n);
 				for (size_type i = 0; i < n; i++) _alloc[i] = val;
 			}
+
 			template <class InputIterator>
 			vector (InputIterator first, InputIterator last,
 					const allocator_type& alloc = allocator_type())
 				: _alloc(alloc), _size(last - first), _capacity(last - first)
 			{
-				_vector = _alloc.allocate(sizeof(value_type) * _size)
-				for (size_type i = 0;first + i != last; i++) _vector[i] = (first + i);
+				_vector = _alloc.allocate(sizeof(value_type) * _size);
+				for (size_type i = 0; first + i != last; i++) _vector[i] = (first + i);
 			}
+
+			~vector ()
+			{
+				_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+			}
+
+			vector& operator= (const vector& x)
+			{
+				if (this != &x)
+				{
+					_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+					_vector = _alloc.allocate(sizeof(value_type) * x._size);
+					_size = x._size;
+					_capacity = x._size;
+					for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
+				}
+				return *this;
+			}
+
+			iterator begin() { return iterator(_vector); }
+			const_iterator begin() const { return const_iterator(_vector); }
+			iterator end() { return iterator(_vector + _size); }
+			const_iterator end() const { return const_iterator(_vector + _size); }
+			reverse_iterator rbegin() { return reverse_iterator(_vector + _size); }
+			const_reverse_iterator rbegin() const { return const_reverse_iterator(_vector + _size); }
+			reverse_iterator rend() { return reverse_iterator(_vector); }
+			const_reverse_iterator rend() const { return const_reverse_iterator(_vector); }
+			difference_type size() const { return _size; }
+			difference_type capacity() const { return _capacity; }
+
+			reference operator[] (size_type n) { return _vector[n]; }
+			const_reference operator[] (size_type n) const { return _vector[n]; }
+
+			void push_back (const value_type& val)
+			{
+				if (_size == _capacity && _capacity != 0)
+				{
+					_capacity *= 2;
+					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					_alloc.destroy(_vector);
+					_vector = new_vector;
+				}
+				else if (_capacity == 0)
+				{
+					_capacity = 1;
+					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+				}
+				_vector[_size++] = val;
+			}
+
+			allocator_type get_allocator () const { return _alloc; }
+
 		private:
 			allocator_type	_alloc;
 			pointer			_vector;

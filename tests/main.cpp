@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/03 01:43:18 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/15 02:09:06 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,10 @@ int		main(void)
 	test_lexicographical_compare();
 	std::cout << std::endl;
 	
-	//test_reverse_iterator();
+	test_reverse_iterator();
 	test_iterator();
 
-	std::cout << C_WHITE_BACK << C_B_RED << "iterator_traits:" << C_OFF << std::endl;
-//	typedef std::iterator_traits<int*> traits;
-//	if (typeid(traits::iterator_category)==typeid(ft::random_access_iterator_tag))
-//		std::cout << "int* is a random-access iterator" << std::endl;
+	test_vector();
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:05:16 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/03 00:05:42 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/15 01:44:11 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 void test_operator_chevron()
 {
-	std::vector<int> myvector;
+	ft::vector<int> myvector;
+	std::vector<int> stdmyvector;
 	for (int i=0; i<10; i++) myvector.push_back(i);  // myvector: 0 1 2 3 4 5 6 7 8 9
-	typedef std::vector<int>::iterator iter_type;
+	for (int i=0; i<10; i++) stdmyvector.push_back(i);  // myvector: 0 1 2 3 4 5 6 7 8 9
+	std::cout << "myvector:";
+	for (int i=0; i<10; i++) std::cout << " " << myvector[i];
+	std::cout << std::endl;
+	std::cout << "stdmyvector:";
+	for (int i=0; i<10; i++) std::cout << " " << stdmyvector[i];
+	std::cout << std::endl;
+	typedef ft::vector<int>::iterator iter_type;
+	typedef std::vector<int>::iterator stditer_type;
 	ft::reverse_iterator<iter_type> rev_iterator = myvector.rbegin();
-	std::cout << "The fourth element from the end is: " << rev_iterator[3] << '\n';
+	std::reverse_iterator<stditer_type> stdrev_iterator = stdmyvector.rbegin();
+	std::cout << "ft : The fourth element from the end is: " << rev_iterator[3] << '\n';
+	std::cout << "std : The fourth element from the end is: " << stdrev_iterator[3] << '\n';
 }
 
 void test_reverse_iterator()

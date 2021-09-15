@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:21:03 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/03 01:16:24 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/15 02:23:25 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 	namespace ft = std;
 #endif
 
-//void test_reverse_iterator();
+void test_reverse_iterator();
 void test_iterator();
+void test_vector();
 
 #endif

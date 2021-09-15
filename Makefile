@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 15:06:00 by nsimon            #+#    #+#              #
-#    Updated: 2021/09/03 01:16:07 by nsimon           ###   ########.fr        #
+#    Updated: 2021/09/15 02:32:17 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= ft_containers
 CC			= clang++
 
 # Compiler & Preprocessor flags
-CFLAGS		+= -Wall -Werror -Wextra
+CFLAGS		+= -Wall -Werror -Wextra -std=c++98
 CPPFLAGS	+= -I containers/
 MAKEFLAGS	+= --no-print-directory
 
@@ -24,7 +24,7 @@ HEADERS		= containers/$(NAME).hpp
 
 # Source files
 SRC_PATH	= tests/
-SRC_NAME	= main test_iterator vector
+SRC_NAME	= main test_iterator test_vector test_reverse_iterator
 
 # Object files
 OBJ_PATH	= obj/
@@ -65,7 +65,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
-	@$(ERASE)
 	@$(ERASE)
 	@$(ERASE)
 	@$(ECHO) "$(NAME)\t[$(C_SUCCESS)✅ $(C_RESET)]"
