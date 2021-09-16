@@ -1,8 +1,17 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/nsimon/Documents/42-projects/ft_containers'
 mkdir -p obj//builtins 2> /dev/null || true
 echo "\033[A\033[K\033[A"
- 
+echo "ft_containers\t[\033[0;36m⏳ \033[0m]"
+clang++ -Wall -Werror -Wextra -std=c++98 -I containers/ -o obj/main.o -c tests/main.cpp
+echo "\033[A\033[K\033[A"
+mkdir -p obj//builtins 2> /dev/null || true
+echo "\033[A\033[K\033[A"
+echo "ft_containers\t[\033[0;36m⏳ \033[0m]"
+clang++ -Wall -Werror -Wextra -std=c++98 -I containers/ -o obj/test_iterator.o -c tests/test_iterator.cpp
+echo "\033[A\033[K\033[A"
+mkdir -p obj//builtins 2> /dev/null || true
+echo "\033[A\033[K\033[A"
 echo "ft_containers\t[\033[0;36m⏳ \033[0m]"
 clang++ -Wall -Werror -Wextra -std=c++98 -I containers/ -o obj/test_vector.o -c tests/test_vector.cpp
 echo "\033[A\033[K\033[A"

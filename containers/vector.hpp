@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/15 02:06:18 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/16 18:20:10 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,30 @@ namespace ft {
 							const allocator_type& alloc = allocator_type())
 				: _alloc(alloc), _size(n), _capacity(n)
 			{
-				_vector = alloc.allocate(sizeof(value_type) * n);
-				for (size_type i = 0; i < n; i++) _alloc[i] = val;
+				_vector = _alloc.allocate(sizeof(value_type) * n);
+				for (size_type i = 0; i < n; i++) _vector[i] = val;
 			}
 
 			template <class InputIterator>
 			vector (InputIterator first, InputIterator last,
-					const allocator_type& alloc = allocator_type())
-				: _alloc(alloc), _size(last - first), _capacity(last - first)
+					const allocator_type& alloc = allocator_type(),
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
+				: _alloc(alloc), _size(0), _capacity(0)
 			{
-				_vector = _alloc.allocate(sizeof(value_type) * _size);
-				for (size_type i = 0; first + i != last; i++) _vector[i] = (first + i);
+				_vector = _alloc.allocate(sizeof(value_type) * (last - first));
+				for (; first != last; first++)
+				{
+					_vector[_size++] = *first;
+				}
+			}
+
+			vector (const vector& x)
+			{
+				_alloc = x._alloc;
+				_size = x._size;
+				_capacity = x._capacity;
+				_vector = _alloc.allocate(sizeof(value_type) * _capacity);
+				for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
 			}
 
 			~vector ()
@@ -71,11 +84,34 @@ namespace ft {
 			const_iterator begin() const { return const_iterator(_vector); }
 			iterator end() { return iterator(_vector + _size); }
 			const_iterator end() const { return const_iterator(_vector + _size); }
-			reverse_iterator rbegin() { return reverse_iterator(_vector + _size); }
-			const_reverse_iterator rbegin() const { return const_reverse_iterator(_vector + _size); }
+			reverse_iterator rbegin() { return reverse_iterator(_vector + _size - 1); }
+			const_reverse_iterator rbegin() const { return const_reverse_iterator(_vector + _size - 1); }
 			reverse_iterator rend() { return reverse_iterator(_vector); }
 			const_reverse_iterator rend() const { return const_reverse_iterator(_vector); }
-			difference_type size() const { return _size; }
+
+			size_type size() const { return _size; }
+			size_type max_size() const { return _alloc.max_size(); }
+			void resize(size_type n, value_type val = value_type())
+			{
+				if (n < _size)
+				{
+					for (size_type i = n; i < _size; i++) _alloc.destroy(&_vector[i]);
+					_size = n;
+				}
+				else if (n > _size)
+				{
+					if (n > _capacity)
+					{
+						_capacity = n;
+						value_type* tmp = _alloc.allocate(sizeof(value_type) * _capacity);
+						for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+						_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+						_vector = tmp;
+					}
+					for (size_type i = _size; i < n; i++) _alloc.construct(&_vector[i], val);
+					_size = n;
+				}
+			}
 			difference_type capacity() const { return _capacity; }
 
 			reference operator[] (size_type n) { return _vector[n]; }

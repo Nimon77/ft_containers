@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:58:44 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/15 01:37:09 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/16 18:54:50 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,61 +77,96 @@ namespace ft
 			typedef typename ft::iterator<ft::random_access_iterator_tag, Iterator>::pointer			pointer;
 			typedef typename ft::iterator<ft::random_access_iterator_tag, Iterator>::reference			reference;
 
-			random_access_iterator() : _It(nullptr) {}
-			random_access_iterator(pointer It) : _It(It) {}
-			random_access_iterator(const random_access_iterator& op) : _It(op._It) {}
+			random_access_iterator() : _it(nullptr) {}
+			random_access_iterator(pointer It) : _it(It) {}
+			random_access_iterator(const random_access_iterator& op) : _it(op._it) {}
 
 			random_access_iterator &operator=(const random_access_iterator& op)
 			{
 				if (*this == op)
 					return (*this);
-				this->_It = op._It;
+				this->_it = op._it;
 				return (*this);
 			}
 
-			reference operator*() const { return *_It; };
+			reference operator*() const { return *_it; };
+			pointer operator->() const { return _it; };
 
 			random_access_iterator& operator+=(const difference_type n)
 			{
-				if ( n >= 0)
-					while(n--) ++_It;
+				if (n >= 0)
+					while (n--) ++_it;
 				else
-					while(n++) --_It;
-				return (_It);
+					while (n++) --_it;
+				return (_it);
 			}
-			random_access_iterator operator+(difference_type n) const { return (_It + n); }
-			random_access_iterator& operator-=(const difference_type n) { return (_It -= -n); }
-			random_access_iterator operator-(const difference_type n)
+			random_access_iterator operator+(difference_type n) const { return (_it + n); }
+			random_access_iterator& operator-=(const difference_type n) { return (_it -= -n); }
+			random_access_iterator operator-(const difference_type n) const { return (_it - n); }
+			random_access_iterator& operator++()
 			{
-				random_access_iterator temp = *this;
-				return (temp -= n);
+				++_it;
+				return (*this);
 			}
-			difference_type operator-(const random_access_iterator& op) { return (op._It - _It); }
-			reference operator[](const difference_type n) { return *(_It + n); }
+			random_access_iterator operator++(int) {
+				random_access_iterator tmp = *this;
+				++_it;
+				return (tmp);
+			}
+			random_access_iterator& operator--()
+			{
+				--_it;
+				return (*this);
+			}
+			random_access_iterator operator--(int)
+			{
+				random_access_iterator tmp = *this;
+				--_it;
+				return (tmp);
+			}
+			bool operator==(const random_access_iterator& op) const { return (_it == op._it); }
+			bool operator!=(const random_access_iterator& op) const { return (_it != op._it); }
+			bool operator<(const random_access_iterator& op) const { return (_it < op._it); }
+			bool operator<=(const random_access_iterator& op) const { return (_it <= op._it); }
+			bool operator>(const random_access_iterator& op) const { return (_it > op._it); }
+			bool operator>=(const random_access_iterator& op) const { return (_it >= op._it); }
+			difference_type operator-(const random_access_iterator& op) { return (_it - op._it); }
+			reference operator[](const difference_type n) const { return (_it[n]); }
 		private:
-			pointer _It;
+			pointer _it;
 	};
 
 	template <class Iterator>
 	bool operator< (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
 	{
-		return (lhs._It < rhs._It);
+		return (lhs < rhs);
 	}
 	template <class Iterator>
 	bool operator> (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
 	{
-		return (lhs._It > rhs._It);
+		return (lhs > rhs);
 	}
 	template <class Iterator>
 	bool operator>= (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
 	{
-		return (lhs._It >= rhs._It);
+		return (lhs >= rhs);
 	}
 	template <class Iterator>
 	bool operator<= (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
 	{
-		return (lhs._It <= rhs._It);
+		return (lhs <= rhs);
 	}
+	template <class Iterator>
+	bool operator== (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
+	{
+		return (lhs == rhs);
+	}
+	template <class Iterator>
+	bool operator!= (const ft::random_access_iterator<Iterator>& lhs, const ft::random_access_iterator<Iterator>& rhs)
+	{
+		return (lhs != rhs);
+	}
+	
 
 	/*
 	** reverse_iterator
@@ -168,9 +203,9 @@ namespace ft
 
 			reverse_iterator operator++(int)
 			{
-				reverse_iterator temp = *this;
-				++(*this);
-				return temp;
+				reverse_iterator tmp = *this;
+				--_it;
+				return (tmp);
 			}
 
 			reverse_iterator& operator+= (difference_type n)
@@ -190,7 +225,7 @@ namespace ft
 			reverse_iterator operator--(int)
 			{
 				reverse_iterator temp = *this;
-				--(*this);
+				++_it;
 				return temp;
 			}
 
@@ -202,7 +237,14 @@ namespace ft
 
 			pointer operator->() const { return &(operator*()); }
 
-			reference operator[] (difference_type n) const { return *(_it + n); }
+			bool operator==(const reverse_iterator& op) const { return (_it == op._it); }
+			bool operator!=(const reverse_iterator& op) const { return (_it != op._it); }
+			bool operator<(const reverse_iterator& op) const { return (_it > op._it); }
+			bool operator<=(const reverse_iterator& op) const { return (_it >= op._it); }
+			bool operator>(const reverse_iterator& op) const { return (_it < op._it); }
+			bool operator>=(const reverse_iterator& op) const { return (_it <= op._it); }
+
+			reference operator[] (difference_type n) const { return *(_it - n); }
 
 		private:
 			iterator_type	_it;
