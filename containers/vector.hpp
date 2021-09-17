@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/16 18:20:10 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/17 10:35:14 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,34 @@ namespace ft {
 					_size = n;
 				}
 			}
-			difference_type capacity() const { return _capacity; }
+			size_type capacity() const { return _capacity; }
+			bool empty() const { return (_size == 0); }
+			void reserve(size_type n)
+			{
+				if (n > _capacity)
+				{
+					_capacity = n;
+					value_type* tmp = _alloc.allocate(sizeof(value_type) * _capacity);
+					for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+					_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+					_vector = tmp;
+				}
+			}
+			void shrink_to_fit()
+			{
+				_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+				_vector = _alloc.allocate(sizeof(value_type) * _size);
+				_capacity = _size;
+			}
 
 			reference operator[] (size_type n) { return _vector[n]; }
 			const_reference operator[] (size_type n) const { return _vector[n]; }
+			reference at (size_type n) { return _vector[n]; }
+			const_reference at (size_type n) const { return _vector[n]; }
+			reference front() { return _vector[0]; }
+			const_reference front() const { return _vector[0]; }
+			reference back() { return _vector[_size - 1]; }
+			const_reference back() const { return _vector[_size - 1]; }
 
 			void push_back (const value_type& val)
 			{
