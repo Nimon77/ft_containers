@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/17 10:36:24 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/17 10:39:12 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,6 @@ void vector_reserve()
 	}
 }
 
-void vector_shrink_to_fit()
-{
-	std::cout << C_RED << "vector_shrink_to_fit" << C_OFF << std::endl;
-	ft::vector<int> myvector (100);
-	std::cout << "1. capacity of myvector: " << myvector.capacity() << '\n';
-
-	myvector.resize(10);
-	std::cout << "2. capacity of myvector: " << myvector.capacity() << '\n';
-
-	myvector.shrink_to_fit();
-	std::cout << "3. capacity of myvector: " << myvector.capacity() << '\n';
-}
-
 void vector_operator_access()
 {
 	std::cout << C_RED << "vector_operator_access" << C_OFF << std::endl;
@@ -218,7 +205,6 @@ void test_vector()
 	vector_size();
 	vector_resize();
 	vector_reserve();
-	vector_shrink_to_fit();
 	vector_element_access();
 	std::cout << C_OFF << std::endl;
 }

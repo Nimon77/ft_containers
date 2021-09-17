@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/17 10:35:14 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/17 10:38:59 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,6 @@ namespace ft {
 					_alloc.deallocate(_vector, _capacity * sizeof(value_type));
 					_vector = tmp;
 				}
-			}
-			void shrink_to_fit()
-			{
-				_alloc.deallocate(_vector, _capacity * sizeof(value_type));
-				_vector = _alloc.allocate(sizeof(value_type) * _size);
-				_capacity = _size;
 			}
 
 			reference operator[] (size_type n) { return _vector[n]; }
