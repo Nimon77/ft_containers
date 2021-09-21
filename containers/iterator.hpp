@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:58:44 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/16 18:54:50 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:42:57 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,15 @@ namespace ft
 	reverse_iterator<Iterator> operator- (typename reverse_iterator<Iterator>::difference_type n, const reverse_iterator<Iterator>& rev_it)
 	{
 		return (rev_it - n);
+	}
+
+	template <class InputIterator>
+	typename iterator_traits<InputIterator>::difference_type
+	distance (InputIterator first, InputIterator last)
+	{
+		typename iterator_traits<InputIterator>::difference_type i = 0;
+		for (; first != last; ++first, ++i);
+		return i;
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 15:06:00 by nsimon            #+#    #+#              #
-#    Updated: 2021/09/15 02:32:17 by nsimon           ###   ########.fr        #
+#    Updated: 2021/09/21 16:09:16 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC			= clang++
 
 # Compiler & Preprocessor flags
 CFLAGS		+= -Wall -Werror -Wextra -std=c++98
+#CFLAGS		+= -std=c++98
 CPPFLAGS	+= -I containers/
 MAKEFLAGS	+= --no-print-directory
 

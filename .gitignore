@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+ft.txt
+std.txt
+ft_containers

@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:24:49 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 20:49:29 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/21 16:09:18 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ namespace ft {
 	/*
 	** enable_if
 	*/
-	template <bool Cond, class T = void> struct enable_if {};
-	template <class T> struct enable_if<true, T> { typedef T type; };
+	template <bool Cond, class T = void>
+	struct enable_if {};
+
+	template <class T>
+	struct enable_if<true, T> { typedef T type; };
 
 	/*
 	** integral_constant

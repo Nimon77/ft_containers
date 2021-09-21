@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/17 10:39:12 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:45:07 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,37 @@ void vector_element_access()
 	vector_back();
 }
 
+void vector_assign()
+{
+	std::cout << C_RED << "vector_assign" << C_OFF << std::endl;
+	ft::vector<int> first;
+	ft::vector<int> second;
+	ft::vector<int> third;
+
+	first.assign (7,100);             // 7 ints with a value of 100
+
+	ft::vector<int>::iterator it;
+	it=first.begin()+1;
+
+	second.assign (it,first.end()-1); // the 5 central values of first
+
+	int myints[] = {1776,7,4};
+	third.assign (myints,myints+3);   // assigning from array.
+
+	std::cout << "Size of first: " << int (first.size()) << '\n';
+	for (unsigned int i=0; i<first.size(); i++)
+		std::cout << ' ' << first[i];
+	std::cout << '\n';
+	std::cout << "Size of second: " << int (second.size()) << '\n';
+	for (unsigned int i=0; i<second.size(); i++)
+		std::cout << ' ' << second[i];
+	std::cout << '\n';
+	std::cout << "Size of third: " << int (third.size()) << '\n';
+	for (unsigned int i=0; i<third.size(); i++)
+		std::cout << ' ' << third[i];
+	std::cout << '\n';
+}
+
 void test_vector()
 {
 	std::cout << C_WHITE_BACK << C_B_RED << "test_vector" << C_OFF << std::endl;
@@ -206,5 +237,6 @@ void test_vector()
 	vector_resize();
 	vector_reserve();
 	vector_element_access();
+	vector_assign();
 	std::cout << C_OFF << std::endl;
 }

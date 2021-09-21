@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/17 10:38:59 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:47:18 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,20 @@ namespace ft {
 			const_reference front() const { return _vector[0]; }
 			reference back() { return _vector[_size - 1]; }
 			const_reference back() const { return _vector[_size - 1]; }
+
+			template <class InputIterator>
+			void assign (InputIterator first, InputIterator last,
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
+			{
+				resize(ft::distance(first, last));
+				for (size_type i = 0; first != last; first++, i++) _vector[i] = *first;
+			}
+
+			void assign (size_type n, const value_type& val)
+			{
+				resize(n);
+				for (size_type i = 0; i < n; i++) _vector[i] = val;
+			}
 
 			void push_back (const value_type& val)
 			{
