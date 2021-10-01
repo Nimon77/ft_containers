@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 18:52:22 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 20:12:09 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool mypredicate (int i, int j)
 void	test_equal()
 {
 	int myints[] = {20,40,60,80,100};               //   myints: 20 40 60 80 100
-	std::vector<int>myvector (myints,myints+5);     // myvector: 20 40 60 80 100
+	ft::vector<int>myvector (myints,myints+5);     // myvector: 20 40 60 80 100
 
 	// using default comparison:
 	if ( ft::equal (myvector.begin(), myvector.end(), myints) )
@@ -79,21 +79,6 @@ void test_distance()
 	std::cout << std::endl;
 }
 
-void test_swap()
-{
-	std::cout << C_WHITE_BACK << C_B_RED << "test_swap" << C_OFF << std::endl;
-	int x=10, y=20;                  // x:10 y:20
-	ft::swap(x,y);                  // x:20 y:10
-
-	int foo[4];                      // foo: ?  ?  ?  ?
-	int bar[] = {10,20,30,40};       // foo: ?  ?  ?  ?    bar: 10 20 30 40
-	ft::swap(foo,bar);              // foo: 10 20 30 40   bar: ?  ?  ?  ?
-
-	std::cout << "foo contains:";
-	for (int i = 0; i < 4; i++) std::cout << ' ' << i;
-	std::cout << '\n';
-}
-
 int		main(void)
 {
 	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_OFF << std::endl;
@@ -111,7 +96,6 @@ int		main(void)
 	test_reverse_iterator();
 	test_iterator();
 	test_distance();
-	test_swap();
 
 	test_vector();
 

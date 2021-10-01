@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 19:08:28 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 20:38:01 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,13 +275,27 @@ void vector_insert()
 	it = myvector.begin();
 	it = myvector.insert ( it , 200 );
 
+	std::cout << "myvector contains:";
+	for (unsigned i=0; i<myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
+
 	myvector.insert (it,2,300);
+
+	std::cout << "myvector contains:";
+	for (unsigned i=0; i<myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
 
 	// "it" no longer valid, get a new one:
 	it = myvector.begin();
 
 	ft::vector<int> anothervector (2,400);
 	myvector.insert (it+2,anothervector.begin(),anothervector.end());
+
+	std::cout << "\nmyvector contains:";
+	for (unsigned i=0; i<myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
 
 	int myarray [] = { 501,502,503 };
 	myvector.insert (myvector.begin(), myarray, myarray+3);
@@ -300,8 +314,17 @@ void vector_erase()
 	// set some values (from 1 to 10)
 	for (int i=1; i<=10; i++) myvector.push_back(i);
 
+	std::cout << "myvector contains:";
+	for (ft::vector<int>::iterator it=myvector.begin(); it<myvector.end(); it++)
+		std::cout << ' ' << *it;
+	std::cout << '\n';
+
 	// erase the 6th element
 	myvector.erase (myvector.begin()+5);
+	std::cout << "myvector contains:";
+	for (ft::vector<int>::iterator it=myvector.begin(); it<myvector.end(); it++)
+		std::cout << ' ' << *it;
+	std::cout << '\n';
 
 	// erase the first 3 elements:
 	myvector.erase (myvector.begin(),myvector.begin()+3);

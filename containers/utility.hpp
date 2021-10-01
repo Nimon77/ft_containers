@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:28:34 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 19:02:50 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 20:11:52 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ namespace ft
 	pair<T1, T2> make_pair(T1 x, T2 y)
 	{
 		return (pair<T1, T2>(x, y));
-	}
-	
-	template <class T>
-	void swap(T& a, T& b)
-	{
-		T c = a;
-		a = b;
-		b = c;
 	}
 
 	template <class T1, class T2>
