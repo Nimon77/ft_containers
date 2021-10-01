@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/15 02:09:06 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 18:52:22 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,34 @@ void test_lexicographical_compare () {
 	std::cout << '\n';
 }
 
+void test_distance()
+{
+	std::cout << C_WHITE_BACK << C_B_RED << "test_distance" << C_OFF << std::endl;
+	std::list<int> mylist;
+	for (int i=0; i<10; i++) mylist.push_back (i*10);
+
+	std::list<int>::iterator first = mylist.begin();
+	std::list<int>::iterator last = mylist.end();
+
+	std::cout << "The distance is: " << ft::distance(first,last) << '\n';
+	std::cout << std::endl;
+}
+
+void test_swap()
+{
+	std::cout << C_WHITE_BACK << C_B_RED << "test_swap" << C_OFF << std::endl;
+	int x=10, y=20;                  // x:10 y:20
+	ft::swap(x,y);                  // x:20 y:10
+
+	int foo[4];                      // foo: ?  ?  ?  ?
+	int bar[] = {10,20,30,40};       // foo: ?  ?  ?  ?    bar: 10 20 30 40
+	ft::swap(foo,bar);              // foo: 10 20 30 40   bar: ?  ?  ?  ?
+
+	std::cout << "foo contains:";
+	for (int i = 0; i < 4; i++) std::cout << ' ' << i;
+	std::cout << '\n';
+}
+
 int		main(void)
 {
 	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_OFF << std::endl;
@@ -82,6 +110,8 @@ int		main(void)
 	
 	test_reverse_iterator();
 	test_iterator();
+	test_distance();
+	test_swap();
 
 	test_vector();
 

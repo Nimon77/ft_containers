@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/21 17:45:07 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 19:08:28 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void vector_copy()
 
 void vector_size()
 {
-	std::vector<int> myints;
+	ft::vector<int> myints;
 	std::cout << "0. size: " << myints.size() << '\n';
 
 	for (int i=0; i<10; i++) myints.push_back(i);
 	std::cout << "1. size: " << myints.size() << '\n';
 
-	myints.insert (myints.end(),10,100);
+	myints.insert (myints.end(), 10, 100);
 	std::cout << "2. size: " << myints.size() << '\n';
 
 	myints.pop_back();
@@ -173,7 +173,7 @@ void vector_front()
 void vector_back()
 {
 	std::cout << C_RED << "vector_back" << C_OFF << std::endl;
-	std::vector<int> myvector;
+	ft::vector<int> myvector;
 
 	myvector.push_back(10);
 
@@ -228,6 +228,120 @@ void vector_assign()
 	std::cout << '\n';
 }
 
+void vector_push_back()
+{
+	std::cout << C_RED << "vector_push_back" << C_OFF << std::endl;
+	ft::vector<int> myvector;
+	int myint;
+
+	std::cout << "Please enter some integers (enter 0 to end):\n";
+
+	myint = 1;
+	do {
+		myvector.push_back (myint);
+		if (myint < 100)
+			myint++;
+		else
+			myint = 0;
+	} while (myint);
+
+	std::cout << "myvector stores " << int(myvector.size()) << " numbers.\n";
+}
+
+void vector_pop_back()
+{
+	std::cout << C_RED << "vector_pop_back" << C_OFF << std::endl;
+	ft::vector<int> myvector;
+	int sum (0);
+	myvector.push_back (100);
+	myvector.push_back (200);
+	myvector.push_back (300);
+
+	while (!myvector.empty())
+	{
+		sum+=myvector.back();
+		myvector.pop_back();
+	}
+
+	std::cout << "The elements of myvector add up to " << sum << '\n';
+}
+
+void vector_insert()
+{
+	std::cout << C_RED << "vector_insert" << C_OFF << std::endl;
+	ft::vector<int> myvector (3,100);
+	ft::vector<int>::iterator it;
+
+	it = myvector.begin();
+	it = myvector.insert ( it , 200 );
+
+	myvector.insert (it,2,300);
+
+	// "it" no longer valid, get a new one:
+	it = myvector.begin();
+
+	ft::vector<int> anothervector (2,400);
+	myvector.insert (it+2,anothervector.begin(),anothervector.end());
+
+	int myarray [] = { 501,502,503 };
+	myvector.insert (myvector.begin(), myarray, myarray+3);
+
+	std::cout << "myvector contains:";
+	for (it=myvector.begin(); it<myvector.end(); it++)
+		std::cout << ' ' << *it;
+	std::cout << '\n';
+}
+
+void vector_erase()
+{
+	std::cout << C_RED << "vector_erase" << C_OFF << std::endl;
+	ft::vector<int> myvector;
+
+	// set some values (from 1 to 10)
+	for (int i=1; i<=10; i++) myvector.push_back(i);
+
+	// erase the 6th element
+	myvector.erase (myvector.begin()+5);
+
+	// erase the first 3 elements:
+	myvector.erase (myvector.begin(),myvector.begin()+3);
+
+	std::cout << "myvector contains:";
+	for (unsigned i=0; i<myvector.size(); ++i)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
+}
+
+void vector_swap()
+{
+	std::cout << C_RED << "vector_swap" << C_OFF << std::endl;
+	ft::vector<int> foo (3,100);   // three ints with a value of 100
+	ft::vector<int> bar (5,200);   // five ints with a value of 200
+
+	foo.swap(bar);
+
+	std::cout << "foo contains:";
+	for (unsigned i=0; i<foo.size(); i++)
+		std::cout << ' ' << foo[i];
+	std::cout << '\n';
+
+	std::cout << "bar contains:";
+	for (unsigned i=0; i<bar.size(); i++)
+		std::cout << ' ' << bar[i];
+	std::cout << '\n';
+}
+
+void vector_modifiers()
+{
+	std::cout << C_B_RED << "vector_modifiers" << C_OFF << std::endl;
+	vector_assign();
+	vector_push_back();
+	vector_pop_back();
+	vector_insert();
+	vector_erase();
+	vector_swap();
+}
+
 void test_vector()
 {
 	std::cout << C_WHITE_BACK << C_B_RED << "test_vector" << C_OFF << std::endl;
@@ -237,6 +351,6 @@ void test_vector()
 	vector_resize();
 	vector_reserve();
 	vector_element_access();
-	vector_assign();
+	vector_modifiers();
 	std::cout << C_OFF << std::endl;
 }

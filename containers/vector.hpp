@@ -6,12 +6,15 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/21 17:47:18 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 19:33:07 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 # define VECTOR_HPP
+
+# include "utility.hpp"
+
 namespace ft {
 	template < class T, class Alloc = std::allocator<T> >
 	class vector {
@@ -165,6 +168,102 @@ namespace ft {
 					_vector = _alloc.allocate(_capacity * sizeof(value_type));
 				}
 				_vector[_size++] = val;
+			}
+
+			void pop_back()
+			{
+				if (_size > 0)
+				{
+					_alloc.destroy(&_vector[_size - 1]);
+					_size--;
+				}
+			}
+
+			iterator insert (iterator position, const value_type& val)
+			{
+				if (_size == _capacity && _capacity != 0)
+				{
+					_capacity *= 2;
+					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					_alloc.destroy(_vector);
+					_vector = new_vector;
+				}
+				else if (_capacity == 0)
+				{
+					_capacity = 1;
+					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+				}
+				for (size_type i = _size; i > position - _vector; i--) _vector[i] = _vector[i - 1];
+				_vector[position - _vector] = val;
+				_size++;
+				return (position);
+			}
+
+			void insert (iterator position, size_type n, const value_type& val)
+			{
+				if (_size + n > _capacity && _capacity != 0)
+				{
+					_capacity *= 2;
+					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					_alloc.destroy(_vector);
+					_vector = new_vector;
+				}
+				else if (_capacity == 0)
+				{
+					_capacity = 1;
+					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+				}
+				for (size_type i = _size; i > position - _vector; i--) _vector[i] = _vector[i - 1];
+				for (size_type i = 0; i < n; i++) _vector[position - _vector + i] = val;
+				_size += n;
+			}
+
+			template <class InputIterator>
+			void insert (iterator position, InputIterator first, InputIterator last,
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
+			{
+				size_type n = ft::distance(first, last);
+				if (_size + n > _capacity && _capacity != 0)
+				{
+					_capacity *= 2;
+					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					_alloc.destroy(_vector);
+					_vector = new_vector;
+				}
+				else if (_capacity == 0)
+				{
+					_capacity = 1;
+					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+				}
+				for (size_type i = _size; i > position - _vector; i--) _vector[i] = _vector[i - 1];
+				for (size_type i = 0; first != last; first++, i++, position++) _vector[position - _vector] = *first;
+				_size += n;
+			}
+
+			iterator erase (iterator position)
+			{
+				for (size_type i = position - _vector; i < _size - 1; i++) _vector[i] = _vector[i + 1];
+				_alloc.destroy(&_vector[_size - 1]);
+				_size--;
+				return (position);
+			}
+
+			iterator erase (iterator first, iterator last)
+			{
+				for (size_type i = first - _vector; i < _size - ft::distance(first, last); i++) _vector[i] = _vector[i + ft::distance(first, last)];
+				for (size_type i = 0; first != last; first++) _alloc.destroy(&_vector[i++]);
+				_size -= ft::distance(first, last);
+				return (first);
+			}
+
+			void swap (vector& x)
+			{
+				ft::swap(_vector, x._vector);
+				ft::swap(_size, x._size);
+				ft::swap(_capacity, x._capacity);
 			}
 
 			allocator_type get_allocator () const { return _alloc; }

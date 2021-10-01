@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:21:03 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/21 14:21:42 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 18:53:57 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <algorithm>
-#include <vector>
+#include <list>
 
 #define FT true
 #include "color.hpp"
@@ -25,7 +25,9 @@
 # include "algorithm.hpp"
 # include "iterator.hpp"
 # include "vector.hpp"
+# include "utility.hpp"
 #else
+# include <vector>
 # include <type_traits>
 # include <iterator>
 	namespace ft = std;
