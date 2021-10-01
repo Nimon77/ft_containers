@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:24:49 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/21 16:09:18 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/01 19:39:42 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ namespace ft {
 	
 	template <> struct is_integral_type<bool> :							true_type {};
 	template <> struct is_integral_type<char> :							true_type {};
-	template <> struct is_integral_type<char16_t> :						true_type {};
-	template <> struct is_integral_type<char32_t> :						true_type {};
 	template <> struct is_integral_type<wchar_t> :						true_type {};
 	template <> struct is_integral_type<signed char> :					true_type {};
 	template <> struct is_integral_type<short int> :					true_type {};
@@ -58,8 +56,6 @@ namespace ft {
 
 	template <> struct is_integral_type<const bool> :					true_type {};
 	template <> struct is_integral_type<const char> :					true_type {};
-	template <> struct is_integral_type<const char16_t> :				true_type {};
-	template <> struct is_integral_type<const char32_t> :				true_type {};
 	template <> struct is_integral_type<const wchar_t> :				true_type {};
 	template <> struct is_integral_type<const signed char> :			true_type {};
 	template <> struct is_integral_type<const short int> :				true_type {};
