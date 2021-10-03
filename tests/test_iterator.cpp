@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:17:25 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 18:07:42 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:23:33 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class MyIterator : public ft::iterator<std::input_iterator_tag, int>
 
 void test_iterator()
 {
-	std::cout << C_WHITE_BACK << C_B_RED << "test_iterator" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "test_iterator" << C_RESET << std::endl;
 	int numbers[]={10,20,30,40,50};
 	MyIterator from(numbers);
 	MyIterator until(numbers+5);

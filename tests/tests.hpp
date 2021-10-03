@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:21:03 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 20:48:02 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:16:27 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "iterator.hpp"
 # include "vector.hpp"
 # include "utility.hpp"
+//# include "map.hpp"
 #else
 # include <vector>
 # include <type_traits>
@@ -36,5 +37,6 @@
 void test_reverse_iterator();
 void test_iterator();
 void test_vector();
+void test_utility();
 
 #endif

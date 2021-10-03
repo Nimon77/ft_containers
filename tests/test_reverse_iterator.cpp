@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:05:16 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 20:05:17 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:23:25 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void test_operator_chevron()
 
 void test_reverse_iterator()
 {
-	std::cout << C_WHITE_BACK << C_B_RED << "test_reverse_iterator" << C_OFF << std::endl;
-	std::cout << C_RED << "test_operator_chevron" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "test_reverse_iterator" << C_RESET << std::endl;
+	std::cout << C_RED << "test_operator_chevron" << C_RESET << std::endl;
 	test_operator_chevron();
 	std::cout << std::endl;
 }

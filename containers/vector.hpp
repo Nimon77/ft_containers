@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 21:28:53 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 12:49:03 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,6 +274,12 @@ namespace ft {
 				tmp2 = _capacity;
 				_capacity = x._capacity;
 				x._capacity = tmp2;
+			}
+
+			void clear()
+			{
+				for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
+				_size = 0;
 			}
 
 			allocator_type get_allocator () const { return _alloc; }

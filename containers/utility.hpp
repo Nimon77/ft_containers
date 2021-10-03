@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:28:34 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 20:11:52 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:13:09 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ namespace ft
 	{
 		return (pair<T1, T2>(x, y));
 	}
+
+	template <class Arg1, class Arg2, class Result>
+	struct binary_function {
+		typedef Arg1 first_argument_type;
+		typedef Arg2 second_argument_type;
+		typedef Result result_type;
+	};
+
+	template <class T> struct less : binary_function <T,T,bool> {
+		bool operator() (const T& x, const T& y) const {return x<y;}
+	};
 
 	template <class T1, class T2>
 	bool operator== (const pair<T1, T2>& lhs, const pair<T1, T2>& rhs)

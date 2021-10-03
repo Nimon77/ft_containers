@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 17:49:24 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 18:12:52 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:22:29 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@
 #define C_U_WHITE "\033[4;37m"
 #define C_I_WHITE "\033[7;37m"
 
-#define C_OFF "\033[0m"
-#define C_B_OFF "\033[21;0m"
-#define C_U_OFF "\033[24m"
-#define C_I_OFF "\033[27m"
+#define C_RESET "\033[0m"
+#define C_B_RESET "\033[21;0m"
+#define C_U_RESET "\033[24m"
+#define C_I_RESET "\033[27m"
 
 #endif

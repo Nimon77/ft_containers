@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 20:12:09 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:23:28 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void test_lexicographical_compare () {
 
 void test_distance()
 {
-	std::cout << C_WHITE_BACK << C_B_RED << "test_distance" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "test_distance" << C_RESET << std::endl;
 	std::list<int> mylist;
 	for (int i=0; i<10; i++) mylist.push_back (i*10);
 
@@ -81,18 +81,20 @@ void test_distance()
 
 int		main(void)
 {
-	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
 	test_is_integral();
 	std::cout << std::endl;
 
-	std::cout << C_WHITE_BACK << C_B_RED << "equal:" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "equal:" << C_RESET << std::endl;
 	test_equal();
 	std::cout << std::endl;
 
-	std::cout << C_WHITE_BACK << C_B_RED << "lexicographical_compare:" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "lexicographical_compare:" << C_RESET << std::endl;
 	test_lexicographical_compare();
 	std::cout << std::endl;
 	
+	test_utility();
+
 	test_reverse_iterator();
 	test_iterator();
 	test_distance();

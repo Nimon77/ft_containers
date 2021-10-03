@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/10/01 18:20:41 by nsimon           ###   ########.fr        #
+#    Updated: 2021/10/03 16:16:46 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS_PATH		= ./tests
 
 INCLUDE_PATH	= ./containers
 
-SRCS			= test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp
+SRCS			= test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp test_utility.cpp
 
 MAIN			= main.cpp
 

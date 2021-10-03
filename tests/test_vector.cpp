@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/01 20:38:01 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/03 16:23:34 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void vector_create()
 {
-	std::cout << C_RED << "vector_create" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_create" << C_RESET << std::endl;
 	// constructors used in the same order as described above:
 	ft::vector<int> first;                                // empty vector of ints
 	ft::vector<int> second (4,100);                       // four ints with value 100
@@ -35,7 +35,7 @@ void vector_create()
 
 void vector_copy()
 {
-	std::cout << C_RED << "vector_copy" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_copy" << C_RESET << std::endl;
 	ft::vector<int> first;
 	ft::vector<int> second;
 
@@ -70,7 +70,7 @@ void vector_size()
 
 void vector_resize()
 {
-	std::cout << C_RED << "vector_resize" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_resize" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 
 	// set some initial content:
@@ -88,7 +88,7 @@ void vector_resize()
 
 void vector_reserve()
 {
-	std::cout << C_RED << "vector_reserve" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_reserve" << C_RESET << std::endl;
 	ft::vector<int>::size_type sz;
 
 	ft::vector<int> foo;
@@ -117,7 +117,7 @@ void vector_reserve()
 
 void vector_operator_access()
 {
-	std::cout << C_RED << "vector_operator_access" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_operator_access" << C_RESET << std::endl;
 	ft::vector<int> myvector (10); // 10 zero-initialized elements
 
 	ft::vector<int>::size_type sz = myvector.size();
@@ -142,7 +142,7 @@ void vector_operator_access()
 
 void vector_at()
 {
-	std::cout << C_RED << "vector_at" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_at" << C_RESET << std::endl;
 	ft::vector<int> myvector (10);   // 10 zero-initialized ints
 
 	// assign some values:
@@ -157,7 +157,7 @@ void vector_at()
 
 void vector_front()
 {
-	std::cout << C_RED << "vector_front" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_front" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 
 	myvector.push_back(78);
@@ -172,7 +172,7 @@ void vector_front()
 
 void vector_back()
 {
-	std::cout << C_RED << "vector_back" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_back" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 
 	myvector.push_back(10);
@@ -190,7 +190,7 @@ void vector_back()
 
 void vector_element_access()
 {
-	std::cout << C_B_RED << "vector_element_access" << C_OFF << std::endl;
+	std::cout << C_B_RED << "vector_element_access" << C_RESET << std::endl;
 	vector_operator_access();
 	vector_at();
 	vector_front();
@@ -199,7 +199,7 @@ void vector_element_access()
 
 void vector_assign()
 {
-	std::cout << C_RED << "vector_assign" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_assign" << C_RESET << std::endl;
 	ft::vector<int> first;
 	ft::vector<int> second;
 	ft::vector<int> third;
@@ -230,7 +230,7 @@ void vector_assign()
 
 void vector_push_back()
 {
-	std::cout << C_RED << "vector_push_back" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_push_back" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 	int myint;
 
@@ -250,7 +250,7 @@ void vector_push_back()
 
 void vector_pop_back()
 {
-	std::cout << C_RED << "vector_pop_back" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_pop_back" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 	int sum (0);
 	myvector.push_back (100);
@@ -268,7 +268,7 @@ void vector_pop_back()
 
 void vector_insert()
 {
-	std::cout << C_RED << "vector_insert" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_insert" << C_RESET << std::endl;
 	ft::vector<int> myvector (3,100);
 	ft::vector<int>::iterator it;
 
@@ -308,7 +308,7 @@ void vector_insert()
 
 void vector_erase()
 {
-	std::cout << C_RED << "vector_erase" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_erase" << C_RESET << std::endl;
 	ft::vector<int> myvector;
 
 	// set some values (from 1 to 10)
@@ -337,7 +337,7 @@ void vector_erase()
 
 void vector_swap()
 {
-	std::cout << C_RED << "vector_swap" << C_OFF << std::endl;
+	std::cout << C_RED << "vector_swap" << C_RESET << std::endl;
 	ft::vector<int> foo (3,100);   // three ints with a value of 100
 	ft::vector<int> bar (5,200);   // five ints with a value of 200
 
@@ -354,20 +354,44 @@ void vector_swap()
 	std::cout << '\n';
 }
 
+void vector_clear()
+{
+	std::cout << C_RED << "vector_clear" << C_RESET << std::endl;
+	ft::vector<int> myvector;
+	myvector.push_back (100);
+	myvector.push_back (200);
+	myvector.push_back (300);
+
+	std::cout << "myvector contains:";
+	for (unsigned i=0; i<myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
+
+	myvector.clear();
+	myvector.push_back (1101);
+	myvector.push_back (2202);
+
+	std::cout << "myvector contains:";
+	for (unsigned i=0; i<myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
+}
+
 void vector_modifiers()
 {
-	std::cout << C_B_RED << "vector_modifiers" << C_OFF << std::endl;
+	std::cout << C_B_RED << "vector_modifiers" << C_RESET << std::endl;
 	vector_assign();
 	vector_push_back();
 	vector_pop_back();
 	vector_insert();
 	vector_erase();
 	vector_swap();
+	vector_clear();
 }
 
 void test_vector()
 {
-	std::cout << C_WHITE_BACK << C_B_RED << "test_vector" << C_OFF << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "test_vector" << C_RESET << std::endl;
 	vector_create();
 	vector_copy();
 	vector_size();
@@ -375,5 +399,5 @@ void test_vector()
 	vector_reserve();
 	vector_element_access();
 	vector_modifiers();
-	std::cout << C_OFF << std::endl;
+	std::cout << C_RESET << std::endl;
 }
