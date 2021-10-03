@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/10/03 16:16:46 by nsimon           ###   ########.fr        #
+#    Updated: 2021/10/03 17:00:21 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,9 +96,6 @@ $(RUN_CMD); \
 if [ $$RESULT -ne 0 ]; then \
 	printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; \
 	rm -rf .files_changed; \
-	if [ $(NOVISU) -eq 0 ]; then \
-		clear; \
-	fi; \
 elif [ -s $@.log ]; then \
 	printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; \
 else  \
@@ -244,4 +241,18 @@ fclean:		header clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re header
+compare:
+			@make re
+			@./$(NAME) > ft.txt
+			@sed -i '' 's/#define FT true/#define FT false/g' tests/tests.hpp
+			@echo ""
+			@make re
+			@echo ""
+			@echo ""
+			@./$(NAME) > std.txt
+			@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
+			@$(eval COM_STRING = "result")
+			@$(call run_and_test,diff ft.txt std.txt)
+			@rm ft.txt std.txt
+
+.PHONY:		all clean fclean re header compare

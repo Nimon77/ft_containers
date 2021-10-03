@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Oct  3 16:16:47 2021
+# Make data base, printed on Sun Oct  3 17:01:06 2021
 
 # Variables
 
@@ -42,7 +42,7 @@ _ = /usr/bin/make
 # makefile (from `Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 # makefile (from `objs/main.d', line 1)
-MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/main.d
+MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/test_utility.d objs/main.d
 # makefile (from `Makefile', line 21)
 DFLAGS = -MMD -MF $(@:.o=.d)
 # environment
@@ -62,7 +62,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Application
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 93)
-run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; if [ $(NOVISU) -eq 0 ]; then clear; fi; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
+run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
 # makefile (from `Makefile', line 75)
 RUN_CMD = script -q $@.log $1 > /dev/null; RESULT=$$?
 # environment
@@ -83,7 +83,7 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.yTm9rop5cY/Listeners
 DISPLAY = /private/tmp/com.apple.launchd.6Lur6Xvr28/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from `Makefile', line 112)
+# makefile (from `Makefile', line 109)
 save_files_changed = 	FILE_CPP=`echo $(SRCS) $(MAIN)`; FILE_OBJ=`find objs -type f -name '*.o' 2>/dev/null | sed 's/objs\///'`; TO_COMPILE=`echo $$FILE_CPP | wc -w`; for FILE in $$FILE_CPP; do for OBJ in $$FILE_OBJ; do if [ $${FILE%$(FILE_EXTENSION)} = $${OBJ%.o} ]; then if [ $(SRCS_PATH)/$$FILE -ot objs/$$OBJ ]; then FILE_DEP=`echo objs/$$OBJ | sed 's/\.o/\.d/'`; HEAD_FILES=`< $$FILE_DEP xargs | grep -oh "\w*.h\w*"`; RECOMPILE=0; for HEAD in $$HEAD_FILES; do if [ $(SRCS_PATH)/$$HEAD -nt objs/$$OBJ ]; then RECOMPILE=1; break; fi; done; if [ $$RECOMPILE -eq 0 ]; then ((TO_COMPILE=$$TO_COMPILE-1)); fi; fi; fi; done; done; echo 0/$$TO_COMPILE > .files_changed
 # makefile (from `Makefile', line 48)
 OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
@@ -94,7 +94,7 @@ OBJ_COLOR = \033[0;36m
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # makefile (from `Makefile', line 90)
-HASH := f97ad1a
+HASH := 0fe3d5f
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
@@ -171,7 +171,7 @@ XPC_SERVICE_NAME = application.com.microsoft.VSCode.48460291.48460297
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 88)
 AUTHOR := Nicolas Simon
-# makefile (from `Makefile', line 165)
+# makefile (from `Makefile', line 162)
 display_progress_bar = 	if [ $(NOVISU) -eq 0 ]; then line=`bash -c 'oldstty=$$(stty -g); stty raw -echo min 0; tput u7 > /dev/tty; IFS=";" read -r -d R -a pos; stty $$oldstty; row=$$(($${pos[0]:2} - 1)); echo $$row'`; max_line=`tput lines`; ((max_line=$$max_line-2)); new_line=0; tput sc; i=0; while [ $$i -lt 60 ]; do printf " "; ((i=$$i+1)); done; tput rc; if [ $$line -gt $$max_line ]; then new_line=1; echo ; else ((line=$$line+1)); fi; tput sc; tput cup $$line; $(draw_bar) if [ $$new_line -eq 1 ]; then ((line=$$line-1)); tput cup $$line; else tput rc; fi; fi
 # automatic
 +F = $(notdir $+)
@@ -179,7 +179,7 @@ display_progress_bar = 	if [ $(NOVISU) -eq 0 ]; then line=`bash -c 'oldstty=$$(s
 INCLUDE_PATH = ./containers
 # makefile (from `Makefile', line 31)
 FILE_EXTENSION = .cpp
-# makefile (from `Makefile', line 139)
+# makefile (from `Makefile', line 136)
 draw_bar = 	FILE_TOTAL=`bash -c 'cat .files_changed | cut -d"/" -f2'`; FILE_DONE=`bash -c 'cat .files_changed | cut -d"/" -f1'`; if [ $$FILE_TOTAL -eq 0 ]; then FILE_TOTAL=1; FILE_DONE=1; fi; RES=`echo "scale=2; $$FILE_DONE/$$FILE_TOTAL*48" | bc`; RES=`echo $${RES%%.*}`; printf "$(OBJ_COLOR)[$(NO_COLOR)"; i=0; while [ $$i -lt 48 ]; do if [ $$i -lt $$RES ]; then printf "$(OK_COLOR)█$(NO_COLOR)"; else printf "$(COM_COLOR)▒$(NO_COLOR)"; fi; ((i=$$i+1)); done; printf "$(OBJ_COLOR)]$(NO_COLOR)"; printf " ($(COM_COLOR)$$FILE_DONE$(NO_COLOR)/$(COM_COLOR)$$FILE_TOTAL$(NO_COLOR))"; printf " "; ((FILE_DONE=$$FILE_DONE+1)); echo $$FILE_DONE/$$FILE_TOTAL > .files_changed;
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
@@ -192,7 +192,7 @@ MAKEFILES :=
 # makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from `Makefile', line 89)
-DATE := 2021/10/01 21:29:51
+DATE := 2021/10/03 16:30:21
 # environment
 EDITOR = code
 # environment
@@ -207,7 +207,6 @@ SPACESHIP_ROOT = /Users/nsimon/.oh-my-zsh/custom/themes/spaceship-prompt
 DEPS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.d})
 # default
 SUFFIXES := 
- 
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
@@ -219,23 +218,24 @@ VSCODE_PID = 2417
 # makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
-# Load=102/1024=10%, Rehash=0, Collisions=14/186=8%
+# Load=102/1024=10%, Rehash=0, Collisions=14/188=7%
 
 # Pattern-specific Variable Values
 
+ 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 16777223, inode 42157942): 15 files, no impossibilities.
+# . (device 16777223, inode 42157942): 13 files, no impossibilities.
 # ./tests (device 16777223, inode 45243034): No files, no impossibilities so far.
 
-# 15 files, no impossibilities in 2 directories.
+# 13 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 objs/%.o: ./tests/%.cpp
-#  commands to execute (from `Makefile', line 233):
+#  commands to execute (from `Makefile', line 230):
 	@mkdir -p $(dir $@)
 	@$(call display_progress_bar)
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
@@ -249,7 +249,7 @@ setup:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 230):
+#  commands to execute (from `Makefile', line 227):
 	@$(call save_files_changed)
 	
 
@@ -259,7 +259,7 @@ tests/test_iterator.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/vector.hpp containers/utility.hpp
+objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -273,11 +273,11 @@ all: header setup ft_containers
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/19=0%
-#  commands to execute (from `Makefile', line 201):
+#  commands to execute (from `Makefile', line 198):
 	@rm -rf .files_changed
 	
 
-.PHONY: all clean fclean re header
+.PHONY: all clean fclean re header compare
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -286,11 +286,17 @@ all: header setup ft_containers
 objs/test_reverse_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-03 16:13:47
+#  Last modified 2021-10-03 17:00:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+tests/test_utility.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 header:
 #  Phony target (prerequisite of .PHONY).
@@ -317,7 +323,7 @@ header:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=3/27=11%
-#  commands to execute (from `Makefile', line 204):
+#  commands to execute (from `Makefile', line 201):
 	@printf "%b" "$(OK_COLOR)"
 	@echo "        ___  _____ ___  ___      _        "
 	@echo "       /   |/ __  \|  \/  |     | |       "
@@ -343,45 +349,53 @@ header:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-03 16:16:46
+#  Last modified 2021-10-03 17:00:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-containers/iterator.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 objs/test_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-03 16:13:46
+#  Last modified 2021-10-03 17:00:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-containers/vector.hpp:
+compare:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
+#  commands to execute (from `Makefile', line 245):
+	@make re
+	@./$(NAME) > ft.txt
+	@sed -i '' 's/#define FT true/#define FT false/g' tests/tests.hpp
+	@echo ""
+	@make re
+	@echo ""
+	@echo ""
+	@./$(NAME) > std.txt
+	@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
+	@$(eval COM_STRING = "result")
+	@$(call run_and_test,diff ft.txt std.txt)
+	@rm ft.txt std.txt
+	
 
 # Not a target:
 objs/test_vector.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-03 16:13:46
+#  Last modified 2021-10-03 17:00:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/vector.hpp containers/utility.hpp
+objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp tests/color.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -390,9 +404,9 @@ objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp te
 objs/test_utility.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-10-03 17:00:28
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -401,19 +415,13 @@ fclean: header clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 242):
+#  commands to execute (from `Makefile', line 239):
 	@rm -rf $(NAME)
 	@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 	
 
 # Not a target:
 tests/main.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/type_traits.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -428,18 +436,12 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 226):
+#  commands to execute (from `Makefile', line 223):
 	@$(call display_progress_bar)
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
 	
 
-objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/vector.hpp containers/utility.hpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/algorithm.hpp:
+objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -455,12 +457,12 @@ clean: header
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 238):
+#  commands to execute (from `Makefile', line 235):
 	@rm -rf objs objs_tests
 	@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 	
 
-objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/vector.hpp containers/utility.hpp
+objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -471,8 +473,7 @@ tests/color.hpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-objs/test_utility.o:
+objs/test_utility.o: tests/test_utility.cpp tests/tests.hpp tests/color.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -483,7 +484,6 @@ tests/test_vector.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 tests/tests.hpp:
 #  Implicit rule search has not been done.
@@ -494,7 +494,7 @@ tests/tests.hpp:
 objs/main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-03 16:13:47
+#  Last modified 2021-10-03 17:00:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -506,14 +506,9 @@ tests/test_reverse_iterator.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-containers/utility.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 # files hash-table stats:
-# Load=32/1024=3%, Rehash=0, Collisions=7/101=7%
+ 
+# Load=29/1024=3%, Rehash=0, Collisions=7/82=9%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -525,6 +520,6 @@ containers/utility.hpp:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# Finished Make data base on Sun Oct  3 16:16:47 2021
+# Finished Make data base on Sun Oct  3 17:01:06 2021
 
  
