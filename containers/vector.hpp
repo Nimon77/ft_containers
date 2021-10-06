@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/03 12:49:03 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/06 19:31:52 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define VECTOR_HPP
 
 # include "utility.hpp"
+# include "iterator.hpp"
+# include "type_traits.hpp"
+# include "algorithm.hpp"
+# include <memory>
 
 namespace ft {
 	template < class T, class Alloc = std::allocator<T> >
@@ -47,9 +51,9 @@ namespace ft {
 			vector (InputIterator first, InputIterator last,
 					const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
-				: _alloc(alloc), _size(0), _capacity(0)
+				: _alloc(alloc), _size(0), _capacity(ft::distance(first, last))
 			{
-				_vector = _alloc.allocate(sizeof(value_type) * (last - first));
+				_vector = _alloc.allocate(sizeof(value_type) * (_capacity));
 				for (; first != last; first++)
 				{
 					_vector[_size++] = *first;
@@ -131,8 +135,8 @@ namespace ft {
 
 			reference operator[] (size_type n) { return _vector[n]; }
 			const_reference operator[] (size_type n) const { return _vector[n]; }
-			reference at (size_type n) { return _vector[n]; }
-			const_reference at (size_type n) const { return _vector[n]; }
+			reference at (size_type n) { if (n > _size) throw std::out_of_range("vector::at"); return _vector[n]; }
+			const_reference at (size_type n) const { if (n > _size) throw std::out_of_range("vector::at"); return _vector[n]; }
 			reference front() { return _vector[0]; }
 			const_reference front() const { return _vector[0]; }
 			reference back() { return _vector[_size - 1]; }
@@ -206,7 +210,7 @@ namespace ft {
 				difference_type pos = position - _vector;
 				if (_size + n > _capacity && _capacity != 0)
 				{
-					_capacity *= 2;
+					while (_size + n > _capacity) _capacity *= 2;
 					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
@@ -230,7 +234,7 @@ namespace ft {
 				size_type n = ft::distance(first, last);
 				if (_size + n > _capacity && _capacity != 0)
 				{
-					_capacity *= 2;
+					while (_size + n > _capacity) _capacity *= 2;
 					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
@@ -251,7 +255,7 @@ namespace ft {
 				for (size_type i = position - _vector; i < _size - 1; i++) _vector[i] = _vector[i + 1];
 				_alloc.destroy(&_vector[_size - 1]);
 				_size--;
-				return (position);
+				return (iterator(position));
 			}
 
 			iterator erase (iterator first, iterator last)
@@ -260,7 +264,7 @@ namespace ft {
 				for (size_type i = first - _vector; i < _size - n; i++) _vector[i] = _vector[i + n];
 				for (size_type i = _size - n; i < _size; i++) _alloc.destroy(&_vector[i]);
 				_size -= n;
-				return (first);
+				return (iterator(first));
 			}
 
 			void swap (vector& x)
@@ -290,6 +294,45 @@ namespace ft {
 			size_type		_size;
 			size_type		_capacity;
 	};
+
+	template <class T, class Alloc>
+	bool operator== (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		if (x.size() != y.size()) return false;
+		for (size_t i = 0; i < x.size(); i++) if (x[i] != y[i]) return false;
+		return true;
+	}
+	
+	template <class T, class Alloc>
+	bool operator!= (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		return !(x == y);
+	}
+	
+	template <class T, class Alloc>
+	bool operator< (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+	}
+	
+	template <class T, class Alloc>
+	bool operator<= (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		return !(y < x);
+	}
+	
+	template <class T, class Alloc>
+	bool operator> (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		return y < x;
+	}
+	
+	template <class T, class Alloc>
+	bool operator>= (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
+	{
+		return !(x < y);
+	}
+
 }
 
 #endif
