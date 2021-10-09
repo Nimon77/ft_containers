@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/06 19:31:52 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/09 17:06:23 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ namespace ft {
 			const_iterator begin() const { return const_iterator(_vector); }
 			iterator end() { return iterator(_vector + _size); }
 			const_iterator end() const { return const_iterator(_vector + _size); }
-			reverse_iterator rbegin() { return reverse_iterator(_vector + _size - 1); }
-			const_reverse_iterator rbegin() const { return const_reverse_iterator(_vector + _size - 1); }
+			reverse_iterator rbegin() { return reverse_iterator(_vector + _size); }
+			const_reverse_iterator rbegin() const { return const_reverse_iterator(_vector + _size); }
 			reverse_iterator rend() { return reverse_iterator(_vector); }
 			const_reverse_iterator rend() const { return const_reverse_iterator(_vector); }
 
