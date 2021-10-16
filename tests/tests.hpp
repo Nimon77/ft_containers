@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:21:03 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/03 17:02:46 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/13 15:47:44 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "iterator.hpp"
 # include "vector.hpp"
 # include "utility.hpp"
+# include "binary_tree.hpp"
 //# include "map.hpp"
 #else
 # include <vector>

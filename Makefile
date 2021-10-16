@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/10/03 17:00:21 by nsimon           ###   ########.fr        #
+#    Updated: 2021/10/16 22:58:18 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 
 NAME	= ft_containers
 CC 		= clang++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= nsimon
 DATE	= 01/10/2021
