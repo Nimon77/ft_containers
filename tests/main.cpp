@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/13 18:01:31 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/10/18 18:57:08 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void test_distance()
 
 int		main(void)
 {
-	ft::binaryTree<int, int> tree;
+	ft::BST<int, int> tree;
 	//std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
 	//test_is_integral();
 	//std::cout << std::endl;

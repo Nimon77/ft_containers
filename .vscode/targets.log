@@ -8,12 +8,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sat Oct 16 23:05:48 2021
+# Make data base, printed on Mon Oct 18 13:31:40 2021
 
 # Variables
 
-# automatic
  
+# automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
@@ -54,7 +54,7 @@ COM_STRING = "compiling"
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-e4e7b5ab-4239-44a9-a563-771bc789cd03.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-9f7084d8-e8f7-4512-abc6-1bc785a3b3a9.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -76,11 +76,11 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 59)
 OK_COLOR = \033[0;32m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7mHeHXEJaG/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BkbVsUBiOV/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.sifZfzFG60/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.Tt61kpQKrC/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # makefile (from `Makefile', line 109)
@@ -94,7 +94,7 @@ OBJ_COLOR = \033[0;36m
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # makefile (from `Makefile', line 90)
-HASH := 041bb98
+HASH := cfcb934
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
@@ -192,7 +192,7 @@ MAKEFILES :=
 # makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from `Makefile', line 89)
-DATE := 2021/10/09 18:06:36
+DATE := 2021/10/16 23:18:41
 # environment
 EDITOR = code
 # environment
@@ -214,7 +214,8 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 17550
+ 
+VSCODE_PID = 88458
 # makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
@@ -222,7 +223,6 @@ NO_COLOR = \033[m
 
 # Pattern-specific Variable Values
 
- 
 # No pattern-specific variable values.
 
 # Directories
@@ -286,7 +286,7 @@ all: header setup ft_containers
 objs/test_reverse_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-16 22:58:23
+#  Last modified 2021-10-16 23:21:29
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -365,7 +365,7 @@ containers/iterator.hpp:
 objs/test_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-16 22:58:22
+#  Last modified 2021-10-16 23:21:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -401,7 +401,7 @@ containers/vector.hpp:
 objs/test_vector.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-16 22:58:22
+#  Last modified 2021-10-16 23:21:29
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -422,7 +422,7 @@ objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp te
 objs/test_utility.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-16 22:58:23
+#  Last modified 2021-10-16 23:21:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -470,6 +470,7 @@ objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp co
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 containers/algorithm.hpp:
 #  Implicit rule search has not been done.
@@ -491,7 +492,6 @@ clean: header
 	@rm -rf objs objs_tests
 	@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 	
- 
 
 objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_tree.hpp
 #  Implicit rule search has not been done.
@@ -525,7 +525,7 @@ tests/tests.hpp:
 objs/main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-10-16 22:58:24
+#  Last modified 2021-10-16 23:21:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -556,6 +556,6 @@ containers/utility.hpp:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# Finished Make data base on Sat Oct 16 23:05:48 2021
+# Finished Make data base on Mon Oct 18 13:31:40 2021
 
  
