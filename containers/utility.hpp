@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:28:34 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/13 19:13:50 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/03 16:22:23 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ namespace ft
 		typedef Result result_type;
 	};
 
-	template <class T> struct less : binary_function <T,T,bool> {
-		bool operator() (const T& x, const T& y) const {return x < y;}
+	template <class T>
+	struct less : binary_function <T,T,bool> {
+		bool operator() (const T& x, const T& y) const { return x < y; }
 	};
 
 	template <class T1, class T2>
@@ -76,7 +77,7 @@ namespace ft
 	template <class T1, class T2>
 	bool operator> (const pair<T1, T2>& lhs, const pair<T1, T2>& rhs)
 	{
-		return (rhs < lhs);
+		return rhs < lhs;
 	}
 
 	template <class T1, class T2>

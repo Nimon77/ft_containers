@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/18 18:57:08 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/05 18:45:16 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,30 @@ void test_distance()
 	std::cout << std::endl;
 }
 
+bool fncomp (char lhs, char rhs) {return lhs<rhs;}
+
 int		main(void)
 {
-	ft::BST<int, int> tree;
+	//ft::BST<ft::pair<int, int> > tree;
+//	ft::map<int, int, ft::less<ft::pair<int, int> > > map;
+//	map.insert(ft::pair<int, int>(1, 1));
+//	map.insert(ft::pair<int, int>(8, 8));
+//	map.insert(ft::pair<int, int>(4, 4));
+//	map.insert(ft::pair<int, int>(9, 9));
+
+  bool(*fn_pt)(char,char) = fncomp;
+  ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
+
+	fifth.insert(ft::pair<char, int>('a', 10));
+	fifth.insert(ft::pair<char, int>('b', 30));
+	fifth.insert(ft::pair<char, int>('c', 50));
+	fifth.insert(ft::pair<char, int>('e', 70));
+	fifth.insert(ft::pair<char, int>('D', 60));
+		for (ft::map<char,int,bool(*)(char,char)>::iterator it = fifth.begin(); it != fifth.end(); it++)
+		std::cout << it->first << " => " << it->second << std::endl;
+	//first.print();
+	//fourth.print();
+	//fifth.print();
 	//std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
 	//test_is_integral();
 	//std::cout << std::endl;

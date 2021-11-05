@@ -6,40 +6,71 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/18 18:55:48 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/05 18:41:25 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BINARY_SEARCH_TREE_HPP
 # define BINARY_SEARCH_TREE_HPP
 
+# include "binary_search_tree_iterator.hpp"
 # include "utility.hpp"
 
 namespace ft {
-	template < class Key, class T, class Compare = ft::less<Key> >
+	template <typename T>
+	struct BST_Node
+	{
+		typedef T	value_type;
+
+		value_type	value;
+		BST_Node	*parent;
+		BST_Node	*left;
+		BST_Node	*right;
+
+		BST_Node(): value(), parent(nullptr), left(nullptr), right(nullptr) {}
+		BST_Node(value_type const &value): value(value), parent(nullptr), left(nullptr), right(nullptr) {}
+		BST_Node(BST_Node *parent = nullptr, BST_Node *left = nullptr, BST_Node *right = nullptr): value(), parent(parent), left(left), right(right) {}
+		BST_Node(value_type const &value, BST_Node *parent = nullptr, BST_Node *left = nullptr, BST_Node *right = nullptr): value(value), parent(parent), left(left), right(right) {}
+		BST_Node(BST_Node const &other): value(other.value), parent(other.parent), left(other.left), right(other.right) {}
+
+		virtual ~BST_Node() {}
+
+		BST_Node	&operator=(BST_Node const &other)
+		{
+			if (this != &other)
+			{
+				this->value = other.value;
+				this->parent = other.parent;
+				this->left = other.left;
+				this->right = other.right;
+			}
+			return (*this);
+		}
+
+		bool	operator==(BST_Node const &other) const
+		{
+			return (this->value == other.value);
+		}
+	};
+	template < class T, class Compare = ft::less<typename T::first_type>, class Node = ft::BST_Node<T>,
+				class Type_Alloc = std::allocator<T>, class Node_Alloc = std::allocator<Node> >
 	class BST
 	{
 		public:
-			typedef Key											key_type;
-			typedef T											mapped_type;
-			typedef ft::pair<const Key, T>						value_type;
-			typedef struct s_node {
-				Key key;
-				T value;
-				s_node *left;
-				s_node *right;
-			} t_node;
-			typedef Compare										key_compare;
-			typedef std::allocator<t_node>						allocator_type;
-			typedef typename allocator_type::reference			reference;
-			typedef typename allocator_type::const_reference	const_reference;
-			typedef typename allocator_type::pointer			pointer;
-			typedef typename allocator_type::const_pointer		const_pointer;
-			typedef ft::random_access_iterator<value_type>			iterator;
-			typedef ft::random_access_iterator<const value_type>	const_iterator;
-			typedef typename allocator_type::size_type			size_type;
-			typedef typename allocator_type::difference_type	difference_type;
+			typedef T				value_type;
+			typedef Node			node_type;
+			typedef Node *			node_pointer;
+			typedef Node const *	node_const_pointer;
+			typedef Node &			node_reference;
+			typedef Node const &	node_const_reference;
+			typedef Type_Alloc		type_allocator;
+			typedef Node_Alloc		node_allocator;
+			typedef Compare			key_compare;
+			typedef ft::BST_iterator<Node, key_compare> iterator;
+			typedef ft::BST_iterator<const Node, key_compare> const_iterator;
 
+/*			BST test		*/
+/*
 			BST(void)
 			{
 				this->_root = NULL;
@@ -58,36 +89,65 @@ namespace ft {
 				erase(value_type(value, value));
 				print();
 			}
+*/
 
-			~BST()
+			BST(const key_compare &cmp = key_compare())
+			{
+				this->_root = nullptr;
+				this->cmp = cmp;
+			}
+
+			BST(BST const &other)
+			{
+				this->_root = other._root;
+			}
+
+			virtual ~BST()
 			{
 				clear(this->_root);
 			}
 
-			t_node* find(const t_node* to_find) const
+			BST &operator=(BST const &other)
 			{
-				return (find(value_type(to_find->key, to_find->value), _root));
+				if (this != &other)
+					this->_root = other._root;
+				return (*this);
 			}
 
-			t_node* find(const t_node* to_find, t_node* node) const
+			node_reference operator*() const
 			{
-				return (find(value_type(to_find->key, to_find->value), node));
+				return ((this->_root));
+			}
+			node_pointer operator->() const
+			{
+				return (&(this->_root));
 			}
 
-			t_node* find(const value_type &to_find) const
+			node_pointer find(const node_pointer to_find) const
+			{
+				return (find(to_find->value, _root));
+			}
+
+			node_pointer find(const node_pointer to_find, node_pointer node) const
+			{
+				return (find(to_find->value, node));
+			}
+
+			node_pointer find(const value_type &to_find) const
 			{
 				return (find(to_find, _root));
 			}
-			t_node* find(const value_type &to_find, t_node* node) const
+
+			node_pointer find(const value_type &to_find, node_pointer node) const
 			{
-				t_node *ret = NULL;
+				node_pointer ret = nullptr;
 				if (node)
 				{
-					if (node->key == to_find.first)
+					if (node->value.first == to_find.first)
 						return (node);
 					if (node->left)
 						ret = find(to_find, node->left);
-					if (node->right && ret == NULL)
+					if (node->right && ret == nullptr)
 						ret = find(to_find, node->right);
 				}
 				return (ret);
@@ -95,27 +155,23 @@ namespace ft {
 
 			void insert(const value_type &value)
 			{
-				key_compare cmp = key_compare();
-				t_node *node = _root;
-				t_node *parent = NULL;
+				node_pointer node = _root;
+				node_pointer parent = nullptr;
 				while (node)
 				{
 					parent = node;
-					if (cmp(value.first, node->key))
+					if (cmp(value.first, node->value.first))
 						node = node->left;
-					else if (cmp(node->key, value.first))
+					else if (cmp(node->value.first, value.first))
 						node = node->right;
 					else
 						return ;
 				}
-				node = _alloc.allocate(sizeof(t_node));
-				node->key = value.first;
-				node->value = value.second;
-				node->left = NULL;
-				node->right = NULL;
+				node = _alloc.allocate(1);
+				_alloc.construct(node, node_type(value, parent));
 				if (parent)
 				{
-					if (cmp(value.first, parent->key))
+					if (cmp(value.first, parent->value.first))
 						parent->left = node;
 					else
 						parent->right = node;
@@ -125,9 +181,9 @@ namespace ft {
 				return;
 			}
 
-			void insert(t_node* toInsert)
+			void insert(node_pointer toInsert)
 			{
-				insert(value_type(toInsert->key, toInsert->value));
+				insert(toInsert->value);
 				if (toInsert->left)
 					insert(toInsert->left);
 				if (toInsert->right)
@@ -139,60 +195,61 @@ namespace ft {
 				_root = erase(to_find, _root);
 			}
 
-			t_node* erase(const value_type &to_find, t_node* node)
+			node_pointer erase(const value_type &to_find, node_pointer node)
 			{
-				if (node == NULL)
+				if (node == nullptr)
 					return node;
-				else if (to_find.first < node->key)
+				else if (to_find.first < node->value.first)
 					node->left = erase(to_find, node->left);
-				else if (to_find.first > node->key)
+				else if (to_find.first > node->value.first)
 					node->right = erase(to_find, node->right);
 				else
 				{
-					if (node->left == NULL)
+					if (node->left == nullptr)
 					{
-						t_node* tmp = node->right;
-						_alloc.deallocate(node, sizeof(t_node));
+						node_pointer tmp = node->right;
+						_alloc.destroy(node);
+						_alloc.deallocate(node, 1);
 						return tmp;
 					}
-					else if (node->right == NULL)
+					else if (node->right == nullptr)
 					{
-						t_node* tmp = node->left;
-						_alloc.deallocate(node, sizeof(t_node));
+						node_pointer tmp = node->left;
+						_alloc.destroy(node);
+						_alloc.deallocate(node, 1);
 						return tmp;
 					}
 					else
 					{
-						t_node* tmp = minValue(node->right);
-						node->key = tmp->key;
+						node_pointer tmp = minValue(node->right);
 						node->value = tmp->value;
-						node->right = erase(value_type(tmp->key, tmp->value), node->right);
+						node->right = erase(tmp->value, node->right);
 					}
 				}
 				return (node);
 			}
 
-			t_node* erase(t_node* node)
+			node_pointer erase(node_pointer node)
 			{
 				return (erase(value_type(node->key, node->value), _root));
 			}
 
-			t_node* minValue()
+			node_pointer minValue()
 			{
-				minValue(_root);
+				return (minValue(_root));
 			}
-			t_node* minValue(t_node* node)
+			node_pointer minValue(node_pointer node)
 			{
 				while (node->left)
 					node = node->left;
 				return (node);
 			}
 
-			t_node* maxValue()
+			node_pointer maxValue()
 			{
-				maxValue(_root);
+				return (maxValue(_root));
 			}
-			t_node* maxValue(t_node* node)
+			node_pointer maxValue(node_pointer node)
 			{
 				while (node->right)
 					node = node->right;
@@ -213,30 +270,34 @@ namespace ft {
 				if (this->_root)
 					print(this->_root);
 			}
-			void print(const t_node* node, const std::string& prefix = "", bool isLeft = false)
+			void print(const node_pointer node, const std::string& prefix = "", bool isLeft = false)
 			{
-				if (node != NULL)
+				if (node != nullptr)
 				{
 					std::cout << prefix;
 					std::cout << (isLeft ? "├──" : "└──");
-					std::cout << node->value;
-					std::cout << (isLeft ? " left" : " right");
+					std::cout << node->value.first << ":" << node->value.second;
+					//std::cout << (isLeft ? " left" : " right");
 					std::cout << std::endl;
 					print(node->left, prefix + (isLeft ? "│   " : "    "), true);
 					print(node->right, prefix + (isLeft ? "│   " : "    "), false);
 				}
 			}
-		private:
-			t_node *_root;
-			allocator_type _alloc;
 
-			void clear(t_node* node)
+			node_pointer	_root;
+
+		private:
+			node_allocator	_alloc;
+			key_compare	cmp;
+
+			void clear(node_pointer node)
 			{
 				if (node)
 				{
 					clear(node->left);
 					clear(node->right);
-					_alloc.deallocate(node, sizeof(t_node));
+					_alloc.destroy(node);
+					_alloc.deallocate(node, 1);
 				}
 			}
 	};

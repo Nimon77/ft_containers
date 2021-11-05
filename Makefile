@@ -6,7 +6,7 @@
 #    By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/10/16 22:58:18 by nsimon           ###   ########.fr        #
+#    Updated: 2021/11/05 17:10:25 by nsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -242,6 +242,7 @@ fclean:		header clean
 re:			fclean all
 
 compare:
+			@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
 			@make re
 			@./$(NAME) > ft.txt
 			@sed -i '' 's/#define FT true/#define FT false/g' tests/tests.hpp

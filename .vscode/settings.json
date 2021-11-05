@@ -81,5 +81,6 @@
 		"span": "cpp",
 		"*.ipp": "cpp"
 	},
-	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+	"discord.token": "MTk0NDIyMDQwMjI3MzQ4NDgw.385lwGOoaxmBUuZhmH1vvy6CVdg"
 }

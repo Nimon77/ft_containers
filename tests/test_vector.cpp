@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:13:53 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/03 16:23:34 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/05 17:54:58 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,6 +391,7 @@ void vector_modifiers()
 
 void test_vector()
 {
+	std::cout << "-------------------------------------------------------" << std::endl;
 	std::cout << C_WHITE_BACK << C_B_RED << "test_vector" << C_RESET << std::endl;
 	vector_create();
 	vector_copy();
@@ -400,4 +401,5 @@ void test_vector()
 	vector_element_access();
 	vector_modifiers();
 	std::cout << C_RESET << std::endl;
+	std::cout << "-------------------------------------------------------" << std::endl;
 }
