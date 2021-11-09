@@ -6,13 +6,14 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:20:27 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/05 17:42:00 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 16:09:50 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BINARY_SEARCH_TREE_ITERATOR_HPP
 # define BINARY_SEARCH_TREE_ITERATOR_HPP
 
+# include "iterator.hpp"
 # include "binary_search_tree.hpp"
 
 namespace ft {

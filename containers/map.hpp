@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 12:08:22 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 16:25:10 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define MAP_HPP
 
 # include "utility.hpp"
+# include "iterator.hpp"
+# include "type_traits.hpp"
+# include "algorithm.hpp"
+# include <memory>
+# include "binary_search_tree.hpp"
 
 namespace ft
 {
@@ -48,15 +53,22 @@ namespace ft
 			typedef typename allocator_type::difference_type					difference_type;
 
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()): _tree(comp), _alloc(alloc), _size(0) {}
-//			template <class InputIterator>
-//			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
-//			{
-//				
-//			}
-//			map (const map& x)
-//			{
-//				
-//			}
+			template <class InputIterator>
+			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
+			{
+				_tree = ft::BST<value_type, key_compare>(comp);
+				_alloc = alloc;
+				_size = ft::distance(first, last);
+				for (; first != last; ++first)
+					_tree.insert(*first);
+			}
+
+			map (const map& x)
+			{
+				_tree = x._tree;
+				_alloc = x._alloc;
+				_size = x._size;
+			}
 
 			virtual ~map ()
 			{}
@@ -80,6 +92,10 @@ namespace ft
 			iterator end()
 			{
 				return (iterator(nullptr, _tree.maxValue()));
+			}
+			const_iterator end()
+			{
+				return (const_iterator(nullptr, _tree.maxValue()));
 			}
 
 			reverse_iterator rbegin()
@@ -105,6 +121,14 @@ namespace ft
 			size_type max_size() const
 			{
 				return (_alloc.max_size());
+			}
+
+			mapped_type& operator[] (const key_type& k)
+			{
+				iterator it = find(k);
+				if (it != end())
+					return (it->second);
+				return (_tree.insert(value_type(k, mapped_type()))->second);
 			}
 
 			pair<iterator, bool> insert (const value_type& val)
@@ -133,6 +157,13 @@ namespace ft
 				{
 					erase(first++);
 				}
+			}
+
+			void swap (map& x)
+			{
+				ft::swap(_tree, x._tree);
+				ft::swap(_alloc, x._alloc);
+				ft::swap(_size, x._size);
 			}
 
 			void clear()
@@ -168,14 +199,50 @@ namespace ft
 
 			iterator lower_bound (const key_type& k)
 			{
-				return (iterator())
+				return (iterator(_tree.lower_bound(k)));
 			}
 
+			const_iterator lower_bound (const key_type& k) const
+			{
+				return (const_iterator(_tree.lower_bound(k)));
+			}
+
+			iterator upper_bound (const key_type& k)
+			{
+				return (iterator(_tree.upper_bound(k)));
+			}
+
+			const_iterator upper_bound (const key_type& k) const
+			{
+				return (const_iterator(_tree.upper_bound(k)));
+			}
+
+			pair<iterator, iterator> equal_range (const key_type& k)
+			{
+				if (!count(k))
+					return (pair<iterator, iterator>(end(), end()));
+				else
+					return (pair<iterator, iterator>(lower_bound(k), upper_bound(k)));
+			}
+
+			pair<const_iterator, const_iterator> equal_range (const key_type& k) const
+			{
+				if (!count(k))
+					return (pair<const_iterator, const_iterator>(end(), end()));
+				else
+					return (pair<const_iterator, const_iterator>(lower_bound(k), upper_bound(k)));
+			}
+
+			allocator_type get_allocator() const
+			{
+				return (_alloc);
+			}
+/*
 			void print()
 			{
 				_tree.print();
 			}
-
+*/
 		private:
 			ft::BST<value_type, key_compare>	_tree;
 			key_compare				_comp;

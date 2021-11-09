@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 11:03:50 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 15:58:00 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int		main(void)
 	fifth.insert(ft::pair<char, int>('D', 60));
 		for (ft::map<char,int,bool(*)(char,char)>::reverse_iterator it = fifth.rbegin(); it != fifth.rend(); it++)
 		std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << fifth.lower_bound('D')->first << std::endl;
+	std::cout << fifth.upper_bound('D')->first << std::endl;
 	//first.print();
 	//fourth.print();
 	//fifth.print();

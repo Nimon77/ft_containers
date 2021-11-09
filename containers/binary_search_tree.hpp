@@ -6,13 +6,14 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 11:08:13 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 16:20:52 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BINARY_SEARCH_TREE_HPP
 # define BINARY_SEARCH_TREE_HPP
 
+# include "iterator.hpp"
 # include "binary_search_tree_iterator.hpp"
 # include "utility.hpp"
 
@@ -57,17 +58,19 @@ namespace ft {
 	class BST
 	{
 		public:
-			typedef T				value_type;
-			typedef Node			node_type;
-			typedef Node *			node_pointer;
-			typedef Node const *	node_const_pointer;
-			typedef Node &			node_reference;
-			typedef Node const &	node_const_reference;
-			typedef Type_Alloc		type_allocator;
-			typedef Node_Alloc		node_allocator;
-			typedef Compare			key_compare;
-			typedef ft::BST_iterator<Node, key_compare> iterator;
-			typedef ft::BST_iterator<const Node, key_compare> const_iterator;
+			typedef T											value_type;
+			typedef typename T::first_type						key_type;
+			typedef typename T::second_type						mapped_type;
+			typedef Node										node_type;
+			typedef Node *										node_pointer;
+			typedef Node const *								node_const_pointer;
+			typedef Node &										node_reference;
+			typedef Node const &								node_const_reference;
+			typedef Type_Alloc									type_allocator;
+			typedef Node_Alloc									node_allocator;
+			typedef Compare										key_compare;
+			typedef ft::BST_iterator<Node, key_compare>			iterator;
+			typedef ft::BST_iterator<const Node, key_compare>	const_iterator;
 
 /*			BST test		*/
 /*
@@ -95,6 +98,7 @@ namespace ft {
 			{
 				this->_root = nullptr;
 				this->cmp = cmp;
+				this->_end = _alloc.allocate(1);
 			}
 
 			BST(BST const &other)
@@ -240,8 +244,9 @@ namespace ft {
 			}
 			node_pointer minValue(node_pointer node)
 			{
-				while (node->left)
-					node = node->left;
+				if (node)
+					while (node->left)
+						node = node->left;
 				return (node);
 			}
 
@@ -251,9 +256,20 @@ namespace ft {
 			}
 			node_pointer maxValue(node_pointer node)
 			{
-				while (node->right)
-					node = node->right;
+				if (node)
+					while (node->right)
+						node = node->right;
 				return (node);
+			}
+
+			iterator begin()
+			{
+				return (iterator(minValue(), nullptr));
+			}
+
+			iterator end()
+			{
+				return (iterator(nullptr, maxValue()));
 			}
 
 			void genRandom(int size = 10)
@@ -272,6 +288,72 @@ namespace ft {
 				_root = nullptr;
 			}
 
+			iterator lower_bound(const key_type &value)
+			{
+				iterator it = begin();
+				iterator ite = end();
+
+				while (it != ite)
+				{
+					if (cmp(it->first, value))
+						it++;
+					else
+						break;
+				}
+				if (it == ite)
+					return (iterator(_end, maxValue()));
+				return (it);
+			}
+			const_iterator lower_bound(const key_type &value) const
+			{
+				const_iterator it = begin();
+				const_iterator ite = end();
+
+				while (it != ite)
+				{
+					if (cmp(it->first, value))
+						it++;
+					else
+						break;
+				}
+				if (it == ite)
+					return (const_iterator(_end, maxValue()));
+				return (it);
+			}
+
+			iterator upper_bound(const key_type &value)
+			{
+				iterator it = begin();
+				iterator ite = end();
+
+				while (it != ite)
+				{
+					if (cmp(value, it->first))
+						it++;
+					else
+						break;
+				}
+				if (++it == ite)
+					return (iterator(_end, maxValue()));
+				return (it);
+			}
+			const_iterator upper_bound(const key_type &value) const
+			{
+				const_iterator it = begin();
+				const_iterator ite = end();
+
+				while (it != ite)
+				{
+					if (cmp(value, it->first))
+						it++;
+					else
+						break;
+				}
+				if (++it == ite)
+					return (const_iterator(_end, maxValue()));
+				return (it);
+			}
+/*
 			void print() {
 				if (this->_root)
 					print(this->_root);
@@ -289,8 +371,9 @@ namespace ft {
 					print(node->right, prefix + (isLeft ? "│   " : "    "), false);
 				}
 			}
-
+*/
 			node_pointer	_root;
+			node_pointer	_end;
 
 		private:
 			node_allocator	_alloc;

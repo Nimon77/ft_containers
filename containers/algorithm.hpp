@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 17:25:23 by nsimon            #+#    #+#             */
-/*   Updated: 2021/09/02 17:46:06 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 16:03:21 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,15 @@ namespace ft {
 		}
 		return (first2 != last2);
 	}
+
+	template<typename T>
+	void swap(T &a, T &b)
+	{
+		T tmp = a;
+		a = b;
+		b = tmp;
+	}
+
 }
 
 #endif
