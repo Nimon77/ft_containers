@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Fri Nov  5 17:10:44 2021
+# Make data base, printed on Tue Nov  9 10:44:54 2021
 
 # Variables
 
@@ -16,7 +16,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
- 
 # makefile (from `Makefile', line 60)
 ERROR_COLOR = \033[0;31m
 # makefile (from `Makefile', line 49)
@@ -32,6 +31,7 @@ ARCHFLAGS = -arch x86_64
 # automatic
 @F = $(notdir $@)
 # makefile
+ 
 CURDIR := /Users/nsimon/Documents/42-projects/ft_containers
 # makefile (from `Makefile', line 45)
 SHELL := /bin/bash
@@ -54,7 +54,7 @@ COM_STRING = "compiling"
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-96222596-abac-4c08-bf7a-610c73e8de98.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-d6c63fe1-9b23-446b-b771-0d887c94bf8f.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -76,11 +76,11 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 59)
 OK_COLOR = \033[0;32m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.1GGBEWtnvA/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.gXx3KjPGKV/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.botqXAc5Og/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.qcnx7YI7mp/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # makefile (from `Makefile', line 109)
@@ -94,7 +94,7 @@ OBJ_COLOR = \033[0;36m
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # makefile (from `Makefile', line 90)
-HASH := 8d2ecb7
+HASH := e7229b9
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
@@ -192,7 +192,7 @@ MAKEFILES :=
 # makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from `Makefile', line 89)
-DATE := 2021/10/18 18:58:50
+DATE := 2021/11/05 20:29:29
 # environment
 EDITOR = code
 # environment
@@ -214,11 +214,10 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3118
+VSCODE_PID = 17032
 # makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
- 
 # Load=102/1024=10%, Rehash=0, Collisions=14/188=7%
 
 # Pattern-specific Variable Values
@@ -238,6 +237,7 @@ objs/%.o: ./tests/%.cpp
 #  commands to execute (from `Makefile', line 230):
 	@mkdir -p $(dir $@)
 	@$(call display_progress_bar)
+ 
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
 	
 
@@ -286,7 +286,7 @@ all: header setup ft_containers
 objs/test_reverse_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-05 17:10:30
+#  Last modified 2021-11-08 14:32:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -377,7 +377,7 @@ containers/iterator.hpp:
 objs/test_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-05 17:10:29
+#  Last modified 2021-11-08 14:32:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -414,7 +414,7 @@ containers/vector.hpp:
 objs/test_vector.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-05 17:10:29
+#  Last modified 2021-11-08 14:32:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -429,7 +429,7 @@ objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp te
 objs/test_utility.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-05 17:10:30
+#  Last modified 2021-11-08 14:32:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -463,6 +463,7 @@ containers/type_traits.hpp:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterator.o objs/test_utility.o objs/main.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -484,7 +485,6 @@ containers/algorithm.hpp:
 #  File has not been updated.
 
 re: fclean all
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -532,7 +532,7 @@ tests/tests.hpp:
 objs/main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-05 17:10:31
+#  Last modified 2021-11-08 14:32:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -569,6 +569,6 @@ containers/binary_search_tree.hpp:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# Finished Make data base on Fri Nov  5 17:10:44 2021
+# Finished Make data base on Tue Nov  9 10:44:54 2021
 
  

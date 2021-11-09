@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:21:03 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/05 20:28:00 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 11:08:19 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <list>
 
-#define FT false
+#define FT true
 #include "color.hpp"
 
 #if FT

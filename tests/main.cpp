@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/05 18:45:16 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 11:03:50 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,15 @@ int		main(void)
 //	map.insert(ft::pair<int, int>(4, 4));
 //	map.insert(ft::pair<int, int>(9, 9));
 
-  bool(*fn_pt)(char,char) = fncomp;
-  ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
+	bool(*fn_pt)(char,char) = fncomp;
+	ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
 
 	fifth.insert(ft::pair<char, int>('a', 10));
 	fifth.insert(ft::pair<char, int>('b', 30));
 	fifth.insert(ft::pair<char, int>('c', 50));
 	fifth.insert(ft::pair<char, int>('e', 70));
 	fifth.insert(ft::pair<char, int>('D', 60));
-		for (ft::map<char,int,bool(*)(char,char)>::iterator it = fifth.begin(); it != fifth.end(); it++)
+		for (ft::map<char,int,bool(*)(char,char)>::reverse_iterator it = fifth.rbegin(); it != fifth.rend(); it++)
 		std::cout << it->first << " => " << it->second << std::endl;
 	//first.print();
 	//fourth.print();

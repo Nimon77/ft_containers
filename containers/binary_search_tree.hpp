@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/05 18:41:25 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/09 11:08:13 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,6 +264,12 @@ namespace ft {
 					int val = rand() % 1000;
 					insert(value_type(val, val));
 				}
+			}
+
+			void empty()
+			{
+				clear(_root);
+				_root = nullptr;
 			}
 
 			void print() {
