@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 16:25:10 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/11 17:40:20 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,24 +88,39 @@ namespace ft
 			{
 				return (iterator(_tree.minValue(), nullptr));
 			}
+			const_iterator begin() const
+			{
+				return (const_iterator(_tree.minValue(), nullptr));
+			}
+
 
 			iterator end()
 			{
 				return (iterator(nullptr, _tree.maxValue()));
 			}
-			const_iterator end()
+			const_iterator end() const
 			{
 				return (const_iterator(nullptr, _tree.maxValue()));
 			}
+
 
 			reverse_iterator rbegin()
 			{
 				return (reverse_iterator(end()));
 			}
+			const_reverse_iterator rbegin() const
+			{
+				return (const_reverse_iterator(end()));
+			}
+
 
 			reverse_iterator rend()
 			{
 				return (reverse_iterator(begin()));
+			}
+			const_reverse_iterator rend() const
+			{
+				return (const_reverse_iterator(begin()));
 			}
 
 			bool empty() const

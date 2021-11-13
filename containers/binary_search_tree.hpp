@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 16:20:52 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 12:31:06 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ namespace ft {
 			typedef Node_Alloc									node_allocator;
 			typedef Compare										key_compare;
 			typedef ft::BST_iterator<Node, key_compare>			iterator;
-			typedef ft::BST_iterator<const Node, key_compare>	const_iterator;
+			typedef ft::BST_const_iterator<Node, key_compare>	const_iterator;
 
 /*			BST test		*/
 /*
@@ -157,6 +157,26 @@ namespace ft {
 				return (ret);
 			}
 
+			node_pointer find(const key_type &to_find, node_pointer node) const
+			{
+				node_pointer ret = nullptr;
+				if (node)
+				{
+					if (node->value.first == to_find)
+						return (node);
+					if (node->left)
+						ret = find(to_find, node->left);
+					if (node->right && ret == nullptr)
+						ret = find(to_find, node->right);
+				}
+				return (ret);
+			}
+
+			node_pointer find(const key_type &to_find) const
+			{
+				return (find(to_find, _root));
+			}
+
 			void insert(const value_type &value)
 			{
 				node_pointer node = _root;
@@ -238,11 +258,11 @@ namespace ft {
 				return (erase(value_type(node->key, node->value), _root));
 			}
 
-			node_pointer minValue()
+			node_pointer minValue() const
 			{
 				return (minValue(_root));
 			}
-			node_pointer minValue(node_pointer node)
+			node_pointer minValue(node_pointer node) const
 			{
 				if (node)
 					while (node->left)
@@ -250,11 +270,11 @@ namespace ft {
 				return (node);
 			}
 
-			node_pointer maxValue()
+			node_pointer maxValue() const
 			{
 				return (maxValue(_root));
 			}
-			node_pointer maxValue(node_pointer node)
+			node_pointer maxValue(node_pointer node) const
 			{
 				if (node)
 					while (node->right)
@@ -266,10 +286,18 @@ namespace ft {
 			{
 				return (iterator(minValue(), nullptr));
 			}
+			const_iterator begin() const
+			{
+				return (const_iterator(minValue(), nullptr));
+			}
 
 			iterator end()
 			{
 				return (iterator(nullptr, maxValue()));
+			}
+			const_iterator end() const
+			{
+				return (const_iterator(nullptr, maxValue()));
 			}
 
 			void genRandom(int size = 10)
