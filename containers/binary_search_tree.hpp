@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 15:03:23 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:34:45 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ namespace ft {
 
 			virtual ~BST()
 			{
-				clear(this->_root);
+				clear();
 			}
 
 			BST &operator=(BST const &other)
@@ -300,12 +300,6 @@ namespace ft {
 				return (const_iterator(NULL, maxValue()));
 			}
 
-			void empty()
-			{
-				clear(_root);
-				_root = NULL;
-			}
-
 			iterator lower_bound(const key_type &value)
 			{
 				iterator it = begin();
@@ -371,6 +365,23 @@ namespace ft {
 					return (const_iterator(_end, maxValue()));
 				return (it);
 			}
+
+			node_pointer clear(node_pointer node)
+			{
+				if (node)
+				{
+					node->left = clear(node->left);
+					node->right = clear(node->right);
+					_alloc.destroy(node);
+					_alloc.deallocate(node, 1);
+				}
+				return (NULL);
+			}
+
+			void clear()
+			{
+				this->_root = clear(this->_root);
+			}
 /*
 			void print() {
 				if (this->_root)
@@ -396,17 +407,6 @@ namespace ft {
 		private:
 			node_allocator	_alloc;
 			key_compare	cmp;
-
-			void clear(node_pointer node)
-			{
-				if (node)
-				{
-					clear(node->left);
-					clear(node->right);
-					_alloc.destroy(node);
-					_alloc.deallocate(node, 1);
-				}
-			}
 	};
 }
 

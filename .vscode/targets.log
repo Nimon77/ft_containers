@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Nov 13 14:49:10 2021
+# Make data base, printed on Sat Nov 13 20:05:30 2021
 
 # Variables
 
@@ -53,7 +53,7 @@ WARN_COLOR = \033[0;33m
 # makefile (from 'Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 # environment
-JOURNAL_STREAM = 9:1385330
+JOURNAL_STREAM = 9:2076488
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'objs/main.d', line 1)
@@ -83,21 +83,21 @@ OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
 INFOPATH = /sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/share/info:/mnt/nfs/homes/nsimon/.linuxbrew/share/info:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/share/info:/mnt/nfs/homes/nsimon/.linuxbrew/share/info:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/share/info:
 # environment
-MANAGERPID = 254214
+MANAGERPID = 364825
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/36806/vscode-ipc-f415cb66-32e6-488f-8521-67b8674163b9.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/36806/vscode-ipc-938ebbb0-d967-45ab-bf6f-3270f67d67a2.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/nsimon
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session3
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session4
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_36806_DJhKCi
+KRB5CCNAME = FILE:/tmp/krb5cc_36806_39EYIq
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/bin:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/sbin:/mnt/nfs/homes/nsimon/.asdf/shims:/mnt/nfs/homes/nsimon/.asdf/bin:/mnt/nfs/homes/nsimon/.linuxbrew/bin:/mnt/nfs/homes/nsimon/.linuxbrew/sbin:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/bin:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/sbin:/mnt/nfs/homes/nsimon/.linuxbrew/bin:/mnt/nfs/homes/nsimon/.linuxbrew/sbin:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/bin:/sgoinfre/goinfre/Perso/nsimon/private/.linuxbrew/sbin:/mnt/nfs/homes/nsimon/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/mnt/nfs/homes/nsimon/.local/bin
 # makefile (from 'Makefile', line 90)
-HASH := a4bc19a
+HASH := 7f27080
 # environment
 GPG_AGENT_INFO = /run/user/36806/gnupg/S.gpg-agent:0:1
 # environment
@@ -105,7 +105,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from 'Makefile', line 93)
 run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
 # environment
-SESSION_MANAGER = local/e2r2p6.clusters.42paris.fr:@/tmp/.ICE-unix/255948,unix/e2r2p6.clusters.42paris.fr:/tmp/.ICE-unix/255948
+SESSION_MANAGER = local/e2r2p6.clusters.42paris.fr:@/tmp/.ICE-unix/365115,unix/e2r2p6.clusters.42paris.fr:/tmp/.ICE-unix/365115
 # environment
 XDG_RUNTIME_DIR = /run/user/36806
 # makefile (from 'Makefile', line 78)
@@ -121,7 +121,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=7367f96f-21e7-48da-97a9-d063b9b251ae&iid=7367f96f-21e7-48da-97a9-d063b9b251ae&sid=7367f96f-21e7-48da-97a9-d063b9b251ae","uploadToServer":true}
 # environment
-INVOCATION_ID = f16dfc65b2b64136bcd40fad645ec666
+INVOCATION_ID = 90cdcada335742f490aae7fd9e8c0438
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 59)
@@ -135,7 +135,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/36806/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 258491
+GIO_LAUNCHED_DESKTOP_FILE_PID = 365788
 # automatic
 %F = $(notdir $%)
 # environment
@@ -149,7 +149,7 @@ PWD = /mnt/nfs/homes/nsimon/Documents/ft_containers
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 255909
+SSH_AGENT_PID = 365079
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -271,12 +271,12 @@ MAKEFILES :=
 # automatic
 <F = $(notdir $<)
 # makefile (from 'Makefile', line 33)
- 
 SRCS_PATH = ./tests
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # makefile (from 'Makefile', line 89)
-DATE := 2021/11/13 13:13:03
+ 
+DATE := 2021/11/13 16:11:40
 # environment
 EDITOR = vim
 # environment
@@ -308,7 +308,7 @@ LANG = C
 # environment
 DOCKER_HOST = unix:///run/user/36806/docker.sock
 # environment
-VSCODE_PID = 258491
+VSCODE_PID = 365788
 # makefile (from 'Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
@@ -320,10 +320,10 @@ NO_COLOR = \033[m
 
 # Directories
 
-# . (device 58, inode 166405489): 11 files, no impossibilities.
+# . (device 58, inode 166405489): 12 files, no impossibilities.
 # tests (device 58, inode 168985903): No files, no impossibilities so far.
 
-# 11 files, no impossibilities in 2 directories.
+# 12 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -553,13 +553,13 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
 containers/algorithm.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 re: fclean all
@@ -632,12 +632,12 @@ containers/binary_search_tree.hpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 50 / storage = 772 B / avg = 15 B
-# current buf: size = 8162 B / used = 772 B / count = 50 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 51 / storage = 788 B / avg = 15 B
+# current buf: size = 8162 B / used = 788 B / count = 51 / avg = 15 B
 
-# strcache performance: lookups = 136 / hit rate = 63%
+# strcache performance: lookups = 137 / hit rate = 62%
 # hash-table stats:
-# Load=50/8192=1%, Rehash=0, Collisions=3/136=2%
-# Finished Make data base on Sat Nov 13 14:49:10 2021
+# Load=51/8192=1%, Rehash=0, Collisions=3/137=2%
+# Finished Make data base on Sat Nov 13 20:05:30 2021
 
  
