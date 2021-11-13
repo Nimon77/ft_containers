@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 12:31:06 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:03:23 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ namespace ft {
 		BST_Node	*left;
 		BST_Node	*right;
 
-		BST_Node(): value(), parent(nullptr), left(nullptr), right(nullptr) {}
-		BST_Node(value_type const &value): value(value), parent(nullptr), left(nullptr), right(nullptr) {}
-		BST_Node(BST_Node *parent = nullptr, BST_Node *left = nullptr, BST_Node *right = nullptr): value(), parent(parent), left(left), right(right) {}
-		BST_Node(value_type const &value, BST_Node *parent = nullptr, BST_Node *left = nullptr, BST_Node *right = nullptr): value(value), parent(parent), left(left), right(right) {}
+		BST_Node(): value(), parent(NULL), left(NULL), right(NULL) {}
+		BST_Node(value_type const &value): value(value), parent(NULL), left(NULL), right(NULL) {}
+		BST_Node(BST_Node *parent = NULL, BST_Node *left = NULL, BST_Node *right = NULL): value(), parent(parent), left(left), right(right) {}
+		BST_Node(value_type const &value, BST_Node *parent = NULL, BST_Node *left = NULL, BST_Node *right = NULL): value(value), parent(parent), left(left), right(right) {}
 		BST_Node(BST_Node const &other): value(other.value), parent(other.parent), left(other.left), right(other.right) {}
 
 		virtual ~BST_Node() {}
@@ -96,7 +96,7 @@ namespace ft {
 
 			BST(const key_compare &cmp = key_compare())
 			{
-				this->_root = nullptr;
+				this->_root = NULL;
 				this->cmp = cmp;
 				this->_end = _alloc.allocate(1);
 			}
@@ -144,14 +144,14 @@ namespace ft {
 
 			node_pointer find(const value_type &to_find, node_pointer node) const
 			{
-				node_pointer ret = nullptr;
+				node_pointer ret = NULL;
 				if (node)
 				{
 					if (node->value.first == to_find.first)
 						return (node);
 					if (node->left)
 						ret = find(to_find, node->left);
-					if (node->right && ret == nullptr)
+					if (node->right && ret == NULL)
 						ret = find(to_find, node->right);
 				}
 				return (ret);
@@ -159,14 +159,14 @@ namespace ft {
 
 			node_pointer find(const key_type &to_find, node_pointer node) const
 			{
-				node_pointer ret = nullptr;
+				node_pointer ret = NULL;
 				if (node)
 				{
 					if (node->value.first == to_find)
 						return (node);
 					if (node->left)
 						ret = find(to_find, node->left);
-					if (node->right && ret == nullptr)
+					if (node->right && ret == NULL)
 						ret = find(to_find, node->right);
 				}
 				return (ret);
@@ -177,10 +177,10 @@ namespace ft {
 				return (find(to_find, _root));
 			}
 
-			void insert(const value_type &value)
+			pair<iterator,bool> insert(const value_type &value)
 			{
 				node_pointer node = _root;
-				node_pointer parent = nullptr;
+				node_pointer parent = NULL;
 				while (node)
 				{
 					parent = node;
@@ -189,7 +189,7 @@ namespace ft {
 					else if (cmp(node->value.first, value.first))
 						node = node->right;
 					else
-						return ;
+						return pair<iterator,bool>(iterator(node, NULL), false);
 				}
 				node = _alloc.allocate(1);
 				_alloc.construct(node, node_type(value, parent));
@@ -202,7 +202,7 @@ namespace ft {
 				}
 				else
 					_root = node;
-				return;
+				return pair<iterator,bool>(iterator(node, NULL), false);
 			}
 
 			void insert(node_pointer toInsert)
@@ -221,7 +221,7 @@ namespace ft {
 
 			node_pointer erase(const value_type &to_find, node_pointer node)
 			{
-				if (node == nullptr)
+				if (node == NULL)
 					return node;
 				else if (to_find.first < node->value.first)
 					node->left = erase(to_find, node->left);
@@ -229,14 +229,14 @@ namespace ft {
 					node->right = erase(to_find, node->right);
 				else
 				{
-					if (node->left == nullptr)
+					if (node->left == NULL)
 					{
 						node_pointer tmp = node->right;
 						_alloc.destroy(node);
 						_alloc.deallocate(node, 1);
 						return tmp;
 					}
-					else if (node->right == nullptr)
+					else if (node->right == NULL)
 					{
 						node_pointer tmp = node->left;
 						_alloc.destroy(node);
@@ -284,36 +284,26 @@ namespace ft {
 
 			iterator begin()
 			{
-				return (iterator(minValue(), nullptr));
+				return (iterator(minValue(), NULL));
 			}
 			const_iterator begin() const
 			{
-				return (const_iterator(minValue(), nullptr));
+				return (const_iterator(minValue(), NULL));
 			}
 
 			iterator end()
 			{
-				return (iterator(nullptr, maxValue()));
+				return (iterator(NULL, maxValue()));
 			}
 			const_iterator end() const
 			{
-				return (const_iterator(nullptr, maxValue()));
-			}
-
-			void genRandom(int size = 10)
-			{
-				srand(time(NULL));
-				for (int i = 0; i < size; i++)
-				{
-					int val = rand() % 1000;
-					insert(value_type(val, val));
-				}
+				return (const_iterator(NULL, maxValue()));
 			}
 
 			void empty()
 			{
 				clear(_root);
-				_root = nullptr;
+				_root = NULL;
 			}
 
 			iterator lower_bound(const key_type &value)
@@ -388,7 +378,7 @@ namespace ft {
 			}
 			void print(const node_pointer node, const std::string& prefix = "", bool isLeft = false)
 			{
-				if (node != nullptr)
+				if (node != NULL)
 				{
 					std::cout << prefix;
 					std::cout << (isLeft ? "├──" : "└──");

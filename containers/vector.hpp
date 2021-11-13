@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/10/09 17:06:23 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 14:52:59 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "type_traits.hpp"
 # include "algorithm.hpp"
 # include <memory>
+# include <stdexcept>
 
 namespace ft {
 	template < class T, class Alloc = std::allocator<T> >
@@ -37,7 +38,7 @@ namespace ft {
 			typedef typename allocator_type::size_type						size_type;
 
 			explicit vector (const allocator_type& alloc = allocator_type())
-				: _alloc(alloc), _vector(nullptr), _size(0), _capacity(0) {}
+				: _alloc(alloc), _vector(NULL), _size(0), _capacity(0) {}
 
 			explicit vector (size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type())

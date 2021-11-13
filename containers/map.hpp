@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/11 17:40:20 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:09:30 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,21 @@ namespace ft
 
 			iterator begin()
 			{
-				return (iterator(_tree.minValue(), nullptr));
+				return (iterator(_tree.minValue(), NULL));
 			}
 			const_iterator begin() const
 			{
-				return (const_iterator(_tree.minValue(), nullptr));
+				return (const_iterator(_tree.minValue(), NULL));
 			}
 
 
 			iterator end()
 			{
-				return (iterator(nullptr, _tree.maxValue()));
+				return (iterator(NULL, _tree.maxValue()));
 			}
 			const_iterator end() const
 			{
-				return (const_iterator(nullptr, _tree.maxValue()));
+				return (const_iterator(NULL, _tree.maxValue()));
 			}
 
 
@@ -143,14 +143,15 @@ namespace ft
 				iterator it = find(k);
 				if (it != end())
 					return (it->second);
-				return (_tree.insert(value_type(k, mapped_type()))->second);
+				return (_tree.insert(value_type(k, mapped_type())).first->second);
 			}
 
 			pair<iterator, bool> insert (const value_type& val)
 			{
-				_tree.insert(val);
-				_size++;
-				return pair<iterator, bool>();
+				pair<iterator, bool> res = _tree.insert(val);
+				if (res.second)
+					_size++;
+				return (&res);
 			}
 
 			void erase (iterator position)
@@ -199,17 +200,17 @@ namespace ft
 
 			iterator find (const key_type& k)
 			{
-				return (iterator(_tree.find(k), nullptr));
+				return (iterator(_tree.find(k), NULL));
 			}
 
 			const_iterator find (const key_type& k) const
 			{
-				return (const_iterator(_tree.find(k), nullptr));
+				return (const_iterator(_tree.find(k), NULL));
 			}
 
 			size_type count (const key_type& k) const
 			{
-				return (_tree.find(k) != nullptr);
+				return (_tree.find(k) != NULL);
 			}
 
 			iterator lower_bound (const key_type& k)

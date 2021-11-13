@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:20:27 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 12:37:54 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:30:49 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace ft {
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 
-			BST_iterator() : _node(nullptr), _parent(nullptr) {}
+			BST_iterator() : _node(NULL), _parent(NULL) {}
 			BST_iterator(node_ptr node, node_ptr parent) : _node(node), _parent(parent) {}
 			BST_iterator(const BST_iterator &it) : _node(it._node), _parent(it._parent) {}
 
@@ -69,7 +69,7 @@ namespace ft {
 
 			BST_iterator &operator--()
 			{
-				if (_node != nullptr)
+				if (_node != NULL)
 				{
 					if (_node->left)
 						_node = _node->left;
@@ -95,11 +95,8 @@ namespace ft {
 			bool operator==(const BST_iterator &it) const { return (_node == it._node); }
 			bool operator!=(const BST_iterator &it) const { return (_node != it._node); }
 			
-		
-		private:
 			node_ptr	_node;
 			node_ptr	_parent;
-			//friend class BST<T, Compare>;
 	};
 		template <typename T, class Compare>
 	class BST_const_iterator : ft::iterator<ft::bidirectional_iterator_tag, T>
@@ -112,7 +109,7 @@ namespace ft {
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 
-			BST_const_iterator() : _node(nullptr), _parent(nullptr) {}
+			BST_const_iterator() : _node(NULL), _parent(NULL) {}
 			BST_const_iterator(node_ptr node, node_ptr parent) : _node(node), _parent(parent) {}
 			BST_const_iterator(const BST_const_iterator &it) : _node(it._node), _parent(it._parent) {}
 			BST_const_iterator(const BST_iterator<T, Compare> &it) : _node(it._node), _parent(it._parent) {}
@@ -157,7 +154,7 @@ namespace ft {
 
 			BST_const_iterator &operator--()
 			{
-				if (_node != nullptr)
+				if (_node != NULL)
 				{
 					if (_node->left)
 						_node = _node->left;
@@ -184,10 +181,8 @@ namespace ft {
 			bool operator!=(const BST_const_iterator &it) const { return (_node != it._node); }
 			
 		
-		private:
 			node_ptr	_node;
 			node_ptr	_parent;
-			//friend class BST<T, Compare>;
 	};
 }
 
