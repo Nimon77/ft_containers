@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:20:27 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 15:30:49 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/16 19:09:54 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,20 @@ namespace ft {
 
 			BST_iterator &operator++()
 			{
-				if (_node->right)
+				if (_node)
 				{
-					_node = _node->right;
-					while (_node->left)
-						_node = _node->left;
-				}
-				else
-				{
-					while (_node->parent && _node->parent->right == _node)
+					if (_node->right)
+					{
+						_node = _node->right;
+						while (_node->left)
+							_node = _node->left;
+					}
+					else
+					{
+						while (_node->parent && _node->parent->right == _node)
+							_node = _node->parent;
 						_node = _node->parent;
-					_node = _node->parent;
+					}
 				}
 				return (*this);
 			}
@@ -127,7 +130,7 @@ namespace ft {
 
 			BST_const_iterator &operator++()
 			{
-				if (_node)
+				if (_node != NULL)
 				{
 					if (_node->right)
 					{

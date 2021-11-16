@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 15:39:07 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/16 19:34:53 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ namespace ft {
 			virtual ~BST()
 			{
 				clear();
-				_alloc.destroy(this->_end);
 				_alloc.deallocate(this->_end, 1);
 			}
 
@@ -226,9 +225,15 @@ namespace ft {
 				if (node == NULL)
 					return node;
 				else if (to_find.first < node->value.first)
-					node->left = erase(to_find, node->left);
+				{
+					if ((node->left = erase(to_find, node->left)))
+						node->left->parent = node;
+				}
 				else if (to_find.first > node->value.first)
-					node->right = erase(to_find, node->right);
+				{
+					if ((node->right = erase(to_find, node->right)))
+						node->right->parent = node;
+				}
 				else
 				{
 					if (node->left == NULL)
@@ -247,13 +252,10 @@ namespace ft {
 					}
 					else
 					{
-						node_pointer tmp = node;
-						_alloc.destroy(node);
-						_alloc.construct(node, node_type(minValue(tmp->right)->value, tmp->parent, tmp->left, tmp->right));
-						node->right = erase(node->value, node->right);
-						// node_pointer tmp = minValue(node->right);
-						// node->value = tmp->value;
-						// node->right = erase(tmp->value, node->right);
+						node_pointer tmp = minValue(node->right);
+						node->value = tmp->value;
+						if ((node->right = erase(tmp->value, node->right)))
+							node->right->parent = node;
 					}
 				}
 				return (node);

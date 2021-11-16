@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 14:57:39 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/16 19:10:45 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,6 @@ int		main(void)
 	std::cout << std::endl << "Content is:" << std::endl;
 	for (; it != ite; ++it)
 		std::cout << "- key: " << it->first << " | value: " << it->second << std::endl;
-	//first.print();
-	//fourth.print();
-	//fifth.print();
 	//std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
 	//test_is_integral();
 	//std::cout << std::endl;
