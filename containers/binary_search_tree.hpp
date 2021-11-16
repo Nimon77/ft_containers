@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 17:34:45 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/16 15:39:07 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ namespace ft {
 			virtual ~BST()
 			{
 				clear();
+				_alloc.destroy(this->_end);
+				_alloc.deallocate(this->_end, 1);
 			}
 
 			BST &operator=(BST const &other)
@@ -245,9 +247,13 @@ namespace ft {
 					}
 					else
 					{
-						node_pointer tmp = minValue(node->right);
-						node->value = tmp->value;
-						node->right = erase(tmp->value, node->right);
+						node_pointer tmp = node;
+						_alloc.destroy(node);
+						_alloc.construct(node, node_type(minValue(tmp->right)->value, tmp->parent, tmp->left, tmp->right));
+						node->right = erase(node->value, node->right);
+						// node_pointer tmp = minValue(node->right);
+						// node->value = tmp->value;
+						// node->right = erase(tmp->value, node->right);
 					}
 				}
 				return (node);
@@ -255,7 +261,7 @@ namespace ft {
 
 			node_pointer erase(node_pointer node)
 			{
-				return (erase(value_type(node->key, node->value), _root));
+				return (erase(node->value, _root));
 			}
 
 			node_pointer minValue() const

@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 15:58:00 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:57:39 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,16 @@ int		main(void)
 		std::cout << it->first << " => " << it->second << std::endl;
 	std::cout << fifth.lower_bound('D')->first << std::endl;
 	std::cout << fifth.upper_bound('D')->first << std::endl;
+	ft::map<char,int,bool(*)(char,char)>::const_iterator it = fifth.begin(), ite = fifth.end();
+	std::cout << std::endl << "Content is:" << std::endl;
+	for (; it != ite; ++it)
+		std::cout << "- key: " << it->first << " | value: " << it->second << std::endl;
+	fifth.erase('a');
+	it = fifth.begin();
+	ite = fifth.end();
+	std::cout << std::endl << "Content is:" << std::endl;
+	for (; it != ite; ++it)
+		std::cout << "- key: " << it->first << " | value: " << it->second << std::endl;
 	//first.print();
 	//fourth.print();
 	//fifth.print();
