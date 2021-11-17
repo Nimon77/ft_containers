@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 15:46:06 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 16:28:20 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,11 @@ namespace ft {
 				_root = erase(to_find, _root);
 			}
 
+			void erase(node_pointer node)
+			{
+				_root = erase(node->value, _root);
+			}
+
 			node_pointer erase(const value_type &to_find, node_pointer node)
 			{
 				if (node == NULL)
@@ -281,11 +286,6 @@ namespace ft {
 					}
 				}
 				return (node);
-			}
-
-			node_pointer erase(node_pointer node)
-			{
-				return (erase(node->value, _root));
 			}
 
 			node_pointer minValue() const
