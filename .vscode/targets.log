@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Tue Nov 16 14:53:17 2021
+# Make data base, printed on Tue Nov 16 21:21:13 2021
 
 # Variables
 
@@ -15,24 +16,22 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # makefile (from `Makefile', line 60)
 ERROR_COLOR = \033[0;31m
 # makefile (from `Makefile', line 49)
 OBJ_MAIN = $(addprefix objs/, ${MAIN:$(FILE_EXTENSION)=.o})
 # environment
-LC_CTYPE = UTF-8
-# environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+ARCHFLAGS = -arch x86_64
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/nsimon/Documents/ft_containers
+CURDIR := /Users/nsimon/Documents/42-projects/ft_containers
 # makefile (from `Makefile', line 45)
 SHELL := /bin/bash
 # environment
@@ -43,9 +42,8 @@ _ = /usr/bin/make
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 # makefile (from `objs/main.d', line 1)
 MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/test_utility.d objs/main.d
-# makefile (from `Makefile', line 37)
-SRCS = test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp test_utility.cpp
 # makefile (from `Makefile', line 21)
+ 
 DFLAGS = -MMD -MF $(@:.o=.d)
 # environment
 VSCODE_VERBOSE_LOGGING = true
@@ -53,22 +51,22 @@ VSCODE_VERBOSE_LOGGING = true
 NOVISU = 0 
 # makefile (from `Makefile', line 64)
 COM_STRING = "compiling"
-# makefile (from `Makefile', line 48)
-OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0004grr0013y6/T/vscode-ipc-011408b5-dee3-4bce-9122-f1f8cb0c9910.sock
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_CWD = /Users/nsimon/Documents/ft_containers
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-f7d48457-8f41-420a-aac2-b4a00671eb66.sock
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.6CrUtBschN/Render
+VSCODE_CWD = /
 # environment
-PATH = /Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/nsimon/.brew/bin:/Users/nsimon/.brew/bin:/Users/nsimon/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki
+PATH = /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/nsimon/.fig/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 93)
 run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
 # makefile (from `Makefile', line 75)
 RUN_CMD = script -q $@.log $1 > /dev/null; RESULT=$$?
+# environment
+SPACESHIP_VERSION = 3.14.0
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -78,31 +76,31 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 59)
 OK_COLOR = \033[0;32m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.S8nbkoH0wR/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.XfuLZeeOFO/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-HOMEBREW_TEMP = /tmp/nsimon/Homebrew/Temp
+DISPLAY = /private/tmp/com.apple.launchd.GPzbZJ1qNp/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # makefile (from `Makefile', line 109)
 save_files_changed = 	FILE_CPP=`echo $(SRCS) $(MAIN)`; FILE_OBJ=`find objs -type f -name '*.o' 2>/dev/null | sed 's/objs\///'`; TO_COMPILE=`echo $$FILE_CPP | wc -w`; for FILE in $$FILE_CPP; do for OBJ in $$FILE_OBJ; do if [ $${FILE%$(FILE_EXTENSION)} = $${OBJ%.o} ]; then if [ $(SRCS_PATH)/$$FILE -ot objs/$$OBJ ]; then FILE_DEP=`echo objs/$$OBJ | sed 's/\.o/\.d/'`; HEAD_FILES=`< $$FILE_DEP xargs | grep -oh "\w*.h\w*"`; RECOMPILE=0; for HEAD in $$HEAD_FILES; do if [ $(SRCS_PATH)/$$HEAD -nt objs/$$OBJ ]; then RECOMPILE=1; break; fi; done; if [ $$RECOMPILE -eq 0 ]; then ((TO_COMPILE=$$TO_COMPILE-1)); fi; fi; fi; done; done; echo 0/$$TO_COMPILE > .files_changed
+# makefile (from `Makefile', line 48)
+OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-PWD = /Users/nsimon/Documents/ft_containers
+PWD = /Users/nsimon/Documents/42-projects/ft_containers
 # makefile (from `Makefile', line 58)
 OBJ_COLOR = \033[0;36m
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # makefile (from `Makefile', line 90)
-HASH := 76b5bd8
+HASH := ddd5136
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
 HOME = /Users/nsimon
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CLI = 1
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/nsimon/Library/Application Support/Code/CachedData/3a6960b964327f0e3882ce18fcebd07ed191b316
 # environment
@@ -125,16 +123,14 @@ COM_COLOR = \033[0;34m
 WARN_COLOR = \033[0;33m
 # environment
 XPC_FLAGS = 0x0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 37)
+SRCS = test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp test_utility.cpp
 # environment
-LC_TERMINAL = iTerm2
-# environment
-HOMEBREW_CACHE = /tmp/nsimon/Homebrew/Caches
-# environment
-SHLVL = 3
+SHLVL = 1
 # makefile (from `Makefile', line 19)
 CC = clang++
 # default
@@ -143,10 +139,6 @@ MAKE_VERSION := 3.81
 USER = nsimon
 # makefile
 .DEFAULT_GOAL := all
-# default
-MAKECMDGOALS := all
-# environment
-TERM_SESSION_ID = w0t0p0:50416C4F-658E-4CA3-920F-9E6EAF935771
 # makefile (from `Makefile', line 18)
 NAME = ft_containers
 # environment
@@ -154,13 +146,11 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# environment
-TERM_PROGRAM = iTerm.app
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n0004grr0013y6/T/
+TMPDIR = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
@@ -172,15 +162,11 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 3.4.2
-# environment
 MAIL = nsimon@student.42.fr
 # makefile (from `Makefile', line 39)
 MAIN = main.cpp
 # environment
-XPC_SERVICE_NAME = 0
-# environment
-LC_TERMINAL_VERSION = 3.4.2
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.54303127.54303133
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 88)
@@ -189,31 +175,24 @@ AUTHOR := Nicolas SIMON
 display_progress_bar = 	if [ $(NOVISU) -eq 0 ]; then line=`bash -c 'oldstty=$$(stty -g); stty raw -echo min 0; tput u7 > /dev/tty; IFS=";" read -r -d R -a pos; stty $$oldstty; row=$$(($${pos[0]:2} - 1)); echo $$row'`; max_line=`tput lines`; ((max_line=$$max_line-2)); new_line=0; tput sc; i=0; while [ $$i -lt 60 ]; do printf " "; ((i=$$i+1)); done; tput rc; if [ $$line -gt $$max_line ]; then new_line=1; echo ; else ((line=$$line+1)); fi; tput sc; tput cup $$line; $(draw_bar) if [ $$new_line -eq 1 ]; then ((line=$$line-1)); tput cup $$line; else tput rc; fi; fi
 # automatic
 +F = $(notdir $+)
-# environment
-ITERM_SESSION_ID = w0t0p0:50416C4F-658E-4CA3-920F-9E6EAF935771
 # makefile (from `Makefile', line 35)
 INCLUDE_PATH = ./containers
 # makefile (from `Makefile', line 31)
 FILE_EXTENSION = .cpp
-# environment
-COLORFGBG = 7;0
 # makefile (from `Makefile', line 136)
 draw_bar = 	FILE_TOTAL=`bash -c 'cat .files_changed | cut -d"/" -f2'`; FILE_DONE=`bash -c 'cat .files_changed | cut -d"/" -f1'`; if [ $$FILE_TOTAL -eq 0 ]; then FILE_TOTAL=1; FILE_DONE=1; fi; RES=`echo "scale=2; $$FILE_DONE/$$FILE_TOTAL*48" | bc`; RES=`echo $${RES%%.*}`; printf "$(OBJ_COLOR)[$(NO_COLOR)"; i=0; while [ $$i -lt 48 ]; do if [ $$i -lt $$RES ]; then printf "$(OK_COLOR)█$(NO_COLOR)"; else printf "$(COM_COLOR)▒$(NO_COLOR)"; fi; ((i=$$i+1)); done; printf "$(OBJ_COLOR)]$(NO_COLOR)"; printf " ($(COM_COLOR)$$FILE_DONE$(NO_COLOR)/$(COM_COLOR)$$FILE_TOTAL$(NO_COLOR))"; printf " "; ((FILE_DONE=$$FILE_DONE+1)); echo $$FILE_DONE/$$FILE_TOTAL > .files_changed;
 # environment
-__CF_USER_TEXT_ENCODING = 0x8FC6:0x0:0x1
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
 # environment
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
- 
 <F = $(notdir $<)
-# environment
-ITERM_PROFILE = Default
 # makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from `Makefile', line 89)
-DATE := 2021/11/13 20:06:19
+DATE := 2021/11/16 19:49:47
 # environment
 EDITOR = code
 # environment
@@ -221,7 +200,7 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a8
+SPACESHIP_ROOT = /Users/nsimon/.oh-my-zsh/custom/themes/spaceship-prompt
 # automatic
 ^F = $(notdir $^)
 # makefile (from `Makefile', line 50)
@@ -235,13 +214,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 2375
+VSCODE_PID = 49811
 # makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
-# Load=114/1024=11%, Rehash=0, Collisions=18/200=9%
+# Load=102/1024=10%, Rehash=0, Collisions=14/188=7%
 
 # Pattern-specific Variable Values
 
@@ -249,10 +226,10 @@ NO_COLOR = \033[m
 
 # Directories
 
-# . (device 16777226, inode 2149027): 12 files, no impossibilities.
-# ./tests (device 16777226, inode 2149229): No files, no impossibilities so far.
+# . (device 16777223, inode 42157942): 14 files, no impossibilities.
+# ./tests (device 16777223, inode 45243034): No files, no impossibilities so far.
 
-# 12 files, no impossibilities in 2 directories.
+# 14 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -281,6 +258,7 @@ tests/test_iterator.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -308,7 +286,7 @@ all: header setup ft_containers
 objs/test_reverse_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 12:01:38
+#  Last modified 2021-11-16 19:22:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -371,7 +349,7 @@ header:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-11 14:38:21
+#  Last modified 2021-11-05 17:10:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -399,7 +377,7 @@ containers/iterator.hpp:
 objs/test_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 12:01:37
+#  Last modified 2021-11-16 19:22:36
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -436,7 +414,7 @@ containers/vector.hpp:
 objs/test_vector.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 12:01:38
+#  Last modified 2021-11-16 19:22:37
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -451,7 +429,7 @@ objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp te
 objs/test_utility.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 12:01:39
+#  Last modified 2021-11-16 19:22:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -491,7 +469,6 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 223):
 	@$(call display_progress_bar)
- 
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
 	
 
@@ -533,6 +510,7 @@ tests/color.hpp:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 objs/test_utility.o: tests/test_utility.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -554,7 +532,7 @@ tests/tests.hpp:
 objs/main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 12:01:40
+#  Last modified 2021-11-16 19:22:39
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -591,6 +569,6 @@ containers/binary_search_tree.hpp:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# Finished Make data base on Tue Nov 16 14:53:19 2021
+# Finished Make data base on Tue Nov 16 21:21:13 2021
 
  

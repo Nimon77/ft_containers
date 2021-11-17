@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 19:07:53 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 11:34:26 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ namespace ft
 			typedef typename allocator_type::difference_type					difference_type;
 
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()): _tree(comp), _alloc(alloc), _size(0) {}
+			
 			template <class InputIterator>
 			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
 			{
@@ -63,12 +64,7 @@ namespace ft
 					_tree.insert(*first);
 			}
 
-			map (const map& x)
-			{
-				_tree = x._tree;
-				_alloc = x._alloc;
-				_size = x._size;
-			}
+			map (const map& x) : _tree(x._tree), _alloc(x._alloc), _size(x._size) {}
 
 			virtual ~map ()
 			{}
@@ -77,9 +73,10 @@ namespace ft
 			{
 				if (this != &x)
 				{
-					_tree = x._tree;
 					_alloc = x._alloc;
 					_size = x._size;
+					_tree.clear();
+					_tree.insert(x.begin(), x.end());
 				}
 				return (*this);
 			}

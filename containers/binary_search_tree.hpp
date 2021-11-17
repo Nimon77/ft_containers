@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 19:34:53 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 11:36:48 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ namespace ft {
 
 			BST(BST const &other)
 			{
-				this->_root = other._root;
+				this->_root = NULL;
+				this->cmp = other.cmp;
+				this->_end = _alloc.allocate(1);
+				this->insert(other.begin(), other.end());
 			}
 
 			virtual ~BST()
@@ -215,6 +218,15 @@ namespace ft {
 					insert(toInsert->right);
 			}
 
+			void insert(const_iterator first, const_iterator last)
+			{
+				while (first != last)
+				{
+					insert(*first);
+					++first;
+				}
+			}
+
 			void erase(const value_type &to_find)
 			{
 				_root = erase(to_find, _root);
@@ -224,12 +236,12 @@ namespace ft {
 			{
 				if (node == NULL)
 					return node;
-				else if (to_find.first < node->value.first)
+				else if (cmp(to_find.first, node->value.first))
 				{
 					if ((node->left = erase(to_find, node->left)))
 						node->left->parent = node;
 				}
-				else if (to_find.first > node->value.first)
+				else if (cmp(node->value.first, to_find.first))
 				{
 					if ((node->right = erase(to_find, node->right)))
 						node->right->parent = node;
