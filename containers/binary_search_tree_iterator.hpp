@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:20:27 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 19:09:54 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 14:35:47 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ namespace ft {
 				return (tmp);
 			}
 
+			node_ptr	getNode() const { return (_node); }
+
 			bool operator==(const BST_iterator &it) const { return (_node == it._node); }
 			bool operator!=(const BST_iterator &it) const { return (_node != it._node); }
 			
@@ -179,6 +181,8 @@ namespace ft {
 				operator--();
 				return (tmp);
 			}
+
+			node_ptr	getNode() const { return (_node); }
 
 			bool operator==(const BST_const_iterator &it) const { return (_node == it._node); }
 			bool operator!=(const BST_const_iterator &it) const { return (_node != it._node); }

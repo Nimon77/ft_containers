@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/13 14:52:59 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 15:48:08 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,6 +332,12 @@ namespace ft {
 	bool operator>= (const vector<T, Alloc>& x, const vector<T, Alloc>& y)
 	{
 		return !(x < y);
+	}
+
+	template <class T, class Alloc>
+	void swap (vector<T, Alloc>& x, vector<T, Alloc>& y)
+	{
+		x.swap(y);
 	}
 
 }

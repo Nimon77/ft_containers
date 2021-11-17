@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 11:34:26 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 15:47:43 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,20 @@ namespace ft
 				return (res);
 			}
 
+			iterator insert (iterator position, const value_type& val)
+			{
+				iterator res = _tree.insert(position, val);
+				if (res != end())
+					_size++;
+				return (res);
+			}
+
+			template <class InputIterator>
+			void insert (InputIterator first, InputIterator last)
+			{
+				_tree.insert(first, last);
+			}
+
 			void erase (iterator position)
 			{
 				_tree.erase(position._node);
@@ -262,6 +276,73 @@ namespace ft
 			allocator_type			_alloc;
 			size_type							_size;
 	};
+
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator==(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		typename map<Key, T, Compare, Allocator>::const_iterator	it = lhs.begin();
+		typename map<Key, T, Compare, Allocator>::const_iterator	ite = lhs.end();
+		typename map<Key, T, Compare, Allocator>::const_iterator	it2 = rhs.begin();
+
+		while (it != ite && it2 != rhs.end())
+		{
+			if (it->first != it2->first || it->second != it2->second)
+				return (false);
+			it++;
+			it2++;
+		}
+		return (it == ite && it2 == rhs.end());
+	}
+	
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator!=(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		return (!(lhs == rhs));
+	}
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator<(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		typename map<Key, T, Compare, Allocator>::const_iterator	it = lhs.begin();
+		typename map<Key, T, Compare, Allocator>::const_iterator	ite = lhs.end();
+		typename map<Key, T, Compare, Allocator>::const_iterator	it2 = rhs.begin();
+
+		while (it != ite && it2 != rhs.end())
+		{
+			if (it->first != it2->first)
+				return (it->first < it2->first);
+			else if (it->second != it2->second)
+				return (it->second < it2->second);
+			it++;
+			it2++;
+		}
+		return (it == ite && it2 != rhs.end());
+	}
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator>(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		return (rhs < lhs);
+	}
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator<=(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		return (!(rhs < lhs));
+	}
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	bool operator>=(const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs)
+	{
+		return (!(lhs < rhs));
+	}
+
+	template <typename Key, typename T, typename Compare, typename Allocator>
+	void swap(map<Key, T, Compare, Allocator> &lhs, map<Key, T, Compare, Allocator> &rhs)
+	{
+		lhs.swap(rhs);
+	}
 }
 
 #endif

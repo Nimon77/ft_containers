@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 17:25:23 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/09 16:03:21 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 14:43:11 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ namespace ft {
 	template<typename T>
 	void swap(T &a, T &b)
 	{
-		T tmp = a;
+		T c(a);
 		a = b;
-		b = tmp;
+		b = c;
 	}
 
 }

@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 11:36:48 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/17 15:46:06 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,8 @@ namespace ft {
 				return (find(to_find, _root));
 			}
 
-			pair<iterator,bool> insert(const value_type &value)
+			pair<iterator,bool> insert(const value_type &value, node_pointer node)
 			{
-				node_pointer node = _root;
 				node_pointer parent = NULL;
 				while (node)
 				{
@@ -209,20 +208,31 @@ namespace ft {
 				return pair<iterator,bool>(iterator(node, NULL), false);
 			}
 
-			void insert(node_pointer toInsert)
+			pair<iterator,bool> insert(const value_type &value)
 			{
-				insert(toInsert->value);
-				if (toInsert->left)
-					insert(toInsert->left);
-				if (toInsert->right)
-					insert(toInsert->right);
+				return (insert(value, _root));
 			}
 
-			void insert(const_iterator first, const_iterator last)
+			void insert(node_pointer toInsert)
+			{
+				insert(toInsert->value, _root);
+				if (toInsert->left)
+					insert(toInsert->left, _root);
+				if (toInsert->right)
+					insert(toInsert->right, _root);
+			}
+
+			iterator insert(iterator position, const value_type &value)
+			{
+				return (insert(value, position.getNode()).first);
+			}
+
+			template <class InputIterator>
+			void insert(InputIterator first, InputIterator last)
 			{
 				while (first != last)
 				{
-					insert(*first);
+					insert(*first, _root);
 					++first;
 				}
 			}
