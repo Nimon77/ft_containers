@@ -139,7 +139,7 @@ namespace ft
 			{
 				iterator it = find(k);
 				if (it == end())
-					it = insert(ft::make_pair(k, mapped_type()))->first;
+					it = insert(ft::make_pair(k, mapped_type())).first;
 				return (it->second);
 			}
 

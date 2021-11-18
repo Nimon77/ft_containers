@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/18 09:14:08 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/18 15:46:55 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ namespace ft {
 		BST_Node	*right;
 
 		BST_Node(): value(), parent(NULL), left(NULL), right(NULL) {}
-		BST_Node(value_type const &value): value(value), parent(NULL), left(NULL), right(NULL) {}
 		BST_Node(BST_Node *parent = NULL, BST_Node *left = NULL, BST_Node *right = NULL): value(), parent(parent), left(left), right(right) {}
 		BST_Node(value_type const &value, BST_Node *parent = NULL, BST_Node *left = NULL, BST_Node *right = NULL): value(value), parent(parent), left(left), right(right) {}
 		BST_Node(BST_Node const &other): value(other.value), parent(other.parent), left(other.left), right(other.right) {}
