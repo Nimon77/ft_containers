@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 16:17:05 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/18 09:23:35 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,9 @@ namespace ft
 			mapped_type& operator[] (const key_type& k)
 			{
 				iterator it = find(k);
-				if (it != end())
-					return (it->second);
-				return (_tree.insert(value_type(k, mapped_type())).first->second);
+				if (it == end())
+					it = insert(ft::make_pair(k, mapped_type()))->first;
+				return (it->second);
 			}
 
 			pair<iterator, bool> insert (const value_type& val)
@@ -162,12 +162,13 @@ namespace ft
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last)
 			{
-				_tree.insert(first, last);
+				for (; first != last; ++first)
+					insert(*first);
 			}
 
 			void erase (iterator position)
 			{
-				_tree.erase(position._node);
+				_tree.erase(*position);
 				_size--;
 			}
 
@@ -180,10 +181,8 @@ namespace ft
 
 			void erase (iterator first, iterator last)
 			{
-				while (first != last)
-				{
-					erase(first++);
-				}
+				for (; first != last; ++first)
+					erase(first);
 			}
 
 			void swap (map& x)

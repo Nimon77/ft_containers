@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Wed Nov 17 13:15:13 2021
+# Make data base, printed on Thu Nov 18 08:55:18 2021
 
 # Variables
 
@@ -23,12 +24,14 @@ OBJ_MAIN = $(addprefix objs/, ${MAIN:$(FILE_EXTENSION)=.o})
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+ARCHFLAGS = -arch x86_64
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/nsimon/Documents/ft_containers
+CURDIR := /Users/nsimon/Documents/42-projects/ft_containers
 # makefile (from `Makefile', line 45)
 SHELL := /bin/bash
 # environment
@@ -37,8 +40,8 @@ VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{},"_languagePackSupport
 _ = /usr/bin/make
 # makefile (from `Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-# makefile (from `Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# makefile (from `objs/main.d', line 1)
+MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/test_utility.d objs/main.d
 # makefile (from `Makefile', line 21)
 DFLAGS = -MMD -MF $(@:.o=.d)
 # environment
@@ -47,20 +50,22 @@ VSCODE_VERBOSE_LOGGING = true
 NOVISU = 0 
 # makefile (from `Makefile', line 64)
 COM_STRING = "compiling"
-# makefile (from `Makefile', line 48)
-OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0004grr0013y6/T/vscode-ipc-27af20f6-98c7-4192-a00e-c071ce58f140.sock
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-9f88f192-7f7b-4e77-b894-27098e316cf7.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.xLzN4F0u0n/Render
+PATH = /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/nsimon/.fig/bin
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki
+LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 93)
 run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
 # makefile (from `Makefile', line 75)
 RUN_CMD = script -q $@.log $1 > /dev/null; RESULT=$$?
+# environment
+SPACESHIP_VERSION = 3.14.0
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -70,27 +75,31 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 59)
 OK_COLOR = \033[0;32m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.nG6e4Afx7t/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.G4DaHRZpy3/Listeners
 # automatic
 %F = $(notdir $%)
+# environment
+DISPLAY = /private/tmp/com.apple.launchd.LLIQJtNNOk/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # makefile (from `Makefile', line 109)
 save_files_changed = 	FILE_CPP=`echo $(SRCS) $(MAIN)`; FILE_OBJ=`find objs -type f -name '*.o' 2>/dev/null | sed 's/objs\///'`; TO_COMPILE=`echo $$FILE_CPP | wc -w`; for FILE in $$FILE_CPP; do for OBJ in $$FILE_OBJ; do if [ $${FILE%$(FILE_EXTENSION)} = $${OBJ%.o} ]; then if [ $(SRCS_PATH)/$$FILE -ot objs/$$OBJ ]; then FILE_DEP=`echo objs/$$OBJ | sed 's/\.o/\.d/'`; HEAD_FILES=`< $$FILE_DEP xargs | grep -oh "\w*.h\w*"`; RECOMPILE=0; for HEAD in $$HEAD_FILES; do if [ $(SRCS_PATH)/$$HEAD -nt objs/$$OBJ ]; then RECOMPILE=1; break; fi; done; if [ $$RECOMPILE -eq 0 ]; then ((TO_COMPILE=$$TO_COMPILE-1)); fi; fi; fi; done; done; echo 0/$$TO_COMPILE > .files_changed
+# makefile (from `Makefile', line 48)
+OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-PWD = /Users/nsimon/Documents/ft_containers
+PWD = /Users/nsimon/Documents/42-projects/ft_containers
 # makefile (from `Makefile', line 58)
 OBJ_COLOR = \033[0;36m
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # makefile (from `Makefile', line 90)
-HASH := f73dd5d
+HASH := 7cbba49
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
 HOME = /Users/nsimon
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/nsimon/Library/Application Support/Code/CachedData/3a6960b964327f0e3882ce18fcebd07ed191b316
 # environment
@@ -99,6 +108,8 @@ LOGNAME = nsimon
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # makefile (from `Makefile', line 71)
 detected_OS := Darwin
+# environment
+ZSH = /Users/nsimon/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -129,14 +140,16 @@ USER = nsimon
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 18)
 NAME = ft_containers
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n0004grr0013y6/T/
+TMPDIR = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
@@ -147,10 +160,12 @@ MAKEFLAGS = Rrqp
 MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
+# environment
+MAIL = nsimon@student.42.fr
 # makefile (from `Makefile', line 39)
 MAIN = main.cpp
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1212
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.54303127.54303133
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 88)
@@ -166,7 +181,9 @@ FILE_EXTENSION = .cpp
 # makefile (from `Makefile', line 136)
 draw_bar = 	FILE_TOTAL=`bash -c 'cat .files_changed | cut -d"/" -f2'`; FILE_DONE=`bash -c 'cat .files_changed | cut -d"/" -f1'`; if [ $$FILE_TOTAL -eq 0 ]; then FILE_TOTAL=1; FILE_DONE=1; fi; RES=`echo "scale=2; $$FILE_DONE/$$FILE_TOTAL*48" | bc`; RES=`echo $${RES%%.*}`; printf "$(OBJ_COLOR)[$(NO_COLOR)"; i=0; while [ $$i -lt 48 ]; do if [ $$i -lt $$RES ]; then printf "$(OK_COLOR)█$(NO_COLOR)"; else printf "$(COM_COLOR)▒$(NO_COLOR)"; fi; ((i=$$i+1)); done; printf "$(OBJ_COLOR)]$(NO_COLOR)"; printf " ($(COM_COLOR)$$FILE_DONE$(NO_COLOR)/$(COM_COLOR)$$FILE_TOTAL$(NO_COLOR))"; printf " "; ((FILE_DONE=$$FILE_DONE+1)); echo $$FILE_DONE/$$FILE_TOTAL > .files_changed;
 # environment
-__CF_USER_TEXT_ENCODING = 0x8FC6:0x0:0x1
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -174,9 +191,15 @@ MAKEFILES :=
 # makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from `Makefile', line 89)
-DATE := 2021/11/17 11:37:47
+DATE := 2021/11/17 18:16:51
+# environment
+EDITOR = code
+# environment
+PAGER = less
 # environment
 LC_ALL = C
+# environment
+SPACESHIP_ROOT = /Users/nsimon/.oh-my-zsh/custom/themes/spaceship-prompt
 # automatic
 ^F = $(notdir $^)
 # makefile (from `Makefile', line 50)
@@ -190,11 +213,12 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 8331
+VSCODE_PID = 22802
 # makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
+ 
 # variable set hash-table stats:
-# Load=91/1024=9%, Rehash=0, Collisions=11/167=7%
+# Load=102/1024=10%, Rehash=0, Collisions=14/188=7%
 
 # Pattern-specific Variable Values
 
@@ -202,10 +226,10 @@ NO_COLOR = \033[m
 
 # Directories
 
-# . (device 16777226, inode 50161): 9 files, no impossibilities.
-# ./tests (device 16777226, inode 50242): No files, no impossibilities so far.
+# . (device 16777223, inode 42157942): 14 files, no impossibilities.
+# ./tests (device 16777223, inode 45243034): No files, no impossibilities so far.
 
-# 9 files, no impossibilities in 2 directories.
+# 14 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -213,7 +237,6 @@ objs/%.o: ./tests/%.cpp
 #  commands to execute (from `Makefile', line 230):
 	@mkdir -p $(dir $@)
 	@$(call display_progress_bar)
- 
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
 	
 
@@ -230,7 +253,12 @@ setup:
 	
 
 # Not a target:
-objs/main.o:
+tests/test_iterator.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -257,11 +285,17 @@ all: header setup ft_containers
 objs/test_reverse_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-17 19:25:26
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+tests/test_utility.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 header:
 #  Phony target (prerequisite of .PHONY).
@@ -314,19 +348,37 @@ header:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-17 13:08:08
+#  Last modified 2021-11-05 17:10:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
+containers/map.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/binary_search_tree_iterator.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/iterator.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 objs/test_iterator.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-17 19:25:25
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -352,17 +404,22 @@ compare:
 	
 
 # Not a target:
+containers/vector.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 objs/test_vector.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-17 19:25:26
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-objs/test_reverse_iterator.o:
+objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -371,9 +428,9 @@ objs/test_reverse_iterator.o:
 objs/test_utility.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-17 19:25:27
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -386,6 +443,18 @@ fclean: header clean
 	@rm -rf $(NAME)
 	@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 	
+
+# Not a target:
+tests/main.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/type_traits.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -402,13 +471,19 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
 	
 
+objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # Not a target:
-objs/test_iterator.o:
+containers/algorithm.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 re: fclean all
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -424,14 +499,30 @@ clean: header
 	@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 	
 
-# Not a target:
-objs/test_vector.o:
+objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-objs/test_utility.o:
+tests/color.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/test_utility.o: tests/test_utility.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+tests/test_vector.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+tests/tests.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -440,14 +531,32 @@ objs/test_utility.o:
 objs/main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-17 19:25:27
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+# Not a target:
+tests/test_reverse_iterator.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/utility.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/binary_search_tree.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=5/60=8%
+# Load=37/1024=4%, Rehash=0, Collisions=7/130=5%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -459,6 +568,6 @@ objs/main.d:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# Finished Make data base on Wed Nov 17 13:15:13 2021
+# Finished Make data base on Thu Nov 18 08:55:18 2021
 
  

@@ -6,12 +6,15 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 16:28:20 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/18 09:14:08 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BINARY_SEARCH_TREE_HPP
 # define BINARY_SEARCH_TREE_HPP
+
+// #include <iostream>
+// TODO: delete this
 
 # include "iterator.hpp"
 # include "binary_search_tree_iterator.hpp"
@@ -205,7 +208,7 @@ namespace ft {
 				}
 				else
 					_root = node;
-				return pair<iterator,bool>(iterator(node, NULL), false);
+				return pair<iterator,bool>(iterator(node, NULL), true);
 			}
 
 			pair<iterator,bool> insert(const value_type &value)
@@ -412,25 +415,25 @@ namespace ft {
 			{
 				this->_root = clear(this->_root);
 			}
-/*
-			void print() {
-				if (this->_root)
-					print(this->_root);
-			}
-			void print(const node_pointer node, const std::string& prefix = "", bool isLeft = false)
-			{
-				if (node != NULL)
-				{
-					std::cout << prefix;
-					std::cout << (isLeft ? "├──" : "└──");
-					std::cout << node->value.first << ":" << node->value.second;
-					//std::cout << (isLeft ? " left" : " right");
-					std::cout << std::endl;
-					print(node->left, prefix + (isLeft ? "│   " : "    "), true);
-					print(node->right, prefix + (isLeft ? "│   " : "    "), false);
-				}
-			}
-*/
+
+			// void print() {
+			// 	if (this->_root)
+			// 		print(this->_root);
+			// }
+			// void print(const node_pointer node, const std::string& prefix = "", bool isLeft = false)
+			// {
+			// 	if (node != NULL)
+			// 	{
+			// 		std::cout << prefix;
+			// 		std::cout << (isLeft ? "├──" : "└──");
+			// 		std::cout << node->value.first << ":" << node->value.second;
+			// 		//std::cout << (isLeft ? " left" : " right");
+			// 		std::cout << std::endl;
+			// 		print(node->left, prefix + (isLeft ? "│   " : "    "), true);
+			// 		print(node->right, prefix + (isLeft ? "│   " : "    "), false);
+			// 	}
+			// }
+
 			node_pointer	_root;
 			node_pointer	_end;
 
