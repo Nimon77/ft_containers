@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Nov 18 17:52:56 2021
+# Make data base, printed on Thu Nov 18 21:18:55 2021
 
 # Variables
 
@@ -43,7 +43,7 @@ SHELL := /bin/bash
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/ubuntu/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/node
+_ = /home/ubuntu/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/node
 # makefile (from 'Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 # makefile (from 'objs/main.d', line 1)
@@ -65,9 +65,9 @@ OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
 VSCODE_CWD = /home/ubuntu
 # environment
-SSH_CONNECTION = 62.210.33.23 58085 51.210.4.233 22
+SSH_CONNECTION = 92.184.98.46 49816 51.210.4.233 22
 # environment
-PATH = /home/ubuntu/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/home/ubuntu/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/ubuntu/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin:/home/ubuntu/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/.local/bin/
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from 'Makefile', line 93)
@@ -81,7 +81,7 @@ SPACESHIP_VERSION = 3.14.0
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-32acc082-972f-4800-80ce-94169f850f54.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-b4a6474a-6046-4551-969e-c11db98776c3.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 59)
@@ -101,7 +101,7 @@ PWD = /home/ubuntu/42-projects/ft_containers
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # makefile (from 'Makefile', line 90)
-HASH := 11fe63c
+HASH := 9e6dee6
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
 # environment
@@ -141,7 +141,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 19)
 CC = clang++
 # environment
-XDG_SESSION_ID = 818
+XDG_SESSION_ID = 937
 # environment
 USER = ubuntu
 # makefile
@@ -165,7 +165,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 62.210.33.23 58085 22
+SSH_CLIENT = 92.184.98.46 49816 22
 # makefile (from 'Makefile', line 39)
 MAIN = main.cpp
 # automatic
@@ -175,7 +175,7 @@ AUTHOR := Nicolas SIMON
 # makefile (from 'Makefile', line 162)
 display_progress_bar = 	if [ $(NOVISU) -eq 0 ]; then line=`bash -c 'oldstty=$$(stty -g); stty raw -echo min 0; tput u7 > /dev/tty; IFS=";" read -r -d R -a pos; stty $$oldstty; row=$$(($${pos[0]:2} - 1)); echo $$row'`; max_line=`tput lines`; ((max_line=$$max_line-2)); new_line=0; tput sc; i=0; while [ $$i -lt 60 ]; do printf " "; ((i=$$i+1)); done; tput rc; if [ $$line -gt $$max_line ]; then new_line=1; echo ; else ((line=$$line+1)); fi; tput sc; tput cup $$line; $(draw_bar) if [ $$new_line -eq 1 ]; then ((line=$$line-1)); tput cup $$line; else tput rc; fi; fi
 # environment
-BROWSER = /home/ubuntu/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin/helpers/browser.sh
+BROWSER = /home/ubuntu/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin/helpers/browser.sh
 # makefile (from 'Makefile', line 35)
 INCLUDE_PATH = ./containers
 # makefile (from 'Makefile', line 31)
@@ -191,7 +191,7 @@ MAKEFILES :=
 # makefile (from 'Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from 'Makefile', line 89)
-DATE := 2021/11/18 09:32:12
+DATE := 2021/11/18 17:53:10
 # environment
 PAGER = less
 # environment
@@ -207,7 +207,7 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/ubuntu/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/remote/node_modules
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/ubuntu/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/remote/node_modules
 # default
 .RECIPEPREFIX := 
 # default
@@ -242,7 +242,6 @@ objs/%.o: tests/%.cpp
 			@$(call display_progress_bar)
 			@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
 
- 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
@@ -285,6 +284,7 @@ tests/test_vector.cpp:
 
 # Not a target:
 objs/test_reverse_iterator.d:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2021-11-18 17:52:15.773479286
 #  File has been updated.
@@ -478,7 +478,6 @@ re: fclean all
 #  File has not been updated.
 
 clean: header
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -548,6 +547,6 @@ containers/binary_search_tree.hpp:
 # strcache performance: lookups = 137 / hit rate = 62%
 # hash-table stats:
 # Load=51/8192=1%, Rehash=0, Collisions=3/137=2%
-# Finished Make data base on Thu Nov 18 17:52:56 2021
+# Finished Make data base on Thu Nov 18 21:18:55 2021
 
  

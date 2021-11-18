@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/18 09:23:35 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/18 22:11:26 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ namespace ft
 			{
 				pair<iterator, bool> res = _tree.insert(val);
 				if (res.second)
-					_size++;
+					++_size;
 				return (res);
 			}
 
@@ -155,7 +155,7 @@ namespace ft
 			{
 				iterator res = _tree.insert(position, val);
 				if (res != end())
-					_size++;
+					++_size;
 				return (res);
 			}
 
@@ -169,20 +169,23 @@ namespace ft
 			void erase (iterator position)
 			{
 				_tree.erase(*position);
-				_size--;
+				--_size;
 			}
 
 			size_type erase (const key_type& k)
 			{
 				_tree.erase(value_type(k, mapped_type()));
-				_size--;
+				--_size;
 				return (_size);
 			}
 
 			void erase (iterator first, iterator last)
 			{
 				for (; first != last; ++first)
-					erase(first);
+				{
+					_tree.erase(*first);
+					--_size;
+				}
 			}
 
 			void swap (map& x)

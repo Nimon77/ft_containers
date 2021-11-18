@@ -6,15 +6,12 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/18 15:46:55 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/18 22:11:14 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BINARY_SEARCH_TREE_HPP
 # define BINARY_SEARCH_TREE_HPP
-
-// #include <iostream>
-// TODO: delete this
 
 # include "iterator.hpp"
 # include "binary_search_tree_iterator.hpp"
@@ -241,18 +238,20 @@ namespace ft {
 
 			void erase(const value_type &to_find)
 			{
-				_root = erase(to_find, _root);
+				if ((_root = erase(to_find, _root)))
+					_root->parent = NULL;
 			}
 
 			void erase(node_pointer node)
 			{
-				_root = erase(node->value, _root);
+				if ((_root = erase(node->value, _root)))
+					_root->parent = NULL;
 			}
 
 			node_pointer erase(const value_type &to_find, node_pointer node)
 			{
 				if (node == NULL)
-					return node;
+					return NULL;
 				else if (cmp(to_find.first, node->value.first))
 				{
 					if ((node->left = erase(to_find, node->left)))
