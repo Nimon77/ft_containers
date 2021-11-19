@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 11:33:28 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/19 19:44:02 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,30 +249,18 @@ namespace ft
 
 			pair<iterator, iterator> equal_range (const key_type& k)
 			{
-				if (!count(k))
-					return (pair<iterator, iterator>(end(), end()));
-				else
-					return (pair<iterator, iterator>(lower_bound(k), upper_bound(k)));
+					return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}
 
 			pair<const_iterator, const_iterator> equal_range (const key_type& k) const
 			{
-				if (!count(k))
-					return (pair<const_iterator, const_iterator>(end(), end()));
-				else
-					return (pair<const_iterator, const_iterator>(lower_bound(k), upper_bound(k)));
+					return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}
 
 			allocator_type get_allocator() const
 			{
 				return (_alloc);
 			}
-/*
-			void print()
-			{
-				_tree.print();
-			}
-*/
 		private:
 			ft::BST<value_type, key_compare>	_tree;
 			key_compare				_comp;

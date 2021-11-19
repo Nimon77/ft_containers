@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 11:34:24 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/19 19:44:11 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,13 +339,10 @@ namespace ft {
 
 				while (it != ite)
 				{
-					if (cmp(it->first, value))
-						it++;
-					else
+					if (!cmp(it->first, value))
 						break;
+					it++;
 				}
-				if (it == ite)
-					return (iterator(_end, maxValue()));
 				return (it);
 			}
 			const_iterator lower_bound(const key_type &value) const
@@ -355,13 +352,10 @@ namespace ft {
 
 				while (it != ite)
 				{
-					if (cmp(it->first, value))
-						it++;
-					else
+					if (!cmp(it->first, value))
 						break;
+					it++;
 				}
-				if (it == ite)
-					return (const_iterator(_end, maxValue()));
 				return (it);
 			}
 
@@ -373,12 +367,9 @@ namespace ft {
 				while (it != ite)
 				{
 					if (cmp(value, it->first))
-						it++;
-					else
 						break;
+					it++;
 				}
-				if (++it == ite)
-					return (iterator(_end, maxValue()));
 				return (it);
 			}
 			const_iterator upper_bound(const key_type &value) const
@@ -389,12 +380,9 @@ namespace ft {
 				while (it != ite)
 				{
 					if (cmp(value, it->first))
-						it++;
-					else
 						break;
+					it++;
 				}
-				if (++it == ite)
-					return (const_iterator(_end, maxValue()));
 				return (it);
 			}
 
@@ -427,24 +415,6 @@ namespace ft {
 			{
 				return (_alloc.max_size());
 			}
-
-			// void print() {
-			// 	if (this->_root)
-			// 		print(this->_root);
-			// }
-			// void print(const node_pointer node, const std::string& prefix = "", bool isLeft = false)
-			// {
-			// 	if (node != NULL)
-			// 	{
-			// 		std::cout << prefix;
-			// 		std::cout << (isLeft ? "├──" : "└──");
-			// 		std::cout << node->value.first << ":" << node->value.second;
-			// 		//std::cout << (isLeft ? " left" : " right");
-			// 		std::cout << std::endl;
-			// 		print(node->left, prefix + (isLeft ? "│   " : "    "), true);
-			// 		print(node->right, prefix + (isLeft ? "│   " : "    "), false);
-			// 	}
-			// }
 
 			node_pointer	_root;
 			node_pointer	_end;
