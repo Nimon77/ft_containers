@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/18 22:11:26 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/19 11:19:19 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ namespace ft
 
 			void swap (map& x)
 			{
-				ft::swap(_tree, x._tree);
+				_tree.swap(x._tree);
+				ft::swap(_comp, x._comp);
 				ft::swap(_alloc, x._alloc);
 				ft::swap(_size, x._size);
 			}
