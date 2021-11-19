@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 11:19:19 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/19 11:33:28 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ namespace ft
 
 			size_type max_size() const
 			{
-				return (_alloc.max_size());
+				return (_tree.max_size());
 			}
 
 			mapped_type& operator[] (const key_type& k)

@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 11:22:59 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/19 11:34:24 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ namespace ft {
 			typedef Compare										key_compare;
 			typedef ft::BST_iterator<Node, key_compare>			iterator;
 			typedef ft::BST_const_iterator<Node, key_compare>	const_iterator;
+			typedef typename type_allocator::size_type			size_type;
 
 /*			BST test		*/
 /*
@@ -420,6 +421,11 @@ namespace ft {
 				ft::swap(this->_end, other._end);
 				ft::swap(this->cmp, other.cmp);
 				ft::swap(this->_alloc, other._alloc);
+			}
+
+			size_type max_size() const
+			{
+				return (_alloc.max_size());
 			}
 
 			// void print() {
