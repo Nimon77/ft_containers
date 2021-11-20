@@ -1,12 +1,14 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Sat Nov 20 14:45:10 2021
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Sat Nov 20 15:44:30 2021
 
 # Variables
 
@@ -14,214 +16,245 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# default
-.SHELLFLAGS := -c
 # environment
-XDG_SESSION_CLASS = user
-# environment
-VSCODE_AGENT_FOLDER = /home/ubuntu/.vscode-server
-# makefile (from 'Makefile', line 60)
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from `Makefile', line 60)
 ERROR_COLOR = \033[0;31m
-# makefile (from 'Makefile', line 49)
+# makefile (from `Makefile', line 49)
 OBJ_MAIN = $(addprefix objs/, ${MAIN:$(FILE_EXTENSION)=.o})
-# environment
-XDG_SESSION_TYPE = tty
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+ARCHFLAGS = -arch x86_64
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
-# default
-MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/ubuntu/42-projects/ft_containers
-# makefile (from 'Makefile', line 45)
+CURDIR := /Users/nsimon/Documents/42-projects/ft_containers
+# makefile (from `Makefile', line 45)
 SHELL := /bin/bash
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node
-# makefile (from 'Makefile', line 20)
+_ = /usr/bin/make
+# makefile (from `Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-# makefile (from 'objs/main.d', line 1)
-MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/test_utility.d objs/main.d
-# 'override' directive
-GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 21)
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 21)
 DFLAGS = -MMD -MF $(@:.o=.d)
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 25)
+# makefile (from `Makefile', line 25)
 NOVISU = 0 
-# makefile (from 'Makefile', line 64)
+# makefile (from `Makefile', line 64)
 COM_STRING = "compiling"
-# makefile (from 'Makefile', line 48)
-OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-VSCODE_CWD = /home/ubuntu
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-SSH_CONNECTION = 90.3.60.204 49512 51.210.4.233 22
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/vscode-ipc-43dcac0a-704f-419e-a346-3059a119179d.sock
 # environment
-PATH = /home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin:/home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/.local/bin/
+VSCODE_CWD = /Users/nsimon/Documents/42-projects/ft_containers
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/nsimon/.fig/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# makefile (from 'Makefile', line 93)
+# makefile (from `Makefile', line 93)
 run_and_test = printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; $(RUN_CMD); if [ $$RESULT -ne 0 ]; then printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; rm -rf .files_changed; elif [ -s $@.log ]; then printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; else printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"; fi; cat $@.log; rm -f $@.log; exit $$RESULT
 # environment
-XDG_RUNTIME_DIR = /run/user/1000
-# makefile (from 'Makefile', line 78)
-RUN_CMD = script -q -e -c "$(1)" $@.log > /dev/null; RESULT=$$?; sed -i '1d' $@.log; sed -i "$$(($$(wc -l < $@.log)-1)),\$$d" $@.log
+FIG_CHECKED_PROMPTS = 1
+# makefile (from `Makefile', line 75)
+RUN_CMD = script -q $@.log $1 > /dev/null; RESULT=$$?
 # environment
 SPACESHIP_VERSION = 3.14.0
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-8204ced9-9c0c-4afc-a9a4-56034415a6af.sock
+ELECTRON_RUN_AS_NODE = 1
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 59)
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# makefile (from `Makefile', line 59)
 OK_COLOR = \033[0;32m
 # environment
-LS_COLORS = 
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.yO5fWDLyW3/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
+DISPLAY = /private/tmp/com.apple.launchd.RMmkfBeizp/org.xquartz:0
+# environment
+TTY = /dev/ttys002
+# environment
+FIG_ENV_VAR = 1
+# environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from 'Makefile', line 109)
+# makefile (from `Makefile', line 109)
 save_files_changed = 	FILE_CPP=`echo $(SRCS) $(MAIN)`; FILE_OBJ=`find objs -type f -name '*.o' 2>/dev/null | sed 's/objs\///'`; TO_COMPILE=`echo $$FILE_CPP | wc -w`; for FILE in $$FILE_CPP; do for OBJ in $$FILE_OBJ; do if [ $${FILE%$(FILE_EXTENSION)} = $${OBJ%.o} ]; then if [ $(SRCS_PATH)/$$FILE -ot objs/$$OBJ ]; then FILE_DEP=`echo objs/$$OBJ | sed 's/\.o/\.d/'`; HEAD_FILES=`< $$FILE_DEP xargs | grep -oh "\w*.h\w*"`; RECOMPILE=0; for HEAD in $$HEAD_FILES; do if [ $(SRCS_PATH)/$$HEAD -nt objs/$$OBJ ]; then RECOMPILE=1; break; fi; done; if [ $$RECOMPILE -eq 0 ]; then ((TO_COMPILE=$$TO_COMPILE-1)); fi; fi; fi; done; done; echo 0/$$TO_COMPILE > .files_changed
+# makefile (from `Makefile', line 48)
+OBJS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.o})
 # environment
-PWD = /home/ubuntu/42-projects/ft_containers
-# default
-.LOADED := 
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# makefile (from 'Makefile', line 90)
-HASH := ca9923b
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
-# environment
-HOME = /home/ubuntu
-# makefile (from 'Makefile', line 58)
+PWD = /Users/nsimon/Documents/42-projects/ft_containers
+# makefile (from `Makefile', line 58)
 OBJ_COLOR = \033[0;36m
 # environment
-LOGNAME = ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# makefile (from `Makefile', line 90)
+HASH := 27f5167
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/nsimon
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/nsimon/Library/Application Support/Code/CachedData/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247
+# environment
+LOGNAME = nsimon
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# makefile (from 'Makefile', line 71)
-detected_OS := Linux
-# automatic
-+F = $(notdir $+)
+# makefile (from `Makefile', line 71)
+detected_OS := Darwin
 # environment
-ZSH = /home/ubuntu/.oh-my-zsh
+ZSH = /Users/nsimon/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
-# makefile (from 'Makefile', line 51)
+# makefile (from `Makefile', line 51)
 DEPS_MAIN = $(addprefix objs/, ${MAIN:$(FILE_EXTENSION)=.d})
-# makefile (from 'Makefile', line 57)
+# makefile (from `Makefile', line 57)
 COM_COLOR = \033[0;34m
-# environment
-MAKELEVEL := 0
-# makefile (from 'Makefile', line 61)
+# makefile (from `Makefile', line 61)
 WARN_COLOR = \033[0;33m
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
-# makefile (from 'Makefile', line 37)
+# environment
+LC_TERMINAL = iTerm2
+# makefile (from `Makefile', line 37)
 SRCS = test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp test_utility.cpp
 # environment
-SHLVL = 1
-# makefile (from 'Makefile', line 19)
+SHLVL = 3
+# environment
+FIG_TERM = 1
+# makefile (from `Makefile', line 19)
 CC = clang++
+# default
+MAKE_VERSION := 3.81
 # environment
-XDG_SESSION_ID = 1532
+USER = nsimon
 # environment
-USER = ubuntu
-# makefile
-.DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 18)
+FIG_TERM_VERSION = 3
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:8DFFDDBC-B483-4F13-969A-AEE31B403302
+# makefile (from `Makefile', line 18)
 NAME = ft_containers
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# default
-MAKE_COMMAND := make
 # environment
-OLDPWD = /home/ubuntu
+FIG_INTEGRATION_VERSION = 5
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/jy/yx8yccvs4vs3bk9sj5d14_100000gn/T/
 # automatic
 *F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/nsimon/Library/Application Support/Code/1.62.3-main.sock
 # makefile
-MAKEFLAGS = pqrR
+MAKEFLAGS = Rrqp
 # environment
-MFLAGS = -pqrR
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
 # environment
-SSH_CLIENT = 90.3.60.204 49512 22
-# makefile (from 'Makefile', line 39)
+TERM_PROGRAM_VERSION = 3.4.12
+# environment
+MAIL = nsimon@student.42.fr
+# makefile (from `Makefile', line 39)
 MAIN = main.cpp
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.54898467.54898473.E3E4D601-8D5D-4204-A395-8118BF340520
+# environment
+LC_TERMINAL_VERSION = 3.4.12
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 88)
+# makefile (from `Makefile', line 88)
 AUTHOR := Nicolas SIMON
-# makefile (from 'Makefile', line 162)
+# makefile (from `Makefile', line 162)
 display_progress_bar = 	if [ $(NOVISU) -eq 0 ]; then line=`bash -c 'oldstty=$$(stty -g); stty raw -echo min 0; tput u7 > /dev/tty; IFS=";" read -r -d R -a pos; stty $$oldstty; row=$$(($${pos[0]:2} - 1)); echo $$row'`; max_line=`tput lines`; ((max_line=$$max_line-2)); new_line=0; tput sc; i=0; while [ $$i -lt 60 ]; do printf " "; ((i=$$i+1)); done; tput rc; if [ $$line -gt $$max_line ]; then new_line=1; echo ; else ((line=$$line+1)); fi; tput sc; tput cup $$line; $(draw_bar) if [ $$new_line -eq 1 ]; then ((line=$$line-1)); tput cup $$line; else tput rc; fi; fi
+# automatic
++F = $(notdir $+)
 # environment
-BROWSER = /home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin/helpers/browser.sh
-# makefile (from 'Makefile', line 35)
+ITERM_SESSION_ID = w0t0p0:8DFFDDBC-B483-4F13-969A-AEE31B403302
+# makefile (from `Makefile', line 35)
 INCLUDE_PATH = ./containers
-# makefile (from 'Makefile', line 31)
+# makefile (from `Makefile', line 31)
 FILE_EXTENSION = .cpp
-# makefile (from 'Makefile', line 136)
+# environment
+COLORFGBG = 15;0
+# makefile (from `Makefile', line 136)
 draw_bar = 	FILE_TOTAL=`bash -c 'cat .files_changed | cut -d"/" -f2'`; FILE_DONE=`bash -c 'cat .files_changed | cut -d"/" -f1'`; if [ $$FILE_TOTAL -eq 0 ]; then FILE_TOTAL=1; FILE_DONE=1; fi; RES=`echo "scale=2; $$FILE_DONE/$$FILE_TOTAL*48" | bc`; RES=`echo $${RES%%.*}`; printf "$(OBJ_COLOR)[$(NO_COLOR)"; i=0; while [ $$i -lt 48 ]; do if [ $$i -lt $$RES ]; then printf "$(OK_COLOR)█$(NO_COLOR)"; else printf "$(COM_COLOR)▒$(NO_COLOR)"; fi; ((i=$$i+1)); done; printf "$(OBJ_COLOR)]$(NO_COLOR)"; printf " ($(COM_COLOR)$$FILE_DONE$(NO_COLOR)/$(COM_COLOR)$$FILE_TOTAL$(NO_COLOR))"; printf " "; ((FILE_DONE=$$FILE_DONE+1)); echo $$FILE_DONE/$$FILE_TOTAL > .files_changed;
-# 'override' directive
-.SHELLSTATUS := 0
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 33)
+# environment
+ITERM_PROFILE = Default
+ 
+# makefile (from `Makefile', line 33)
 SRCS_PATH = ./tests
-# makefile (from 'Makefile', line 89)
-DATE := 2021/11/20 14:34:49
+# makefile (from `Makefile', line 89)
+DATE := 2021/11/20 15:07:29
+# environment
+EDITOR = code
 # environment
 PAGER = less
 # environment
 LC_ALL = C
 # environment
-SPACESHIP_ROOT = /home/ubuntu/.oh-my-zsh/custom/themes/spaceship-prompt
+SPACESHIP_ROOT = /Users/nsimon/.oh-my-zsh/custom/themes/spaceship-prompt
 # automatic
 ^F = $(notdir $^)
-# makefile (from 'Makefile', line 50)
+# makefile (from `Makefile', line 50)
 DEPS = $(addprefix objs/, ${SRCS:$(FILE_EXTENSION)=.d})
 # default
 SUFFIXES := 
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+.INCLUDE_DIRS = /usr/local/include
 # environment
-VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/remote/node_modules
-# default
-.RECIPEPREFIX := 
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
+MAKELEVEL := 0
+# makefile
+.DEFAULT_GOAL := all
 # environment
 LANG = C
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+TERM = xterm-256color
 # environment
-MOTD_SHOWN = pam
-# makefile (from 'Makefile', line 62)
+VSCODE_PID = 4353
+# makefile (from `Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=26/203=13%
+# Load=120/1024=12%, Rehash=0, Collisions=19/196=10%
 
 # Pattern-specific Variable Values
 
@@ -229,18 +262,19 @@ NO_COLOR = \033[m
 
 # Directories
 
-# . (device 2049, inode 677395): 13 files, no impossibilities.
-# tests (device 2049, inode 677417): No files, no impossibilities so far.
+# . (device 16777223, inode 42157942): 9 files, no impossibilities.
+# ./tests (device 16777223, inode 45243034): No files, no impossibilities so far.
 
-# 13 files, no impossibilities in 2 directories.
+# 9 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
-objs/%.o: tests/%.cpp
-#  recipe to execute (from 'Makefile', line 230):
-			@mkdir -p $(dir $@)
-			@$(call display_progress_bar)
-			@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
+objs/%.o: ./tests/%.cpp
+#  commands to execute (from `Makefile', line 230):
+	@mkdir -p $(dir $@)
+	@$(call display_progress_bar)
+	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I$(INCLUDE_PATH))
+	
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
@@ -250,56 +284,48 @@ setup:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 227):
+#  commands to execute (from `Makefile', line 227):
 	@$(call save_files_changed)
+	
 
 # Not a target:
-tests/test_iterator.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+objs/main.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 all: header setup ft_containers
 #  Phony target (prerequisite of .PHONY).
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/20=0%
-#  recipe to execute (from 'Makefile', line 198):
+# Load=0/32=0%, Rehash=0, Collisions=0/19=0%
+#  commands to execute (from `Makefile', line 198):
 	@rm -rf .files_changed
+	
 
-# Not a target:
-tests/test_vector.cpp:
+.PHONY: all clean fclean re header compare
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 objs/test_reverse_iterator.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-18 17:52:15.773479286
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-tests/test_utility.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 header:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
+#  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
@@ -320,8 +346,8 @@ header:
 # automatic
 # ? := 
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/28=11%
-#  recipe to execute (from 'Makefile', line 201):
+# Load=8/32=25%, Rehash=0, Collisions=3/27=11%
+#  commands to execute (from `Makefile', line 201):
 	@printf "%b" "$(OK_COLOR)"
 	@echo "        ___  _____ ___  ___      _        "
 	@echo "       /   |/ __  \|  \/  |     | |       "
@@ -336,6 +362,7 @@ header:
 	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n\033[m"
 	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
 	@echo
+	
 
 # Not a target:
 .SUFFIXES:
@@ -346,105 +373,78 @@ header:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-16 09:40:23.756573402
+#  Last modified 2021-11-05 17:10:25
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-containers/map.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/binary_search_tree_iterator.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/iterator.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 objs/test_iterator.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-18 17:52:14.733467837
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 compare:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 245):
-			@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
-			@make re
-			@./$(NAME) > ft.txt
-			@sed -i '' 's/#define FT true/#define FT false/g' tests/tests.hpp
-			@echo ""
-			@make re
-			@echo ""
-			@echo ""
-			@./$(NAME) > std.txt
-			@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
-			@$(eval COM_STRING = "result")
-			@$(call run_and_test,diff ft.txt std.txt)
-			@rm ft.txt std.txt
-
-# Not a target:
-containers/vector.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  commands to execute (from `Makefile', line 245):
+	@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
+	@make re
+	@./$(NAME) > ft.txt
+	@sed -i '' 's/#define FT true/#define FT false/g' tests/tests.hpp
+	@echo ""
+	@make re
+	@echo ""
+	@echo ""
+	@./$(NAME) > std.txt
+	@sed -i '' 's/#define FT false/#define FT true/g' tests/tests.hpp
+	@$(eval COM_STRING = "result")
+	@$(call run_and_test,diff ft.txt std.txt)
+	@rm ft.txt std.txt
+	
 
 # Not a target:
 objs/test_vector.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-18 17:52:15.353474662
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-.PHONY: all clean fclean re header compare
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+# Not a target:
+objs/test_reverse_iterator.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 objs/test_utility.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-18 17:52:16.341485541
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 fclean: header clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 239):
-			@rm -rf $(NAME)
-			@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
-
-# Not a target:
-tests/main.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/type_traits.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  commands to execute (from `Makefile', line 239):
+	@rm -rf $(NAME)
+	@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
+	
 
 # Not a target:
 .DEFAULT:
@@ -456,17 +456,13 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 223):
-			@$(call display_progress_bar)
-			@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
-
-objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  commands to execute (from `Makefile', line 223):
+	@$(call display_progress_bar)
+	@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
+	
 
 # Not a target:
-containers/algorithm.hpp:
+objs/test_iterator.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -482,71 +478,46 @@ clean: header
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 235):
-			@rm -rf objs objs_tests
-			@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
+#  commands to execute (from `Makefile', line 235):
+	@rm -rf objs objs_tests
+	@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
+	
 
-objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+# Not a target:
+objs/test_vector.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-tests/color.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-objs/test_utility.o: tests/test_utility.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-tests/tests.hpp:
+objs/test_utility.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 objs/main.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2021-11-18 17:52:16.837491003
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-tests/test_reverse_iterator.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/utility.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-containers/binary_search_tree.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=37/1024=4%, Rehash=0, Collisions=8/131=6%
+# Load=22/1024=2%, Rehash=0, Collisions=5/60=8%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 52 / storage = 807 B / avg = 15 B
-# current buf: size = 8162 B / used = 807 B / count = 52 / avg = 15 B
+# # of strings in strcache: 6
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 3986 / max = 3986 / min = 3986 / avg = 3986
 
-# strcache performance: lookups = 138 / hit rate = 62%
-# hash-table stats:
-# Load=52/8192=1%, Rehash=0, Collisions=3/138=2%
-# Finished Make data base on Sat Nov 20 14:45:10 2021
+# Finished Make data base on Sat Nov 20 15:44:30 2021
 
  
