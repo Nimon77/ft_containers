@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:20:27 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 19:38:50 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 12:48:00 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ namespace ft {
 			BST_iterator &operator=(const BST_iterator &it)
 			{
 				_node = it._node;
+				_parent = it._parent;
 				return (*this);
 			}
 
@@ -110,7 +111,7 @@ namespace ft {
 	{
 		public:
 			typedef T *																						node_ptr;
-			typedef typename T::value_type																	value_type;
+			typedef typename T::value_type const															value_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
@@ -129,6 +130,7 @@ namespace ft {
 			BST_const_iterator &operator=(const BST_const_iterator &it)
 			{
 				_node = it._node;
+				_parent = it._parent;
 				return (*this);
 			}
 

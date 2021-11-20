@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:37:26 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/19 19:44:11 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 12:27:32 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ namespace ft {
 				return pair<iterator,bool>(iterator(node, NULL), true);
 			}
 
-			pair<iterator,bool> insert(const value_type &value)
+			ft::pair<iterator,bool> insert(const value_type &value)
 			{
 				return (insert(value, _root));
 			}
@@ -224,7 +224,8 @@ namespace ft {
 
 			iterator insert(iterator position, const value_type &value)
 			{
-				return (insert(value, position.getNode()).first);
+				(void)position;
+				return (insert(value).first);
 			}
 
 			template <class InputIterator>
@@ -237,57 +238,70 @@ namespace ft {
 				}
 			}
 
-			void erase(const value_type &to_find)
+			bool erase(const value_type &to_find)
 			{
-				if ((_root = erase(to_find, _root)))
+				ft::pair<node_pointer,bool> ret = erase(to_find, _root);
+				if ((_root = ret.first))
 					_root->parent = NULL;
+				return (ret.second);
 			}
 
-			void erase(node_pointer node)
+			bool erase(node_pointer node)
 			{
-				if ((_root = erase(node->value, _root)))
+				ft::pair<node_pointer,bool> ret = erase(node->value, _root);
+				if ((_root = ret.first))
 					_root->parent = NULL;
+				return (ret.second);
 			}
 
-			node_pointer erase(const value_type &to_find, node_pointer node)
+			ft::pair<node_pointer, bool> erase(const value_type &to_find, node_pointer node)
 			{
+				bool del = false;
 				if (node == NULL)
-					return NULL;
+					return ft::make_pair(node, false);
 				else if (cmp(to_find.first, node->value.first))
 				{
-					if ((node->left = erase(to_find, node->left)))
+					ft::pair<node_pointer, bool> ret = erase(to_find, node->left);
+					if ((node->left = ret.first))
 						node->left->parent = node;
+					del = ret.second;
 				}
 				else if (cmp(node->value.first, to_find.first))
 				{
-					if ((node->right = erase(to_find, node->right)))
+					ft::pair<node_pointer, bool> ret = erase(to_find, node->right);
+					if ((node->right = ret.first))
 						node->right->parent = node;
+					del = ret.second;
 				}
 				else
 				{
 					if (node->left == NULL)
 					{
 						node_pointer tmp = node->right;
+						node->parent = NULL;
 						_alloc.destroy(node);
 						_alloc.deallocate(node, 1);
-						return tmp;
+						return ft::make_pair(tmp, (del = true));
 					}
 					else if (node->right == NULL)
 					{
 						node_pointer tmp = node->left;
+						node->parent = NULL;
 						_alloc.destroy(node);
 						_alloc.deallocate(node, 1);
-						return tmp;
+						return ft::make_pair(tmp, (del = true));
 					}
 					else
 					{
 						node_pointer tmp = minValue(node->right);
 						node->value = tmp->value;
-						if ((node->right = erase(tmp->value, node->right)))
+						ft::pair<node_pointer, bool> ret = erase(tmp->value, node->right);
+						if ((node->right = ret.first))
 							node->right->parent = node;
+						del = true;
 					}
 				}
-				return (node);
+				return (ft::make_pair(node, del));
 			}
 
 			node_pointer minValue() const
