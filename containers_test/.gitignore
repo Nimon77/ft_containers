@@ -28,11 +28,11 @@
 
 # Executables
 *.exe
-*.out
+*.out*
 *.app
 
-ft.txt
-std.txt
-ft_containers
-Makefile.bak*
+# Test results
+*.log
+*.diff
 
+.vscode
