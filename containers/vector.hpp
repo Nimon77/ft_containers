@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/17 15:48:08 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 14:11:49 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,20 @@ namespace ft {
 
 			explicit vector (size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type())
-				: _alloc(alloc), _size(n), _capacity(n)
+				: _alloc(alloc), _vector(NULL), _size(n), _capacity(n)
 			{
-				_vector = _alloc.allocate(sizeof(value_type) * n);
-				for (size_type i = 0; i < n; i++) _vector[i] = val;
+				_vector = _alloc.allocate(n);
+				for (size_type i = 0; i < n; i++) _alloc.construct(&_vector[i], val);
 			}
 
 			template <class InputIterator>
 			vector (InputIterator first, InputIterator last,
 					const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
-				: _alloc(alloc), _size(0), _capacity(ft::distance(first, last))
+				: _alloc(alloc), _vector(NULL), _size(0), _capacity(ft::distance(first, last))
 			{
-				_vector = _alloc.allocate(sizeof(value_type) * (_capacity));
-				for (; first != last; first++)
-				{
-					_vector[_size++] = *first;
-				}
+				_vector = _alloc.allocate(_capacity);
+				for (; first != last; first++) _alloc.construct(&_vector[_size++], *first);
 			}
 
 			vector (const vector& x)
@@ -66,21 +63,21 @@ namespace ft {
 				_alloc = x._alloc;
 				_size = x._size;
 				_capacity = x._capacity;
-				_vector = _alloc.allocate(sizeof(value_type) * _capacity);
-				for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
+				_vector = _alloc.allocate(_capacity);
+				for (size_type i = 0; i < _size; i++) _alloc.construct(&_vector[i], x._vector[i]);
 			}
 
 			~vector ()
 			{
-				_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+				_alloc.deallocate(_vector, _capacity);
 			}
 
 			vector& operator= (const vector& x)
 			{
 				if (this != &x)
 				{
-					_alloc.deallocate(_vector, _capacity * sizeof(value_type));
-					_vector = _alloc.allocate(sizeof(value_type) * x._size);
+					_alloc.deallocate(_vector, _capacity);
+					_vector = _alloc.allocate(x._size);
 					_size = x._size;
 					_capacity = x._size;
 					for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
@@ -111,9 +108,9 @@ namespace ft {
 					if (n > _capacity)
 					{
 						_capacity = n;
-						value_type* tmp = _alloc.allocate(sizeof(value_type) * _capacity);
+						value_type* tmp = _alloc.allocate(_capacity);
 						for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
-						_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+						_alloc.deallocate(_vector, _capacity);
 						_vector = tmp;
 					}
 					for (size_type i = _size; i < n; i++) _alloc.construct(&_vector[i], val);
@@ -127,9 +124,9 @@ namespace ft {
 				if (n > _capacity)
 				{
 					_capacity = n;
-					value_type* tmp = _alloc.allocate(sizeof(value_type) * _capacity);
+					value_type* tmp = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
-					_alloc.deallocate(_vector, _capacity * sizeof(value_type));
+					_alloc.deallocate(_vector, _capacity);
 					_vector = tmp;
 				}
 			}
@@ -162,7 +159,7 @@ namespace ft {
 				if (_size == _capacity && _capacity != 0)
 				{
 					_capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					pointer new_vector = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
 					_vector = new_vector;
@@ -170,7 +167,7 @@ namespace ft {
 				else if (_capacity == 0)
 				{
 					_capacity = 1;
-					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					_vector = _alloc.allocate(_capacity);
 				}
 				_vector[_size++] = val;
 			}
@@ -190,7 +187,7 @@ namespace ft {
 				if (_size == _capacity && _capacity != 0)
 				{
 					_capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					pointer new_vector = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
 					_vector = new_vector;
@@ -198,7 +195,7 @@ namespace ft {
 				else if (_capacity == 0)
 				{
 					_capacity = 1;
-					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					_vector = _alloc.allocate(_capacity);
 				}
 				for (difference_type i = _size; i > pos; i--) _vector[i] = _vector[i - 1];
 				_vector[pos] = val;
@@ -212,7 +209,7 @@ namespace ft {
 				if (_size + n > _capacity && _capacity != 0)
 				{
 					while (_size + n > _capacity) _capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					pointer new_vector = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
 					_vector = new_vector;
@@ -220,7 +217,7 @@ namespace ft {
 				else if (_capacity == 0)
 				{
 					_capacity = n;
-					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					_vector = _alloc.allocate(_capacity);
 				}
 				for (difference_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
 				for (size_type i = 0; i < n; i++) _vector[pos + i] = val;
@@ -236,7 +233,7 @@ namespace ft {
 				if (_size + n > _capacity && _capacity != 0)
 				{
 					while (_size + n > _capacity) _capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					pointer new_vector = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					_alloc.destroy(_vector);
 					_vector = new_vector;
@@ -244,7 +241,7 @@ namespace ft {
 				else if (_capacity == 0)
 				{
 					_capacity = n;
-					_vector = _alloc.allocate(_capacity * sizeof(value_type));
+					_vector = _alloc.allocate(_capacity);
 				}
 				for (size_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
 				for (size_type i = 0; first != last; first++, i++) _vector[pos + i] = *first;
