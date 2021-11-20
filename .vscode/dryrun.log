@@ -1,4 +1,4 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/ubuntu/42-projects/ft_containers'
  
 printf "%b" "\033[0;32m"
@@ -9,13 +9,14 @@ echo "     / /_| |  / /  | |\/| |/ _\` | |/ / _ \\"
 echo "     \___  |./ /___| |  | | (_| |   <  __/"
 echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 echo
-printf "%b" "\033[0;36mName:	\033[0;33mft_containers@2f6e666\n"
+printf "%b" "\033[0;36mName:	\033[0;33mft_containers@ca9923b\n"
 printf "%b" "\033[0;36mAuthor:	\033[0;33mNicolas SIMON\n"
-printf "%b" "\033[0;36mDate: 	\033[0;33m2021/11/19 19:44:32\n\033[m"
+printf "%b" "\033[0;36mDate: 	\033[0;33m2021/11/20 14:34:49\n\033[m"
 printf "%b" "\033[0;36mCC: 	\033[0;33mclang++\n\033[m"
 printf "%b" "\033[0;36mFlags: 	\033[0;33m-Wall -Wextra -Werror -std=c++98 -g\n\033[m"
 echo
 FILE_CPP=`echo test_iterator.cpp test_vector.cpp test_reverse_iterator.cpp test_utility.cpp main.cpp`; FILE_OBJ=`find objs -type f -name '*.o' 2>/dev/null | sed 's/objs\///'`; TO_COMPILE=`echo $FILE_CPP | wc -w`; for FILE in $FILE_CPP; do for OBJ in $FILE_OBJ; do if [ ${FILE%.cpp} = ${OBJ%.o} ]; then if [ ./tests/$FILE -ot objs/$OBJ ]; then FILE_DEP=`echo objs/$OBJ | sed 's/\.o/\.d/'`; HEAD_FILES=`< $FILE_DEP xargs | grep -oh "\w*.h\w*"`; RECOMPILE=0; for HEAD in $HEAD_FILES; do if [ ./tests/$HEAD -nt objs/$OBJ ]; then RECOMPILE=1; break; fi; done; if [ $RECOMPILE -eq 0 ]; then ((TO_COMPILE=$TO_COMPILE-1)); fi; fi; fi; done; done; echo 0/$TO_COMPILE > .files_changed
+ 
 mkdir -p objs/
 if [ 0  -eq 0 ]; then line=`bash -c 'oldstty=$(stty -g); stty raw -echo min 0; tput u7 > /dev/tty; IFS=";" read -r -d R -a pos; stty $oldstty; row=$((${pos[0]:2} - 1)); echo $row'`; max_line=`tput lines`; ((max_line=$max_line-2)); new_line=0; tput sc; i=0; while [ $i -lt 60 ]; do printf " "; ((i=$i+1)); done; tput rc; if [ $line -gt $max_line ]; then new_line=1; echo ; else ((line=$line+1)); fi; tput sc; tput cup $line; 	FILE_TOTAL=`bash -c 'cat .files_changed | cut -d"/" -f2'`; FILE_DONE=`bash -c 'cat .files_changed | cut -d"/" -f1'`; if [ $FILE_TOTAL -eq 0 ]; then FILE_TOTAL=1; FILE_DONE=1; fi; RES=`echo "scale=2; $FILE_DONE/$FILE_TOTAL*48" | bc`; RES=`echo ${RES%%.*}`; printf "\033[0;36m[\033[m"; i=0; while [ $i -lt 48 ]; do if [ $i -lt $RES ]; then printf "\033[0;32m█\033[m"; else printf "\033[0;34m▒\033[m"; fi; ((i=$i+1)); done; printf "\033[0;36m]\033[m"; printf " (\033[0;34m$FILE_DONE\033[m/\033[0;34m$FILE_TOTAL\033[m)"; printf " "; ((FILE_DONE=$FILE_DONE+1)); echo $FILE_DONE/$FILE_TOTAL > .files_changed; if [ $new_line -eq 1 ]; then ((line=$line-1)); tput cup $line; else tput rc; fi; fi
 printf "%b%-46b" "\033[0;34m"compiling" " "\033[0;36mtest_iterator.o\033[m"; script -q -e -c "clang++ -Wall -Wextra -Werror -std=c++98 -g -MMD -MF objs/test_iterator.d -c tests/test_iterator.cpp -o objs/test_iterator.o -I./containers" objs/test_iterator.o.log > /dev/null; RESULT=$?; sed -i '1d' objs/test_iterator.o.log; sed -i "$(($(wc -l < objs/test_iterator.o.log)-1)),\$d" objs/test_iterator.o.log; if [ $RESULT -ne 0 ]; then printf "%b\n" "\033[0;31m[✖]\033[m"; rm -rf .files_changed; elif [ -s objs/test_iterator.o.log ]; then printf "%b\n" "\033[0;33m[⚠]\033[m"; else printf "%b\n" "\033[0;32m[✓]\033[m"; fi; cat objs/test_iterator.o.log; rm -f objs/test_iterator.o.log; exit $RESULT

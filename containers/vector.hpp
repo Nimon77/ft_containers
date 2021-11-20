@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/20 14:11:49 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 15:06:35 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ namespace ft {
 					_capacity = 1;
 					_vector = _alloc.allocate(_capacity);
 				}
-				_vector[_size++] = val;
+				_alloc.construct(&_vector[_size++], val);
 			}
 
 			void pop_back()
