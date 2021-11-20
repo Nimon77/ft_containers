@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/20 12:12:05 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 13:57:38 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ namespace ft
 			{
 				_tree = ft::BST<value_type, key_compare>(comp);
 				_alloc = alloc;
-				_size = ft::distance(first, last);
+				_size = 0;
 				for (; first != last; ++first)
-					_tree.insert(*first);
+					insert(*first);
 			}
 
 			map (const map& x) : _tree(x._tree), _alloc(x._alloc), _size(x._size) {}
