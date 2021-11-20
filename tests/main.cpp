@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:46:51 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/16 19:10:45 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/20 15:51:10 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,6 @@ bool fncomp (char lhs, char rhs) {return lhs<rhs;}
 
 int		main(void)
 {
-	//ft::BST<ft::pair<int, int> > tree;
-//	ft::map<int, int, ft::less<ft::pair<int, int> > > map;
-//	map.insert(ft::pair<int, int>(1, 1));
-//	map.insert(ft::pair<int, int>(8, 8));
-//	map.insert(ft::pair<int, int>(4, 4));
-//	map.insert(ft::pair<int, int>(9, 9));
 
 	bool(*fn_pt)(char,char) = fncomp;
 	ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
@@ -112,20 +106,20 @@ int		main(void)
 	std::cout << std::endl << "Content is:" << std::endl;
 	for (; it != ite; ++it)
 		std::cout << "- key: " << it->first << " | value: " << it->second << std::endl;
-	//std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
-	//test_is_integral();
-	//std::cout << std::endl;
-	//std::cout << C_WHITE_BACK << C_B_RED << "equal:" << C_RESET << std::endl;
-	//test_equal();
-	//std::cout << std::endl;
-	//std::cout << C_WHITE_BACK << C_B_RED << "lexicographical_compare:" << C_RESET << std::endl;
-	//test_lexicographical_compare();
-	//std::cout << std::endl;
-	//test_utility();
-	//test_reverse_iterator();
-	//test_iterator();
-	//test_distance();
-	//test_vector();
+	std::cout << C_WHITE_BACK << C_B_RED << "is_integral:" << C_RESET << std::endl;
+	test_is_integral();
+	std::cout << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "equal:" << C_RESET << std::endl;
+	test_equal();
+	std::cout << std::endl;
+	std::cout << C_WHITE_BACK << C_B_RED << "lexicographical_compare:" << C_RESET << std::endl;
+	test_lexicographical_compare();
+	std::cout << std::endl;
+	test_utility();
+	test_reverse_iterator();
+	test_iterator();
+	test_distance();
+	test_vector();
 
 	return (0);
 }

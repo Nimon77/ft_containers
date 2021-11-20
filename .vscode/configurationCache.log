@@ -1,1 +1,1 @@
-{"buildTargets":[".PHONY","all","clean","compare","fclean","ft_containers","header","re","setup"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":[".PHONY","all","clean","compare","fclean","ft_containers","header","objs/main.o","objs/test_iterator.o","objs/test_reverse_iterator.o","objs/test_utility.o","objs/test_vector.o","re","setup"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
