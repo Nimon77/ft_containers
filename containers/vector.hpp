@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/23 20:37:27 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/23 20:47:53 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ namespace ft {
 			{
 				_vector = _alloc.allocate(_capacity);
 				for (; first != last; first++) _alloc.construct(&_vector[_size++], *first);
-				// for (; first != last; first++) vector[_size++] = *first;
 			}
 
 			vector (const vector& x)
@@ -109,7 +108,6 @@ namespace ft {
 					{
 						_capacity = n;
 						value_type* tmp = _alloc.allocate(_capacity);
-						// for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
 						for (size_type i = 0; i < _size; i++)
 						{
 							_alloc.construct(&tmp[i], _vector[i]);
@@ -135,7 +133,6 @@ namespace ft {
 					pointer tmp = _alloc.allocate(n);
 					if (_capacity > 0)
 					{
-						// for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
 						for (size_type i = 0; i < _size; i++)
 						{
 							_alloc.construct(&tmp[i], _vector[i]);
@@ -162,7 +159,6 @@ namespace ft {
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
 				resize(ft::distance(first, last));
-				// for (size_type i = 0; first != last; first++, i++) _vector[i] = *first;
 				for (size_type i = 0; first != last; first++, i++)
 				{
 					_alloc.destroy(&_vector[i]);
@@ -173,7 +169,6 @@ namespace ft {
 			void assign (size_type n, const value_type& val)
 			{
 				resize(n);
-				// for (size_type i = 0; i < n; i++) _vector[i] = val;
 				for (size_type i = 0; i < n; i++)
 				{
 					_alloc.destroy(&_vector[i]);
@@ -186,7 +181,6 @@ namespace ft {
 				if (_capacity > 0 && _size == _capacity)
 				{
 					pointer new_vector = _alloc.allocate(_capacity * 2);
-					// for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
 					for (size_type i = 0; i < _size; i++)
 					{
 						_alloc.construct(&new_vector[i], _vector[i]);
@@ -218,26 +212,11 @@ namespace ft {
 			{
 				difference_type pos = position - _vector;
 				reserve(_size + 1);
-				// if (_size == _capacity && _capacity != 0)
-				// {
-				// 	pointer new_vector = _alloc.allocate(_capacity * 2);
-				// 	for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-				// 	_alloc.deallocate(_vector, _capacity);
-				// 	_capacity *= 2;
-				// 	_vector = new_vector;
-				// }
-				// else if (_capacity == 0)
-				// {
-				// 	_capacity = 1;
-				// 	_vector = _alloc.allocate(_capacity);
-				// }
-				// for (difference_type i = _size; i > pos; i--) _vector[i] = _vector[i - 1];
 				for (difference_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i], _vector[i - 1]);
 					_alloc.destroy(&_vector[i - 1]);
 				}
-				// _vector[pos] = val;
 				_alloc.construct(&_vector[pos], val);
 				_size++;
 				return (&_vector[pos]);
@@ -247,27 +226,11 @@ namespace ft {
 			{
 				difference_type pos = position - _vector;
 				reserve(_size + n);
-				// if (_size + n > _capacity && _capacity != 0)
-				// {
-					// size_type old_capacity = _capacity;
-					// while (_size + n > _capacity) _capacity *= 2;
-					// pointer new_vector = _alloc.allocate(_capacity);
-					// for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-					// _alloc.deallocate(_vector, old_capacity);
-					// _vector = new_vector;
-				// }
-				// else if (_capacity == 0)
-				// {
-					// _capacity = n;
-					// _vector = _alloc.allocate(_capacity);
-				// }
-				// for (difference_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
 				for (difference_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
 					_alloc.destroy(&_vector[i - 1]);
 				}
-				// for (size_type i = 0; i < n; i++) _vector[pos + i] = val;
 				for (size_type i = 0; i < n; i++)
 				{
 					_alloc.construct(&_vector[pos + i], val);
@@ -282,26 +245,11 @@ namespace ft {
 				size_type pos = position - _vector;
 				size_type n = ft::distance(first, last);
 				reserve(_size + n);
-				// if (_size + n > _capacity && _capacity != 0)
-				// {
-				// 	while (_size + n > _capacity) _capacity *= 2;
-				// 	pointer new_vector = _alloc.allocate(_capacity);
-				// 	for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-				// 	_alloc.destroy(_vector);
-				// 	_vector = new_vector;
-				// }
-				// else if (_capacity == 0)
-				// {
-				// 	_capacity = n;
-				// 	_vector = _alloc.allocate(_capacity);
-				// }
-				// for (size_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
 				for (size_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
 					_alloc.destroy(&_vector[i - 1]);
 				}
-				// for (size_type i = 0; first != last; first++, i++) _vector[pos + i] = *first;
 				for (size_type i = 0; first != last; first++, i++)
 				{
 					_alloc.construct(&_vector[pos + i], *first);
@@ -311,7 +259,6 @@ namespace ft {
 
 			iterator erase (iterator position)
 			{
-				// for (size_type i = position - _vector; i < _size - 1; i++) _vector[i] = _vector[i + 1];
 				for (size_type i = position - _vector; i < _size - 1; i++)
 				{
 					_alloc.destroy(&_vector[i]);
@@ -325,7 +272,6 @@ namespace ft {
 			iterator erase (iterator first, iterator last)
 			{
 				size_type n = last - first;
-				// for (size_type i = first - _vector; i < _size - n; i++) _vector[i] = _vector[i + n];
 				for (size_type i = first - _vector; i < _size - n; i++)
 				{
 					_alloc.destroy(&_vector[i]);
