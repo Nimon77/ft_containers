@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Nov 23 12:42:13 2021
+# Make data base, printed on Tue Nov 23 18:03:43 2021
 
 # Variables
 
@@ -46,8 +46,8 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 _ = /home/ubuntu/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node
 # makefile (from 'Makefile', line 20)
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# makefile (from 'objs/main.d', line 1)
+MAKEFILE_LIST :=  Makefile objs/test_iterator.d objs/test_vector.d objs/test_reverse_iterator.d objs/test_utility.d objs/main.d
 # 'override' directive
 GNUMAKEFLAGS := 
 # makefile (from 'Makefile', line 21)
@@ -81,7 +81,7 @@ SPACESHIP_VERSION = 3.14.0
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-2eb822db-cb19-46b4-b25d-87d6c98ba1f2.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-192570c5-665d-43ae-b62d-e8c96e44d461.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 59)
@@ -101,7 +101,7 @@ PWD = /home/ubuntu/42-projects/ft_containers
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # makefile (from 'Makefile', line 90)
-HASH := 4b3d9e9
+HASH := f39bf6e
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
 # environment
@@ -191,7 +191,7 @@ MAKEFILES :=
 # makefile (from 'Makefile', line 33)
 SRCS_PATH = ./tests
 # makefile (from 'Makefile', line 89)
-DATE := 2021/11/22 08:09:08
+DATE := 2021/11/23 15:19:51
 # environment
 PAGER = less
 # environment
@@ -221,7 +221,7 @@ MOTD_SHOWN = pam
 # makefile (from 'Makefile', line 62)
 NO_COLOR = \033[m
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=26/193=13%
+# Load=105/1024=10%, Rehash=0, Collisions=26/203=13%
 
 # Pattern-specific Variable Values
 
@@ -229,10 +229,10 @@ NO_COLOR = \033[m
 
 # Directories
 
-# . (device 2049, inode 677396): 10 files, no impossibilities.
+# . (device 2049, inode 677396): 12 files, no impossibilities.
 # tests (device 2049, inode 677429): No files, no impossibilities so far.
 
-# 10 files, no impossibilities in 2 directories.
+# 12 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -254,7 +254,12 @@ setup:
 	@$(call save_files_changed)
 
 # Not a target:
-objs/main.o:
+tests/test_iterator.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/main.o: tests/main.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -271,18 +276,25 @@ all: header setup ft_containers
 #  recipe to execute (from 'Makefile', line 198):
 	@rm -rf .files_changed
 
-.PHONY: all clean fclean re header compare
+# Not a target:
+tests/test_vector.cpp:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 objs/test_reverse_iterator.d:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-23 17:57:56.459674949
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+# Not a target:
+tests/test_utility.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 header:
 #  Phony target (prerequisite of .PHONY).
@@ -339,11 +351,29 @@ Makefile:
 #  Successfully updated.
 
 # Not a target:
+containers/map.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/binary_search_tree_iterator.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/iterator.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 objs/test_iterator.d:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-23 17:57:55.523662731
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
 compare:
 #  Phony target (prerequisite of .PHONY).
@@ -366,14 +396,24 @@ compare:
 			@rm ft.txt std.txt
 
 # Not a target:
-objs/test_vector.d:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+containers/vector.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-objs/test_reverse_iterator.o:
+objs/test_vector.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-23 17:57:56.019669205
+#  File has been updated.
+#  Successfully updated.
+
+.PHONY: all clean fclean re header compare
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/test_reverse_iterator.o: tests/test_reverse_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -381,9 +421,9 @@ objs/test_reverse_iterator.o:
 # Not a target:
 objs/test_utility.d:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-23 17:57:56.867680275
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
 fclean: header clean
 #  Phony target (prerequisite of .PHONY).
@@ -393,6 +433,18 @@ fclean: header clean
 #  recipe to execute (from 'Makefile', line 239):
 			@rm -rf $(NAME)
 			@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
+
+# Not a target:
+tests/main.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/type_traits.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -408,8 +460,13 @@ ft_containers: objs/test_iterator.o objs/test_vector.o objs/test_reverse_iterato
 			@$(call display_progress_bar)
 			@$(call run_and_test,$(CC) $(CFLAGS) $(DFLAGS) -I$(INCLUDE_PATH) -o $@ ${OBJS} ${OBJ_MAIN})
 
+objs/test_iterator.o: tests/test_iterator.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # Not a target:
-objs/test_iterator.o:
+containers/algorithm.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -429,14 +486,24 @@ clean: header
 			@rm -rf objs objs_tests
 			@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 
-# Not a target:
-objs/test_vector.o:
+objs/test_vector.o: tests/test_vector.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-objs/test_utility.o:
+tests/color.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/test_utility.o: tests/test_utility.cpp tests/tests.hpp tests/color.hpp containers/type_traits.hpp containers/algorithm.hpp containers/iterator.hpp containers/utility.hpp containers/vector.hpp containers/binary_search_tree.hpp containers/binary_search_tree_iterator.hpp containers/map.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+tests/tests.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -444,24 +511,42 @@ objs/test_utility.o:
 # Not a target:
 objs/main.d:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2021-11-23 17:57:57.347686541
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+# Not a target:
+tests/test_reverse_iterator.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/utility.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+containers/binary_search_tree.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=6/61=10%
+# Load=37/1024=4%, Rehash=0, Collisions=8/131=6%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 35 / storage = 428 B / avg = 12 B
-# current buf: size = 8162 B / used = 428 B / count = 35 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 51 / storage = 798 B / avg = 15 B
+# current buf: size = 8162 B / used = 798 B / count = 51 / avg = 15 B
 
-# strcache performance: lookups = 70 / hit rate = 50%
+# strcache performance: lookups = 137 / hit rate = 62%
 # hash-table stats:
-# Load=35/8192=0%, Rehash=0, Collisions=1/70=1%
-# Finished Make data base on Tue Nov 23 12:42:13 2021
+# Load=51/8192=1%, Rehash=0, Collisions=3/137=2%
+# Finished Make data base on Tue Nov 23 18:03:43 2021
 
  
