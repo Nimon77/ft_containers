@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/23 17:56:06 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/23 20:37:27 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,22 @@ namespace ft {
 				_size = x._size;
 				_capacity = x._capacity;
 				_vector = _alloc.allocate(_capacity);
-				// for (size_type i = 0; i < _size; i++) _alloc.construct(&_vector[i], x._vector[i]);
-				for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
+				for (size_type i = 0; i < _size; i++) _alloc.construct(&_vector[i], x._vector[i]);
 			}
 
 			virtual ~vector ()
 			{
 				if (_vector)
-					_alloc.deallocate(_vector, _capacity);
+					for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
+				_alloc.deallocate(_vector, _capacity);
 			}
 
 			vector& operator= (const vector& x)
 			{
-				if (this != &x)
-				{
-					_alloc.deallocate(_vector, _capacity);
-					_vector = _alloc.allocate(x._size);
-					_size = x._size;
-					_capacity = x._size;
-					for (size_type i = 0; i < _size; i++) _vector[i] = x._vector[i];
-				}
-				return *this;
+				if (x == *this) return *this;
+				this->clear();
+				this->insert(begin(), x.begin(), x.end());
+				return (*this);
 			}
 
 			iterator begin() { return iterator(_vector); }
@@ -114,7 +109,12 @@ namespace ft {
 					{
 						_capacity = n;
 						value_type* tmp = _alloc.allocate(_capacity);
-						for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+						// for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+						for (size_type i = 0; i < _size; i++)
+						{
+							_alloc.construct(&tmp[i], _vector[i]);
+							_alloc.destroy(&_vector[i]);
+						}
 						_alloc.deallocate(_vector, _capacity);
 						_vector = tmp;
 					}
@@ -135,7 +135,12 @@ namespace ft {
 					pointer tmp = _alloc.allocate(n);
 					if (_capacity > 0)
 					{
-						for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+						// for (size_type i = 0; i < _size; i++) tmp[i] = _vector[i];
+						for (size_type i = 0; i < _size; i++)
+						{
+							_alloc.construct(&tmp[i], _vector[i]);
+							_alloc.destroy(&_vector[i]);
+						}
 						_alloc.deallocate(_vector, _capacity);
 					}
 					_capacity = n;
@@ -157,13 +162,23 @@ namespace ft {
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
 				resize(ft::distance(first, last));
-				for (size_type i = 0; first != last; first++, i++) _vector[i] = *first;
+				// for (size_type i = 0; first != last; first++, i++) _vector[i] = *first;
+				for (size_type i = 0; first != last; first++, i++)
+				{
+					_alloc.destroy(&_vector[i]);
+					_alloc.construct(&_vector[i], *first);
+				}
 			}
 
 			void assign (size_type n, const value_type& val)
 			{
 				resize(n);
-				for (size_type i = 0; i < n; i++) _vector[i] = val;
+				// for (size_type i = 0; i < n; i++) _vector[i] = val;
+				for (size_type i = 0; i < n; i++)
+				{
+					_alloc.destroy(&_vector[i]);
+					_alloc.construct(&_vector[i], val);
+				}
 			}
 
 			void push_back (const value_type& val)
@@ -171,7 +186,12 @@ namespace ft {
 				if (_capacity > 0 && _size == _capacity)
 				{
 					pointer new_vector = _alloc.allocate(_capacity * 2);
-					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					// for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
+					for (size_type i = 0; i < _size; i++)
+					{
+						_alloc.construct(&new_vector[i], _vector[i]);
+						_alloc.destroy(&_vector[i]);
+					}
 					_alloc.deallocate(_vector, _capacity);
 					_capacity *= 2;
 					_vector = new_vector;
@@ -181,7 +201,8 @@ namespace ft {
 					_capacity = 1;
 					_vector = _alloc.allocate(_capacity);
 				}
-				_alloc.construct(&_vector[_size++], val);
+				_alloc.construct(&_vector[_size], val);
+				_size++;
 			}
 
 			void pop_back()
@@ -210,8 +231,14 @@ namespace ft {
 				// 	_capacity = 1;
 				// 	_vector = _alloc.allocate(_capacity);
 				// }
-				for (difference_type i = _size; i > pos; i--) _vector[i] = _vector[i - 1];
-				_vector[pos] = val;
+				// for (difference_type i = _size; i > pos; i--) _vector[i] = _vector[i - 1];
+				for (difference_type i = _size; i > pos; i--)
+				{
+					_alloc.construct(&_vector[i], _vector[i - 1]);
+					_alloc.destroy(&_vector[i - 1]);
+				}
+				// _vector[pos] = val;
+				_alloc.construct(&_vector[pos], val);
 				_size++;
 				return (&_vector[pos]);
 			}
@@ -234,8 +261,17 @@ namespace ft {
 					// _capacity = n;
 					// _vector = _alloc.allocate(_capacity);
 				// }
-				for (difference_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
-				for (size_type i = 0; i < n; i++) _vector[pos + i] = val;
+				// for (difference_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
+				for (difference_type i = _size; i > pos; i--)
+				{
+					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
+					_alloc.destroy(&_vector[i - 1]);
+				}
+				// for (size_type i = 0; i < n; i++) _vector[pos + i] = val;
+				for (size_type i = 0; i < n; i++)
+				{
+					_alloc.construct(&_vector[pos + i], val);
+				}
 				_size += n;
 			}
 
@@ -259,14 +295,28 @@ namespace ft {
 				// 	_capacity = n;
 				// 	_vector = _alloc.allocate(_capacity);
 				// }
-				for (size_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
-				for (size_type i = 0; first != last; first++, i++) _vector[pos + i] = *first;
+				// for (size_type i = _size; i > pos; i--) _vector[i + n - 1] = _vector[i - 1];
+				for (size_type i = _size; i > pos; i--)
+				{
+					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
+					_alloc.destroy(&_vector[i - 1]);
+				}
+				// for (size_type i = 0; first != last; first++, i++) _vector[pos + i] = *first;
+				for (size_type i = 0; first != last; first++, i++)
+				{
+					_alloc.construct(&_vector[pos + i], *first);
+				}
 				_size += n;
 			}
 
 			iterator erase (iterator position)
 			{
-				for (size_type i = position - _vector; i < _size - 1; i++) _vector[i] = _vector[i + 1];
+				// for (size_type i = position - _vector; i < _size - 1; i++) _vector[i] = _vector[i + 1];
+				for (size_type i = position - _vector; i < _size - 1; i++)
+				{
+					_alloc.destroy(&_vector[i]);
+					_alloc.construct(&_vector[i], _vector[i + 1]);
+				}
 				_alloc.destroy(&_vector[_size - 1]);
 				_size--;
 				return (iterator(position));
@@ -275,7 +325,12 @@ namespace ft {
 			iterator erase (iterator first, iterator last)
 			{
 				size_type n = last - first;
-				for (size_type i = first - _vector; i < _size - n; i++) _vector[i] = _vector[i + n];
+				// for (size_type i = first - _vector; i < _size - n; i++) _vector[i] = _vector[i + n];
+				for (size_type i = first - _vector; i < _size - n; i++)
+				{
+					_alloc.destroy(&_vector[i]);
+					_alloc.construct(&_vector[i], _vector[i + n]);
+				}
 				for (size_type i = _size - n; i < _size; i++) _alloc.destroy(&_vector[i]);
 				_size -= n;
 				return (iterator(first));
@@ -283,20 +338,15 @@ namespace ft {
 
 			void swap (vector& x)
 			{
-				pointer tmp = _vector;
-				_vector = x._vector;
-				x._vector = tmp;
-				size_type tmp2 = _size;
-				_size = x._size;
-				x._size = tmp2;
-				tmp2 = _capacity;
-				_capacity = x._capacity;
-				x._capacity = tmp2;
+				ft::swap(_vector, x._vector);
+				ft::swap(_size, x._size);
+				ft::swap(_capacity, x._capacity);
 			}
 
 			void clear()
 			{
-				for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
+				if (_vector)
+					for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
 				_size = 0;
 			}
 

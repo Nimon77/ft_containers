@@ -8,4 +8,4 @@ fi
 source fct.sh
 [[ -z "$2" ]] && testedNamespace="ft" || testedNamespace="$2";
 
-eval "$CC $CFLAGS $1 -DTESTED_NAMESPACE=${testedNamespace} -I${tested_path} && ./a.out"
+eval "$CC $CFLAGS $1 -DTESTED_NAMESPACE=${testedNamespace} -I${tested_path} -g && ./a.out"
