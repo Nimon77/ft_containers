@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/20 15:06:35 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/23 15:18:44 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,10 @@ namespace ft {
 			{
 				if (_size == _capacity && _capacity != 0)
 				{
-					_capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity);
+					pointer new_vector = _alloc.allocate(_capacity * 2);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-					_alloc.destroy(_vector);
+					_alloc.deallocate(_vector, _capacity);
+					_capacity *= 2;
 					_vector = new_vector;
 				}
 				else if (_capacity == 0)
@@ -186,10 +186,10 @@ namespace ft {
 				difference_type pos = position - _vector;
 				if (_size == _capacity && _capacity != 0)
 				{
-					_capacity *= 2;
-					pointer new_vector = _alloc.allocate(_capacity);
+					pointer new_vector = _alloc.allocate(_capacity * 2);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-					_alloc.destroy(_vector);
+					_alloc.deallocate(_vector, _capacity);
+					_capacity *= 2;
 					_vector = new_vector;
 				}
 				else if (_capacity == 0)
@@ -208,10 +208,11 @@ namespace ft {
 				difference_type pos = position - _vector;
 				if (_size + n > _capacity && _capacity != 0)
 				{
+					size_type old_capacity = _capacity;
 					while (_size + n > _capacity) _capacity *= 2;
 					pointer new_vector = _alloc.allocate(_capacity);
 					for (size_type i = 0; i < _size; i++) new_vector[i] = _vector[i];
-					_alloc.destroy(_vector);
+					_alloc.deallocate(_vector, old_capacity);
 					_vector = new_vector;
 				}
 				else if (_capacity == 0)
