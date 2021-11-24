@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:14:14 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/22 08:31:33 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/24 11:11:47 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ namespace ft
 			typedef typename container_type::size_type	size_type;
 
 			explicit stack (const container_type& cTr = container_type()) : c(cTr) {}
+
+			~stack()
+			{}
 
 			bool empty() const { return c.empty(); }
 

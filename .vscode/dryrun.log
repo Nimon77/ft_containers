@@ -9,9 +9,9 @@ echo "     / /_| |  / /  | |\/| |/ _\` | |/ / _ \\"
 echo "     \___  |./ /___| |  | | (_| |   <  __/"
 echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 echo
-printf "%b" "\033[0;36mName:	\033[0;33mft_containers@f39bf6e\n"
+printf "%b" "\033[0;36mName:	\033[0;33mft_containers@c0da851\n"
 printf "%b" "\033[0;36mAuthor:	\033[0;33mNicolas SIMON\n"
-printf "%b" "\033[0;36mDate: 	\033[0;33m2021/11/23 15:19:51\n\033[m"
+printf "%b" "\033[0;36mDate: 	\033[0;33m2021/11/23 20:48:00\n\033[m"
 printf "%b" "\033[0;36mCC: 	\033[0;33mclang++\n\033[m"
 printf "%b" "\033[0;36mFlags: 	\033[0;33m-Wall -Wextra -Werror -std=c++98 -g\n\033[m"
 echo

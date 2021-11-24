@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 01:42:01 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/23 20:47:53 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/24 11:40:10 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ namespace ft {
 							const allocator_type& alloc = allocator_type())
 				: _alloc(alloc), _vector(NULL), _size(n), _capacity(n)
 			{
-				_vector = _alloc.allocate(n);
+				if (n)
+					_vector = _alloc.allocate(n);
 				for (size_type i = 0; i < n; i++) _alloc.construct(&_vector[i], val);
 			}
 
@@ -54,24 +55,22 @@ namespace ft {
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 				: _alloc(alloc), _vector(NULL), _size(0), _capacity(ft::distance(first, last))
 			{
-				_vector = _alloc.allocate(_capacity);
+				if (_capacity)
+					_vector = _alloc.allocate(_capacity);
 				for (; first != last; first++) _alloc.construct(&_vector[_size++], *first);
 			}
 
-			vector (const vector& x)
+			vector (const vector& x) : _alloc(x._alloc), _size(x._size), _capacity(x._capacity)
 			{
-				_alloc = x._alloc;
-				_size = x._size;
-				_capacity = x._capacity;
-				_vector = _alloc.allocate(_capacity);
+				if (_capacity)
+					_vector = _alloc.allocate(_capacity);
 				for (size_type i = 0; i < _size; i++) _alloc.construct(&_vector[i], x._vector[i]);
 			}
 
-			virtual ~vector ()
+			~vector ()
 			{
-				if (_vector)
-					for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
-				_alloc.deallocate(_vector, _capacity);
+				for (size_type i = 0; i < _size; i++) _alloc.destroy(&_vector[i]);
+				if (_vector != NULL) _alloc.deallocate(_vector, _capacity);
 			}
 
 			vector& operator= (const vector& x)
@@ -127,7 +126,7 @@ namespace ft {
 			
 			void reserve(size_type n)
 			{
-				if (n > max_size()) throw std::length_error("vector::reserve");
+				if (n > this->max_size()) throw std::length_error("vector::reserve");
 				else if (n > _capacity)
 				{
 					pointer tmp = _alloc.allocate(n);
@@ -158,22 +157,16 @@ namespace ft {
 			void assign (InputIterator first, InputIterator last,
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
-				resize(ft::distance(first, last));
-				for (size_type i = 0; first != last; first++, i++)
-				{
-					_alloc.destroy(&_vector[i]);
-					_alloc.construct(&_vector[i], *first);
-				}
+				this->clear();
+				this->reserve(ft::distance(first, last));
+				this->insert(begin(), first, last);
 			}
 
 			void assign (size_type n, const value_type& val)
 			{
-				resize(n);
-				for (size_type i = 0; i < n; i++)
-				{
-					_alloc.destroy(&_vector[i]);
-					_alloc.construct(&_vector[i], val);
-				}
+				this->clear();
+				this->reserve(n);
+				this->insert(begin(), n, val);
 			}
 
 			void push_back (const value_type& val)
@@ -211,7 +204,7 @@ namespace ft {
 			iterator insert (iterator position, const value_type& val)
 			{
 				difference_type pos = position - _vector;
-				reserve(_size + 1);
+				this->reserve(_size + 1);
 				for (difference_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i], _vector[i - 1]);
@@ -225,7 +218,7 @@ namespace ft {
 			void insert (iterator position, size_type n, const value_type& val)
 			{
 				difference_type pos = position - _vector;
-				reserve(_size + n);
+				this->reserve(_size + n);
 				for (difference_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
@@ -244,7 +237,7 @@ namespace ft {
 			{
 				size_type pos = position - _vector;
 				size_type n = ft::distance(first, last);
-				reserve(_size + n);
+				this->reserve(_size + n);
 				for (size_type i = _size; i > pos; i--)
 				{
 					_alloc.construct(&_vector[i + n - 1], _vector[i - 1]);
