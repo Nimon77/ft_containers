@@ -6,7 +6,7 @@
 /*   By: nsimon <nsimon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 12:55:18 by nsimon            #+#    #+#             */
-/*   Updated: 2021/11/20 13:57:38 by nsimon           ###   ########.fr       */
+/*   Updated: 2021/11/24 12:37:28 by nsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,10 +182,13 @@ namespace ft
 
 			void erase (iterator first, iterator last)
 			{
-				for (; first != last; ++first)
+				for (; first != last;)
 				{
+					iterator tmp = first;
+					++tmp;
 					if (_tree.erase(*first))
 						--_size;
+					first = tmp;
 				}
 			}
 
